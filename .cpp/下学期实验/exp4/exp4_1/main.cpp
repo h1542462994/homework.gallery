@@ -1,19 +1,15 @@
-#include"Compare.h"
 #include<iostream>
+#include"Student.h"
 using namespace std;
 
-//@entrypoint()
+//@entrypoint
 int main()
 {
-    Compare<int> cmp1(3, 7);
-    cout << cmp1.max() << " is the Maximum of two integer numbers." << endl;
-    cout << cmp1.min() << " is the Minimum of two integer numbers." << endl;
-    Compare<float> cmp2(45.78, 93.6);
-    cout << cmp2.max() << " is the Maximum of two float numbers." << endl;
-    cout << cmp2.min() << " is the Minimum of two float numbers." << endl;
-    Compare<char> cmp3('a', 'A');
-    cout << cmp3.max() << " is the Maximum of two characters." << endl;
-    cout << cmp3.min() << " is the Minimum of two characters." << endl;
+    Student stud(101,78.5);
+    Student* p = &stud;
+    p->display();
+    p->change(101,80.5);
+    p->display();
 
     return 0;
 }
