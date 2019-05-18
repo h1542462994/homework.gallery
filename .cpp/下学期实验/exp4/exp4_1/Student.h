@@ -6,4 +6,5 @@ public:
 private:
     int num;
     float score;
+
 };
