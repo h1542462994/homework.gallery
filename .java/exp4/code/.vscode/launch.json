@@ -1,0 +1,60 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - J_IndexOf",
+            "request": "launch",
+            "mainClass": "exercise04.J_IndexOf",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - J_Array",
+            "request": "launch",
+            "mainClass": "exercise04.J_Array",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - J_Area",
+            "request": "launch",
+            "mainClass": "exercise02.J_Area",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - J_Area",
+            "request": "launch",
+            "mainClass": "exp3.exercise02.J_Area",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - J_Area",
+            "request": "launch",
+            "mainClass": "exp3.exercise01.J_Area",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "exp2.exercise02.Main",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Program",
+            "request": "launch",
+            "mainClass": "exp2.exercise02.Program",
+            "projectName": "exp"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "exp"
+        }
+    ]
+}
