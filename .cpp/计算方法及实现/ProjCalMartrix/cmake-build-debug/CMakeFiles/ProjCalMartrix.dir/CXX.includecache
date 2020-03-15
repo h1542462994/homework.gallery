@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/t1542/Program/C++/ProjCalMartrix/main.cpp
+iostream
+-
+matrix.h
+C:/Users/t1542/Program/C++/ProjCalMartrix/matrix.h
+
+C:/Users/t1542/Program/C++/ProjCalMartrix/matrix.h
+iostream
+-
+string
+-
+iomanip
+-
+vector
+-
+initializer_list
+-
+
