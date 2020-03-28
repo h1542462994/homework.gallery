@@ -1,0 +1,3 @@
+C:/Users/t1542/Program/C++/an_bigint.h/cmake-build-debug/CMakeFiles/an_bigint_h.dir
+C:/Users/t1542/Program/C++/an_bigint.h/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/t1542/Program/C++/an_bigint.h/cmake-build-debug/CMakeFiles/rebuild_cache.dir

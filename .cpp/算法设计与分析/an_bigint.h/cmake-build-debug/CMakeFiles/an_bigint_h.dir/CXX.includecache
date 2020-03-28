@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/t1542/Program/C++/an_bigint.h/big_int.h
+vector
+-
+string
+-
+sstream
+-
+
+C:/Users/t1542/Program/C++/an_bigint.h/main.cpp
+iostream
+-
+big_int.h
+C:/Users/t1542/Program/C++/an_bigint.h/big_int.h
+string
+-
+

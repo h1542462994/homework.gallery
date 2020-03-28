@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/t1542/Program/C++/an_fibonacci/fibonacci.h
+ubigint.h
+C:/Users/t1542/Program/C++/an_fibonacci/ubigint.h
+
+C:/Users/t1542/Program/C++/an_fibonacci/main.cpp
+iostream
+-
+iomanip
+-
+fibonacci.h
+C:/Users/t1542/Program/C++/an_fibonacci/fibonacci.h
+ubigint.h
+C:/Users/t1542/Program/C++/an_fibonacci/ubigint.h
+
+C:/Users/t1542/Program/C++/an_fibonacci/ubigint.h
+iostream
+-
+string
+-
+iomanip
+-
+vector
+-
+

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/t1542/Program/C++/an_sort/main.cpp
+iostream
+-
+sstream
+-
+msort.h
+C:/Users/t1542/Program/C++/an_sort/msort.h
+sorthelper.h
+C:/Users/t1542/Program/C++/an_sort/sorthelper.h
+
+C:/Users/t1542/Program/C++/an_sort/msort.h
+iostream
+-
+
+C:/Users/t1542/Program/C++/an_sort/sorthelper.h
+random
+-
+ctime
+-
+msort.h
+C:/Users/t1542/Program/C++/an_sort/msort.h
+iostream
+-
+iomanip
+-
+cmath
+-
+
