@@ -1,4 +1,39 @@
-C:\Users\t1542\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\193.5662.56\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\t1542\Program\C++\ProjCalMartrix
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/t1542/Program/C++/ProjCalMartrix/cmake-build-debug
+C:\Users\t1542\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\193.5662.56\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\t1542\Program\Widget\homework.gallery\.cpp\计算方法及实现\ProjCalMartrix
+-- The C compiler identification is GNU 8.1.0
+-- The CXX compiler identification is GNU 8.1.0
+-- Check for working C compiler: C:/Green/mingw64/bin/gcc.exe
+-- Check for working C compiler: C:/Green/mingw64/bin/gcc.exe -- broken
+CMake Error at C:/Users/t1542/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/win/share/cmake-3.15/Modules/CMakeTestCCompiler.cmake:60 (message):
+  The C compiler
+
+    "C:/Green/mingw64/bin/gcc.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: C:/Users/t1542/Program/Widget/homework.gallery/.cpp/璁＄畻鏂规硶鍙婂疄鐜�/ProjCalMartrix/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command(s):C:/Green/mingw64/bin/mingw32-make.exe cmTC_9c191/fast && C:/Green/mingw64/bin/mingw32-make.exe -f CMakeFiles\cmTC_9c191.dir\build.make CMakeFiles/cmTC_9c191.dir/build
+    mingw32-make.exe[1]: Entering directory 'C:/Users/t1542/Program/Widget/homework.gallery/.cpp/璁＄畻鏂规硶鍙婂疄鐜�/ProjCalMartrix/cmake-build-debug/CMakeFiles/CMakeTmp'
+    Building C object CMakeFiles/cmTC_9c191.dir/testCCompiler.c.obj
+    C:\Green\mingw64\bin\gcc.exe    -o CMakeFiles\cmTC_9c191.dir\testCCompiler.c.obj   -c C:\Users\t1542\Program\Widget\homework.gallery\.cpp\鐠侊紕鐣婚弬瑙勭《閸欏﹤鐤勯悳鐧≒rojCalMartrix\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+    gcc.exe: error: C:\Users\t1542\Program\Widget\homework.gallery\.cpp\鐠侊紕鐣婚弬瑙勭《閸欏﹤鐤勯悳鐧≒rojCalMartrix\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c: No such file or directory
+    gcc.exe: fatal error: no input files
+    compilation terminated.
+    mingw32-make.exe[1]: *** [CMakeFiles\cmTC_9c191.dir\build.make:65: CMakeFiles/cmTC_9c191.dir/testCCompiler.c.obj] Error 1
+    mingw32-make.exe[1]: Leaving directory 'C:/Users/t1542/Program/Widget/homework.gallery/.cpp/璁＄畻鏂规硶鍙婂疄鐜�/ProjCalMartrix/cmake-build-debug/CMakeFiles/CMakeTmp'
+    mingw32-make.exe: *** [Makefile:120: cmTC_9c191/fast] Error 2
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/t1542/Program/Widget/homework.gallery/.cpp/璁＄畻鏂规硶鍙婂疄鐜�/ProjCalMartrix/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "C:/Users/t1542/Program/Widget/homework.gallery/.cpp/璁＄畻鏂规硶鍙婂疄鐜�/ProjCalMartrix/cmake-build-debug/CMakeFiles/CMakeError.log".
