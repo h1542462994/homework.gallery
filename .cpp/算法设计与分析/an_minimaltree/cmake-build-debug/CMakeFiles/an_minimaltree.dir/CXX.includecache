@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/t1542/Program/C++/an_minimaltree/find.h
+vector
+-
+
+C:/Users/t1542/Program/C++/an_minimaltree/main.cpp
+iostream
+-
+string
+-
+mat.h
+C:/Users/t1542/Program/C++/an_minimaltree/mat.h
+photoi.h
+C:/Users/t1542/Program/C++/an_minimaltree/photoi.h
+
+C:/Users/t1542/Program/C++/an_minimaltree/mat.h
+iostream
+-
+iomanip
+-
+sstream
+-
+vector
+-
+
+C:/Users/t1542/Program/C++/an_minimaltree/photoi.h
+side.h
+C:/Users/t1542/Program/C++/an_minimaltree/side.h
+mat.h
+C:/Users/t1542/Program/C++/an_minimaltree/mat.h
+find.h
+C:/Users/t1542/Program/C++/an_minimaltree/find.h
+vector
+-
+queue
+-
+
+C:/Users/t1542/Program/C++/an_minimaltree/side.h
+

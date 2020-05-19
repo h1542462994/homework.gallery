@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/t1542/Program/C++/an_huffman/HuffmanTree.h
+bnode.h
+C:/Users/t1542/Program/C++/an_huffman/bnode.h
+calculable.h
+C:/Users/t1542/Program/C++/an_huffman/calculable.h
+string
+-
+vector
+-
+queue
+-
+map
+-
+iostream
+-
+iomanip
+-
+
+C:/Users/t1542/Program/C++/an_huffman/bnode.h
+
+C:/Users/t1542/Program/C++/an_huffman/calculable.h
+
+C:/Users/t1542/Program/C++/an_huffman/main.cpp
+iostream
+-
+algorithm
+-
+HuffmanTree.h
+C:/Users/t1542/Program/C++/an_huffman/HuffmanTree.h
+

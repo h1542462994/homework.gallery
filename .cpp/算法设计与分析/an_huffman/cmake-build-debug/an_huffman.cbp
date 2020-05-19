@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="an_huffman"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="an_huffman">
+				<Option output="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/an_huffman.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 an_huffman"/>
+					<CompileFile command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="an_huffman/fast">
+				<Option output="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/an_huffman.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Green/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 an_huffman/fast"/>
+					<CompileFile command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Green/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/t1542/Program/C++/an_huffman/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/t1542/Program/C++/an_huffman/HuffmanTree.cpp">
+			<Option target="an_huffman"/>
+		</Unit>
+		<Unit filename="C:/Users/t1542/Program/C++/an_huffman/HuffmanTree.h">
+			<Option target="an_huffman"/>
+		</Unit>
+		<Unit filename="C:/Users/t1542/Program/C++/an_huffman/bnode.h">
+			<Option target="an_huffman"/>
+		</Unit>
+		<Unit filename="C:/Users/t1542/Program/C++/an_huffman/calculable.h">
+			<Option target="an_huffman"/>
+		</Unit>
+		<Unit filename="C:/Users/t1542/Program/C++/an_huffman/main.cpp">
+			<Option target="an_huffman"/>
+		</Unit>
+		<Unit filename="C:/Users/t1542/Program/C++/an_huffman/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
