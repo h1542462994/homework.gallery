@@ -1,0 +1,1 @@
+drop index chenht_Students.cht_sno_asc
