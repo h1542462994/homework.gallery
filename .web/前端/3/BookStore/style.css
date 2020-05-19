@@ -1,0 +1,97 @@
+/*公共*/
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    width: 1100px;
+    margin: 0 120px;
+}
+
+/*背景*/
+header {
+    height: 150px;
+    background-image: url("images/header.jpg");
+    position: relative;
+}
+#nav{
+    background-image: url("images/nav-bg.png");
+    height: 60px;
+}
+#footer-wrapper {
+    background-image: url("images/nav-bg.png");
+    height: 60px;
+}
+h2[id^="title"]{
+    color:#734633;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    background-image: url("images/bullet.png");
+}
+
+/*布局*/
+#content-wrapper article{
+    display: inline-block;
+    width: 630px;
+    vertical-align: top;
+    margin-right: 80px;
+}
+#content-wrapper aside{
+    display: inline-block;
+    width: 380px;
+    vertical-align: top;
+}
+/* 本周推荐 */
+.recommend img{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+.recommend .recommend-content{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 420px;
+    vertical-align: top;
+    padding-right: 20px;
+}
+
+
+/* 最近新书和最近促销 */
+.article-section{
+    border-bottom: #ccc dashed 1px;
+    margin-bottom: 10px;
+}
+.article-section section{
+    display: inline-block;
+    width: 290px;
+    vertical-align: top;
+    text-align: center;
+    margin: 10px 0 10px 10px;
+}
+.article-section section h3{
+    margin: 5px 0 10px 0;
+}
+
+.aside-section{
+    display: inline-block;
+    width: 180px;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+/* 关于书店 */
+.about img{
+    display: inline-block;
+    width: 120px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.about p{
+    display: inline-block;
+    width: 250px;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}

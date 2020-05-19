@@ -1,0 +1,72 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: monospace;
+            margin: 0;
+        }
+        .table-markdown {
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .table-markdown thead tr{
+            border-bottom: black 1px solid;
+        }
+        .table-markdown tbody tr{
+            border-bottom: darkgrey 1px solid;
+        }
+        .table-markdown td {
+            padding: 6px 8px;
+            min-width: 100px;
+        }
+        .table-markdown thead td{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>table</h1>
+    <table class="table-markdown">
+        <thead>
+            <tr>
+                <td>单元格1</td>
+                <td>单元格2</td>
+                <td>单元格3</td>
+                <td>单元格4</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>单元内容1</td>
+                <td colspan="2">单元内容2</td>
+                <td>单元内容4</td>
+            </tr>
+            <tr>
+                <td>单元内容1</td>
+                <td>单元内容2</td>
+                <td>单元内容3</td>
+                <td>单元内容4</td>
+            </tr>
+            <tr>
+                <td>单元内容1</td>
+                <td>单元内容2</td>
+                <td>单元内容3</td>
+                <td>单元内容4</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: relative; background: red;">
+        <div style="height: 100px;">
+            div1
+        </div>
+        <div style="display: absolute;top: 50px;bottom: 0; background: pink;">
+            div2
+        </div>
+    </div>
+</body>
+</html>

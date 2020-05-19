@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水星书店 - 联系我们</title>
+</head>
+<body>
+    <section class="contacts">
+        <h2 id="title8">联系我们</h2>
+        <p class="details">水星书店成立于2020年3月，是一家私人创办的虚拟书店。
+            坐落于优美的浙江工业大学这座久负盛名的高等学府，秉承浙工大人“自强不息，厚德载物”的人文精神。</p>
+        <fieldset class="contact-form">
+            <legend class="form-subtitle">需要填写以下内容</legend>
+            <form action="" method="get" id="contact">
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>姓名：</strong>
+                        <input type="text" name="name" id="name" required placeholder="必填" autofocus class="contact-input"/>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="contact"><strong>性别：</strong></label>
+                    <label><input type="radio" name="sex" id="sex1" value="男" checked>男</label>
+                    <label><input type="radio" name="sex" id="sex2" value="女">女</label>
+                </div>
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>年龄范围：</strong>
+                        <select name="age" size="1" id="age">
+                            <option value="1">18岁以下</option>
+                            <option value="2" selected>18-28岁</option>
+                            <option value="3">28-38岁</option>
+                            <option value="4">38-48岁</option>
+                            <option value="5">48岁以上</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>爱好：</strong>
+                    </label>
+                    <label><input type="checkbox" name="interest" value="网络" id="interest1">网络</label>
+                    <label><input type="checkbox" name="interest" value="数据库" id="interest2">数据库</label>
+                    <label><input type="checkbox" name="interest" value="编程" id="interest3">编程</label>
+                </div>
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>电子邮件：</strong>
+                        <input type="email" name="dzyj" id="dzyj" required placeholder="必填" class="contact-input"/>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>固定电话：</strong>
+                        <input type="text" name="telephone" id="telephone" required pattern="[0-9]" placeholder="必填" class="contact-input"/>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>公司：</strong>
+                        <input type="text" name="company" id="company" required placeholder="必填" class="contact-input"/>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label class="contact">
+                        <strong>内容：</strong>
+                        <textarea name="content" id="content" cols="20" rows="3" class="contact-input"></textarea>
+                    </label>
+                </div>
+                <div class="form-row-button">
+                    <input type="reset" value="取消" class="send">&nbsp;
+                    <input type="submit" value="发送" class="send">
+                </div>
+            </form>
+        </fieldset>
+    </section>
+</body>
+</html>
