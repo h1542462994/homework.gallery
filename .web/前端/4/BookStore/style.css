@@ -1,0 +1,231 @@
+/*公共*/
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 1100px;
+    margin: 0 120px;
+}
+/*文本样式*/
+body {
+    font: 62.5%/1.4 "微软雅黑", Verdana, Arial, Helventica, sans-serif;
+}
+h1, h2, h3, h4, h5, h6{
+    font-size: 1.6em;
+}
+p, a, span {
+    font-size: 1.4em
+}
+p {
+    text-indent: 2em;
+    text-align: justify;
+}
+ul {
+    list-style-type: none;
+}
+img {
+    border: none;
+}
+mark {
+    background-color: #e3b503;
+    color: white;
+}
+
+/*背景*/
+header {
+    height: 150px;
+    background-image: url("images/header.jpg");
+    position: relative;
+}
+#nav{
+    background-image: url("images/nav-bg.png");
+    height: 60px;
+}
+/*页眉 logo*/
+#logo {
+    position: absolute;
+    top: 25px;
+    left: 90px;
+}
+#logo a {
+    font-size: 1.8em;
+    color: #503;
+    text-decoration: none;
+}
+#logo a h1 {
+    font-weight: normal;
+}
+
+#footer-wrapper {
+    background-image: url("images/nav-bg.png");
+    height: 60px;
+}
+h2[id^="title"]{
+    color:#734633;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    background-image: url("images/bullet.png");
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    border-bottom: 1px solid #834534;
+}
+#title1 {
+    background-position: 0 -3px;
+}
+#title2 {
+    background-position: 0 -38px;
+}
+#title3 {
+    background-position: 0 -68px;
+}
+#title4 {
+    background-position: 0 -98px;
+}
+#title5 {
+    background-position: 0 -128px;
+}
+#title6 {
+    background-position: 0 -155px;
+}
+#title7 {
+    background-position: 0 -182px;
+}
+.promotion {
+    border: #ccc solid 1px;
+    width: 100px;
+    background-image: url("images/promo-icon.gif");
+    background-repeat: no-repeat;
+    background-position: top right;
+    padding: 25px;
+    margin: 10px;
+}
+
+/*布局*/
+#content-wrapper article{
+    display: inline-block;
+    width: 630px;
+    vertical-align: top;
+    margin-right: 80px;
+}
+#content-wrapper aside{
+    display: inline-block;
+    width: 380px;
+    vertical-align: top;
+}
+/* 本周推荐 */
+.recommend img{
+    display: inline-block;
+    /* width: 200px; */
+    margin-bottom: 10px;
+    height: 200px;
+}
+
+.recommend a {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 200px;
+}
+
+
+.recommend .recommend-content{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 420px;
+    vertical-align: top;
+    padding-right: 20px;
+}
+/*其他细节*/
+.recommend {
+    border-bottom: #ccc dashed 1px;
+    position: relative;
+}
+.recommend h3 {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.recommend .cartmore{
+    width: 98%;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+
+/* 最近新书和最近促销 */
+.article-section{
+    border-bottom: #ccc dashed 1px;
+    margin-bottom: 10px;
+}
+.article-section section{
+    display: inline-block;
+    width: 290px;
+    vertical-align: top;
+    text-align: center;
+    margin: 10px 0 10px 10px;
+}
+.article-section section h3{
+    margin: 5px 0 10px 0;
+}
+
+.aside-section{
+    display: inline-block;
+    width: 180px;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+/* 关于书店 */
+.about img{
+    display: inline-block;
+    width: 120px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.about p{
+    display: inline-block;
+    width: 250px;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+.about h2 {
+    margin-bottom: 10px;
+}
+
+
+/*间隔图像*/
+.border{
+    text-align: center;
+    margin:10px 0;
+}
+
+/*图像*/
+.image-box {
+    padding: 20px;
+}
+.image-box>img {
+    height: 240px;
+}
+
+/*边栏广告*/
+section#advert a{
+    display: block;
+}
+section#advert img{
+    width: 370px;
+}
+section#advert {
+    margin: 10px 0;
+}
+
+footer section{
+    float: right;
+}
+#copyright {
+    color: black;
+    text-align: center;
+    font-size: 1.6em;
+    margin: 30px auto;
+}

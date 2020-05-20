@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="水星书店，一家全部线上运营的书店">
+    <meta name="keywords" content="Books">
+    <meta name="author" content="陈昊天">
+    <link rel="stylesheet" href="style.css">
+    <title>水星书店 - 首页</title>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+    <!--页眉-->
+    <div id="header-wrapper">
+        <!--网站logo-->
+        <header class="container">
+            <div id="logo">
+                <a href="#"><h1>水星书店</h1></a>
+            </div>
+            <div id="search">
+                <form action="index.html" method="get">
+                    <input type="search" placeholder="站内搜索"/>
+                    <input type="submit" value="搜索"/>
+                </form>
+            </div>
+        </header>
+        <!--网站导航-->
+        <div id="nav">
+            <nav class="container">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="categray.html">书籍分类</a>
+                        <ul>
+                            <li><a href="#">编程语言</a></li>
+                            <li><a href="#">数据库</a></li>
+                            <li><a href="#">图形图像</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="specials.html">特刊降价</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+                <div id="displaydate"></div>
+                <div id="displaytime"></div>
+                <div id="menu-logo">
+                    <a href="cart1.html">购物车</a>
+                    
+                </div>
+            </nav>
+
+        </div>
+
+    </div>
+    <!--内容-->
+    <div id="content-wrapper" class="container">
+        <!--左边内容区-->
+        <article>
+            <!--图片切换广告-->
+            <div id="adv">
+                <dl>
+                    <dt>
+                        <a href="#" id="a1">1</a>
+                        <a href="#" id="a2">2</a>
+                        <a href="#" id="a3">3</a>
+                        <a href="#" id="a4">4</a>
+                    </dt>
+                    <dd>
+                        <a href="#"><img src="images/b-ad1.jpg" id="badimg" alt="广告"></a>
+                    </dd>
+                </dl>
+            </div>
+            <!--本周推荐-->
+            <section>
+                <h2 id="title1">本周推荐</h2>
+                <section class="recommend">
+                    <h3>《精通C# 第6版》</h3>
+                    <a href="details.html"><img src="images/prod3.jpg" alt="JavaScript权威指南"/></a>
+                    <div class="recommend-content">
+                        <p>
+                            本书是<mark>C#</mark>领域久负盛名的经典著作，
+                            深入全面地讲解了<mark>C#</mark>编程语言和.NET 平台的核心内容并结合大量示例剖析相关概念。
+                            全书分为八部分：
+                            C# 和.NET 平台、C# 核心编程结构、C# 面向对象编程、高级C# 编程结构、用.NET 程序集编程、.NET 基础类库、WPF 和ASP.NET Web Forms。
+                            第6版是对第5版的进一步更新和完善，内容涵盖了最先进的.NET 编程技术和技巧，
+                            并准确呈现出C# 编程语言的最新变化和.NET 4.5 Framework 的新特性。
+                        </p>
+                        <p>
+                            本书由微软<mark>C#</mark> MVP Andrew Troelsen 编写，
+                            第6 版专门针对C# 5.0 和.NET 4.5 进行了细致入微的修订，是各层次.NET 开发人员的必读之作。
+                        </p>
+                    </div>
+                    <div class="cart button">加入购物车</div>
+                    <div class="more button">详细内容</div>
+                </section>
+                <section class="recommend">
+                    <h3>《C# in Depth, 第三版》</h3>
+                    <a href="#"><img src="images/prod2.jpg" alt="HTML5 权威指南"/></a>
+                    <div class="recommend-content">
+                        <p>这本书主要为那些已具备一定的C#编程经验的开发人员而编写。
+                            和其他的编程手册相比，这本书的结构虽然简单，但很新颖。
+                            第一章的开头讲了<mark>C#</mark>语言的基础知识，引用了C#1版本。
+                            第2章提到了C#2版本的变化。第3章则涵盖了C#3版本所做的更改。
+                            依此类推。通过这种方式，来让读者理解此编程语言的演变。</p>
+                    </div>
+                    <div class="cart button">加入购物车</div>
+                    <div class="more button">详细内容</div>
+                </section>
+            </section>
+            <!--最近新书-->
+            <section class="article-section">
+                <h2 id="title2">最近新书</h2>
+                <section>
+                    <div class="effect-1">
+                        <div class="image-box">
+                            <img src="images/prod4.jpg" alt="HTML5+CSS3从入门到精通"/>
+                        </div>
+                        <div class="text-desc">
+                            <h3>《杀死一只知更鸟》</h3>
+                            <p>《杀死一只知更鸟》的故事发生在大萧条时期美国南方一个静谧的小镇，几桩离奇的疑案彻底打破了几个孩子平静的生活：
+                            事件的真凶，怪人的谜底，传言背后的真相……
+                            在父亲的指引下，他们在迷雾中寻找真知，在磨砺中历经分度，
+                            在不公平中积累正气，经历了暴风骤雨般的成长，也感受了人间的温暖与真情。</p>
+                            <div class="cart btn">加入购物车</div>
+                            <div class="more btn">详细内容</div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="effect-1">
+                        <div class="image-box">
+                            <img src="images/prod5.jpg" alt="响应式Web设计"/>
+                        </div>
+                        <div class="text-desc">
+                            <h3>《漫长的告别》</h3>
+                            <p>
+                                私人侦探偶遇被丢弃在停车场的最贵，两人卷入一场情杀案的阴谋。
+                                怪不得村上春树读了12遍！美国文坛一代宗师钱德勒的代表作！每每陷入困境，村上春树
+                                便打开《漫长的告别》！村上春树曾亲自翻译《漫长的告别》，掀起阅读狂潮！
+                            </p>
+                            <div class="cart btn">加入购物车</div>
+                            <div class="more btn">详细内容</div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!--最近促销-->
+            <section class="article-section">
+                <h2 id="title3">最近促销</h2>
+                <section>
+                    <h3>《HTML5和CSS3实例教程》</h3>
+                    <a href="#"><img class="promotion" src="images/prod1.jpg" alt="HTML5和CSS3实例教程"/></a>
+                    <div class="cart button">加入购物车</div>
+                    <div class="more button">详细内容</div>
+                </section>
+                <section>
+                    <h3>《JavaScript 权威指南》</h3>
+                    <a href="#"><img class="promotion" src="images/prod6.jpg" alt="JavaScript权威指南"/></a>
+                    <div class="cart button">加入购物车</div>
+                    <div class="more button">详细内容</div>
+                </section>
+            </section>
+        </article>
+        <!--右边边栏区-->
+        <aside>
+            <!--广告区-->
+            <section id="advert">
+                <a href="#"><img src="images/ad1.jpg" alt="广告"/></a>
+                <a href="#"><img src="images/ad2.jpg" alt="广告"/></a>
+                <a href="#"><img src="images/ad3.jpg" alt="广告"/></a>
+            </section>
+            <div class="border"><img src="images/border.gif" alt="分割线"/></div>
+            <!--畅销图书-->
+            <section id="best-selling">
+                <h2 id="title7">畅销图书</h2>
+                <ul>
+                    <li>
+                        <span class="selling">查令十字街84号（珍藏版）（汤唯、吴秀波</span>
+                        <div class="curr">
+                            <div class="p-img">
+                                <a title="查令十字街84号（珍藏版）（汤唯、吴秀波" href="#">
+                                    <img width="80" height="80" src="images/selling1.jpg"/>
+                                </a>
+                            </div>
+                            <div class="p-name">
+                                <span>查令十字街84号（珍藏版）（汤唯、吴秀波</span>
+                                
+                                <strong>
+                                    ￥43.50
+                                </strong>
+                                <del>
+                                    ￥52.00
+                                </del>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="selling">分享经济 供给侧改革的新经济方案</span>
+                        <div class="curr">
+                            <div class="p-img">
+                                <a title="分享经济 供给侧改革的新经济方案" href="#">
+                                    <img width="80" height="80" src="images/selling2.jpg"/>
+                                </a>
+                            </div>
+                            <div class="p-name">
+                                <span>分享经济 供给侧改革的新经济方案</span>
+                                
+                                <strong>
+                                    ￥43.50
+                                </strong>
+                                <del>
+                                    ￥52.00
+                                </del>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div class="border"><img src="images/border.gif" alt="分割线"/></div>
+            <!--图书分类-->
+            <section class="aside-section">
+                <h2 id="title4">图书分类</h2>
+                <ul>
+                    <li><a href="#">编程语言</a></li>
+                    <li><a href="#">数据库</a> </li>
+                    <li><a href="#">图形图像</a> </li>
+                    <li><a href="#">网页制作</a> </li>
+                    <li><a href="#">考试认证</a> </li>
+                    <li><a href="#">外国文学</a> </li>
+                </ul>
+            </section>
+            <!--合作伙伴-->
+            <section class="aside-section">
+                <h2 id="title5">合作伙伴</h2>
+                <ul>
+                    <li><a href="#">中国电子商务研究中心</a> </li>
+                    <li><a href="#">清华大学出版社</a> </li>
+                    <li><a href="#">中国人民大学出版社</a> </li>
+                    <li><a href="#">中国社会科学出版社</a> </li>
+                </ul>
+            </section>
+            <div class="border"><img src="images/border.gif" alt="分割线"/></div>
+            <!--关于书店-->
+            <section class="about">
+                <h2 id="title6">关于书店</h2>
+                <img src="images/about.gif" alt="水星书店"/>
+                <p>水星书店成立于2020年3月，是一家私人创办的虚拟书店。
+                    坐落于优美的浙江工业大学这座久负盛名的高等学府，秉承浙工大人“自强不息，厚德载物”的人文精神。</p>
+            </section>
+        </aside>
+    </div>
+    <!--页脚-->
+    <div id="footer-wrapper">
+        <footer class="container">
+            <section>
+                <a href="#">首页</a>
+                <a href="about.html">关于我们</a>
+                <a href="#">服务条款</a>
+                <a href="#">隐私策略</a>
+                <a href="contact.html">联系我们</a>
+                    
+            </section>
+        </footer>
+    </div>
+    <!--版权标志-->
+    <section id="copyright" class="container">
+        <a href="#">Copyright (C) 水星书店 2020-2020，All Rights Reserved | 浙ICP证000001号音像制品经营许可证。</a>
+        <address>通讯地址：浙江工业大学 读者服务部&nbsp;&nbsp;电话：(010)62781733&nbsp;&nbsp;网管信箱： netadmin@tup.zjut.edu.cn</address>
+    </section>
+</body>
+</html>
