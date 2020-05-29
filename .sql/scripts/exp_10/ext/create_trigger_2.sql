@@ -1,0 +1,10 @@
+USE chenht_University_Mis
+GO
+CREATE TRIGGER T2 ON chenht_Teacher
+FOR DELETE
+AS
+IF (SELECT cht_Tno FROM DELETED)='T01'
+BEGIN
+PRINT '此人是CEO!删除操作失败'
+ROLLBACK TRANSACTION
+END

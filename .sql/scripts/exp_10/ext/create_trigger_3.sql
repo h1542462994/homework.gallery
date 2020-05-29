@@ -1,0 +1,10 @@
+USE chenht_University_Mis
+GO
+CREATE TRIGGER T3 ON chenht_Teacher
+FOR UPDATE
+AS
+IF UPDATE(cht_Tno)
+BEGIN
+PRINT '职工编号不能修改！'
+ROLLBACK TRANSACTION
+END

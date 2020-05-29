@@ -1,0 +1,2 @@
+use chenht_University_Mis
+alter table chenht_Teacher drop U2
