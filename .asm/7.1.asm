@@ -1,9 +1,6 @@
-; multi-segment executable file template.
-
 data segment
-    ; add your data here!
     pkey db "press any key...$"
-    score db 10,87,92,47,88,69,72,58,92,100,84
+    score db 10,87,92,47,88,69,72,58,92,100,84 ; 成绩的数据
     notpassed db 11 dup(0)
     passed db 11 dup(0)
     good db 11 dup(0)
@@ -23,17 +20,17 @@ start:
     mov es, ax
 
     ; add your code here
-    mov cl, score ;cx �ɼ��ĸ���
-    mov ch, 0
-    lea bx, score
-    mov si, 1 ;��һ��Ԫ�صĵ�ַ
+    mov cl, score
+    mov ch, 0 ; cx=学生的个数
+    lea bx, score ; bx=score的首地址
+    mov si, 1 ;第一个元素的地址 ; si=当前的成绩的变址
 loop_grade:
-    mov al,[bx][si]
+    mov al,[bx][si] ; al=当前的成绩
     push bx
     call judge_grade
     call push_grade
     pop bx
-    inc si
+    inc si ; 跳到下一个成绩
     loop loop_grade
             
     lea dx, pkey
@@ -46,7 +43,7 @@ loop_grade:
     
     mov ax, 4c00h ; exit to operating system.
     int 21h
-; �жϣ�����al(�ɼ�),���bx(��Ӧ�Ĵ洢�εĻ���ַ)
+; 判断，输入al(成绩),输出bx(对应的存储段的基地址)
 judge_grade:
     pushf
     cmp al, 80
@@ -80,17 +77,17 @@ judge_cmp_2:
 judge_out:    
     popf
     ret
-; �洢�ɼ�������al(�ɼ�),bx(��Ӧ�Ĵ洢�εĻ���ַ)
+; 存储成绩，输入al(成绩),bx(对应的存储段的基地址)
 push_grade:
     push si
     push cx
     mov cl, [bx]
-    mov ch, 0
+    mov ch, 0 ; cl=存储区内存储的个数
     mov si, cx
-    inc si
-    mov [bx][si], al
+    inc si ; si=指向待存储的位置
+    mov [bx][si], al ; 存入数据
     inc cl
-    mov [bx],cl
+    mov [bx],cl ; cl+1后写入存储区内存储的个数
     pop cx
     pop si
     ret        

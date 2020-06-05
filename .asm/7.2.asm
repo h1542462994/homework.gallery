@@ -1,12 +1,10 @@
-; multi-segment executable file template.
-
 data segment
     ; add your data here!
     pkey db "press any key...$"
     datax dw 2316h
     datay dw 0237h
     dataz dw ?
-    error_msg db "ÄãµÄÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë"
+    error_msg db "ä½ çš„è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥"
 ends
 
 stack segment
@@ -20,24 +18,26 @@ start:
     mov ds, ax
     mov es, ax
 
+loop_input:
     mov ah, 1
-    int 21h ; ÊäÈëÒ»¸ö×Ö·û
+    int 21h ; è¾“å…¥ä¸€ä¸ªå­—ç¬¦
     cmp al, 'A'
     jne judge_b
-    call func_add
+    call func_add ; æ‰§è¡Œaddæ“ä½œ
     jmp judge_out
 judge_b:
     cmp al, 'B'
     jne judge_c
-    call func_sub
+    call func_sub ; æ‰§è¡Œsubæ“ä½œ
     jmp judge_out
 judge_c:
     cmp al, 'C'
     jne judge_other
-    call func_mul
+    call func_mul ; æ‰§è¡Œmulæ“ä½œ
     jmp judge_out
 judge_other:
-    call func_other
+    call func_other ; æ‰§è¡Œå…¶ä»–æ“ä½œ
+    jmp loop_input
 judge_out:    
             
     lea dx, pkey
@@ -64,7 +64,7 @@ func_sub:
     cmp ax, 0
     jge re
     xor ax, 0ffffh
-    inc ax
+    inc ax ; axå–å+1
 re: 
     mov dataz, ax
     pop ax
@@ -86,4 +86,4 @@ func_other:
     ret
 ends
 
-end start ; set entry point and stop the assembler.
+end start
