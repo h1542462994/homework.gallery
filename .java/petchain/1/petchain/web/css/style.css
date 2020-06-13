@@ -1,0 +1,101 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.fluid{
+    width: 100%;
+    height: 100%;
+    background: lightblue;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    height: 0;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.bottom-nav{
+    height: 48px;
+    display: flex;
+}
+
+.bottom-nav a {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    border-top: white 1px solid;
+}
+
+.bottom-nav a:hover {
+    color: white;
+}
+
+.bottom-nav span {
+    display: inline-flex;
+}
+
+.cards {
+    scroll-behavior: auto;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pet {
+    width: 160px;
+    padding: 12px;
+    margin: 12px;
+    height: auto;
+    align-self: flex-start;
+}
+
+.pet .pet-image {
+    padding: 6px;
+    height: 120px;
+    display: flex;
+}
+
+.pet .pet-image img {
+    width: 100%;
+    align-self: center;
+}
+
+.small-badge{
+    font-size: 0.9em;
+    color: white;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+.pet .pet-level {
+    background: orangered;
+}
+
+.pet .pet-batch {
+    background: orange;
+}
+
+.pet .pet-prize {
+    color: red;
+}
+
+.header {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header a {
+    margin: 0 36px;
+}

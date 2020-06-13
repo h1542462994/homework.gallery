@@ -1,0 +1,30 @@
+.login-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box form {
+    width: 200px;
+}
+
+.login-box form .form-error-info{
+    color: orange;
+    display: block;
+    font-size: 0.9em;
+}
+
+.login-box form input[type='text'],
+.login-box form input[type='password']{
+    width: 100%;
+}
+
+.login-box form .form-row{
+    padding: 2px 6px;
+}
+
+.login-box form .form-submit {
+    margin: 2px 10%;
+    width: 80%;
+}
