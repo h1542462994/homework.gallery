@@ -1,0 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: t1542
+  Date: 2020/6/13
+  Time: 16:22
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div class="header">
+    <% if(loginState.isState()) { %>
+    <span><a href="${pageContext.request.contextPath}/question">赚取微积分</a></span>
+    <span>${loginState.passport.name}</span>
+    <span><a href="${pageContext.request.contextPath}/logout">注销登录</a></span>
+    <% } else { %>
+    <span><a href="${pageContext.request.contextPath}/login">未登录</a></span>
+    <% } %>
+
+</div>
