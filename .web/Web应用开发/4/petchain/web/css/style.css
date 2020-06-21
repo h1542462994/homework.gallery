@@ -1,0 +1,154 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color:gray;
+}
+
+.fluid{
+    width: 100%;
+    height: 100%;
+    background: lightblue;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    height: 0;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.section {
+    padding: 12px;
+}
+
+.bottom-nav{
+    height: 48px;
+    display: flex;
+}
+
+.bottom-nav a {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    border-top: white 1px solid;
+}
+
+.bottom-nav a:hover {
+    color: white;
+}
+
+.bottom-nav span {
+    display: inline-flex;
+}
+
+.bottom-nav .selected {
+    color: orangered;
+}
+
+.bottom-nav .disabled {
+    color: gray;
+}
+
+.cards {
+    scroll-behavior: auto;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pet {
+    width: 160px;
+    padding: 12px;
+    margin: 12px;
+    height: auto;
+    align-self: flex-start;
+}
+
+.pet .pet-image {
+    padding: 6px;
+    height: 120px;
+    display: flex;
+}
+
+.pet .pet-image img {
+    width: 100%;
+    align-self: center;
+}
+
+.small-badge{
+    font-size: 0.9em;
+    color: white;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+.pet .pet-level {
+    background: orangered;
+}
+
+.pet .pet-batch {
+    background: orange;
+}
+
+.pet .pet-prize {
+    color: red;
+}
+
+.header {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header a {
+    margin: 0 36px;
+}
+
+.score-badge {
+    background: dodgerblue;
+    color: white;
+    padding: 0 4px;
+    font-size: 0.9em;
+    border-radius: 2px;
+}
+
+.user-info {
+    margin: 0 24px;
+}
+
+.user-info .user-name {
+    background: sandybrown;
+}
+
+.user-info .user-coins {
+    color:red;
+}
+
+.pet-attribute-title {
+    margin: 2px 4px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.pet-attributes{
+    margin: 0 4px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pet-attributes div {
+    width: 45%;
+    flex-grow: 1;
+}
