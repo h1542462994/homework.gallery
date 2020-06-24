@@ -18,7 +18,7 @@
   - [C++程序设计（大一上）](./computer%20science/cppfirst/index.md)
   - [面向对象程序设计（大一下）](./computer%20science/cppobj/index.md)
   - [计算方法及实现（大二下）](./computer%20science/caclulate_method/index.md)
-
+  - [计算机网络（大二上）](./computer%20science/net/index.md)
 
 - 上学期作业  *//pq老师上课的作业，已经过期*
 
