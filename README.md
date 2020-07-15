@@ -26,8 +26,10 @@
   - [汇编程序设计（大二下）](./computer%20science/assembly/index.md) Archived | TODO
   - [Web前端开发（大二下）](./computer%20science/web_front/index.md) Archived
   - [Web应用开发（大二下）](./computer%20science/web/index.md) Archived
+  - [数据库原理及其应用（大二下）](./computer%20science/mssql/index.md) Archived
   - [Web前端（大二下）大作业](https://github.com/h1542462994/homework.xzjutcom) Archived
   - [Web应用开发（大二下）课程设计](https://github.com/h1542462994/homework.xhealthcode) Archived
   - [人工智能导论（大二下）自主实验](https://github.com/h1542462994/homework.pokeman_selector) Archived
   - [工程实训-智能车（大二短）最终代码](https://github.com/h1542462994/homework.4wd) Archived
+  - [数据库原理及其应用（大二短）课程设计](https://github.com/h1542462994/homework.dbgrade) Archived
   
