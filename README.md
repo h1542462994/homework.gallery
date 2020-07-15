@@ -15,7 +15,7 @@
 ## 目录
 
 - 计算机科学、编程语言
-  - [C++程序设计（大一上）](./computer%20science/cppfirst/index.md)
+  - [C++程序设计（大一上）](./computer%20science/cppfirst/index.md) Archived
   - [面向对象程序设计（大一下）](./computer%20science/cppobj/index.md)
   - [计算方法及实现（大二下）](./computer%20science/caclulate_method/index.md)
   - [计算机网络（大二上）](./computer%20science/net/index.md)
