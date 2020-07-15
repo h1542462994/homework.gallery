@@ -38,7 +38,7 @@
 
 ### 期末论文
 
-论文的tex版本(./paper/article.tex)
+[论文的tex版本](./paper/article.tex)
 
 ### 期末考试
 
