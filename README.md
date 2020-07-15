@@ -24,7 +24,10 @@
   - [计算机网络（大二上）课程设计](https://github.com/h1542462994/homework.package_analyse) Archived
   - [计算方法及实现（大二下）](./computer%20science/caclulate_method/index.md) Archived
   - [汇编程序设计（大二下）](./computer%20science/assembly/index.md) Archived | TODO
+  - [Web前端开发（大二下）](./computer%20science/web_front/index.md) Archived
+  - [Web应用开发（大二下）](./computer%20science/web/index.md) Archived
   - [Web前端（大二下）大作业](https://github.com/h1542462994/homework.xzjutcom) Archived
   - [Web应用开发（大二下）课程设计](https://github.com/h1542462994/homework.xhealthcode) Archived
   - [人工智能导论（大二下）自主实验](https://github.com/h1542462994/homework.pokeman_selector) Archived
   - [工程实训-智能车（大二短）最终代码](https://github.com/h1542462994/homework.4wd) Archived
+  

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="水星书店，一家全部线上运营的书店">
+    <meta name="keywords" content="Books">
+    <meta name="author" content="陈昊天">
+    <link rel="stylesheet" href="style.css">
+    <title>201806061201 - 陈昊天</title>
+</head>
+<body>
+    <!--页眉-->
+    <div id="header-wrapper">
+        <!--网站logo-->
+        <header class="container">
+            <div id="logo">
+                <a href="#"><h1>水星番剧网</h1></a>
+            </div>
+            <div id="search">
+                <form action="index.html" method="get">
+                    <input type="search" placeholder="站内搜索"/>
+                    <input type="submit" value="搜索"/>
+                </form>
+            </div>
+        </header>
+        <!--网站导航-->
+        <div id="nav">
+            <nav class="container">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="categray.html">番剧分类</a>
+                        <ul>
+                            <li><a href="#">热血战斗番</a></li>
+                            <li><a href="#">剧场版/电影</a></li>
+                            <li><a href="#">日常番</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="specials.html">特典</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+                <div id="displaydate"></div>
+                <div id="displaytime"></div>
+                <div id="menu-logo">
+                    <a href="cart.html">收藏</a>
+
+                </div>
+            </nav>
+
+        </div>
+
+    </div>
+    <!--内容-->
+    <div id="content-wrapper" class="container">
+        <!--左边内容区-->
+        <article>
+           <!--面包屑导航-->
+           <section class="crumb-nav">您现在的位置：<a href="index.html">首页</a>&gt;&gt;购物车</section>
+           <section class="cartt">
+            <h2 id="title8">购物车</h2>
+            <table class="cart-table">
+                <tr class="cart-title">
+                    <th colspan="2">名称</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>合计</th>
+                </tr>
+                <tr>
+                    <td class="td-center"><a href="details.html"><img src="images/selling1.jpg" alt="封面"></a></td>
+                    <td><h3>《JavaScript 权威指南》</h3></td>
+                    <td class="td-right">100.00</td>
+                    <td class="td-right">1</td>
+                    <td class="td-right">100.00</td>
+                </tr>
+                <tr>
+                    <td class="td-center"><a href="details.html"><img src="images/selling2.jpg" alt="封面"></a></td>
+                    <td><h3>《CSS 商业网站布局之道》</h3></td>
+                    <td class="td-right">100.00</td>
+                    <td class="td-right">1</td>
+                    <td class="td-right">100.00</td>
+                </tr>
+                <tr>
+                    <td class="td-center"><a href="details.html"><img src="images/selling4.jpg" alt="封面"></a></td>
+                    <td><h3>《瞬间之美：Web界面设计如何让用户心动》</h3></td>
+                    <td class="td-right">100.00</td>
+                    <td class="td-right">1</td>
+                    <td class="td-right">100.00</td>
+                </tr>
+                <tr class="cart-total">
+                    <td colspan="5" class="td-right">3件商品总价（不含运费）：￥300.00 <a href="#">去结算</a></td>
+                </tr>
+            </table>
+        </section>
+        </article>
+        <!--右边边栏区-->
+        <aside>
+            <!--广告区-->
+            <section id="advert">
+                <a href="#"><img src="images/ad1.jpg" alt="广告"/></a>
+                <a href="#"><img src="images/ad2.jpg" alt="广告"/></a>
+                <a href="#"><img src="images/ad3.jpg" alt="广告"/></a>
+            </section>
+            <div class="border"><img src="images/border.gif" alt="分割线"/></div>
+            <!--畅销图书-->
+            <section id="best-selling">
+                <h2 id="title7">热门动漫</h2>
+                <ul>
+                    <li>
+                        <span class="selling">轻音少女</span>
+                        <div class="curr">
+                            <div class="p-img">
+                                <a title="轻音少女" href="#">
+                                    <img width="80" height="80" src="images/movie7.jpg"/>
+                                </a>
+                            </div>
+                            <div class="p-name">
+                                <span>轻音少女</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="selling">境界的彼方</span>
+                        <div class="curr">
+                            <div class="p-img">
+                                <a title="境界的彼方" href="#">
+                                    <img width="80" height="80" src="images/movie8.jpg"/>
+                                </a>
+                            </div>
+                            <div class="p-name">
+                                <span>境界的彼方</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div class="border"><img src="images/border.gif" alt="分割线"/></div>
+            <!--图书分类-->
+            <section class="aside-section">
+                <h2 id="title4">番剧分类</h2>
+                <ul>
+                    <li><a href="#">热血战斗番</a></li>
+                    <li><a href="#">日常番</a> </li>
+                    <li><a href="#">校园番</a> </li>
+                    <li><a href="#">治愈番</a> </li>
+                    <li><a href="#">异世界番</a> </li>
+                    <li><a href="#">游戏改编</a> </li>
+                </ul>
+            </section>
+            <!--合作伙伴-->
+            <section class="aside-section">
+                <h2 id="title5">合作伙伴</h2>
+                <ul>
+                    <li><a href="#">京都动画</a> </li>
+                    <li><a href="#">J.C.STAFF</a> </li>
+                    <li><a href="#">动画工房</a> </li>
+                    <li><a href="#">芳文社</a> </li>
+                </ul>
+            </section>
+            <div class="border"><img src="images/border.gif" alt="分割线"/></div>
+            <!--关于书店-->
+            <section class="about">
+                <h2 id="title6">关于书店</h2>
+                <img src="images/about.jpg" alt="水星书店"/>
+                <p>水星番剧网
+                    坐落于优美的浙江工业大学这座久负盛名的高等学府，秉承浙工大人“自强不息，厚德载物”的人文精神。</p>
+            </section>
+        </aside>
+    </div>
+    <!--页脚-->
+    <div id="footer-wrapper">
+        <footer class="container">
+            <section>
+                <a href="#">首页</a>
+                <a href="about.html">关于我们</a>
+                <a href="#">服务条款</a>
+                <a href="#">隐私策略</a>
+                <a href="contact.html">联系我们</a>
+
+            </section>
+        </footer>
+    </div>
+    <!--版权标志-->
+    <section id="copyright" class="container">
+        <a href="#">Copyright (C) 水星番剧网 2020-2020，All Rights Reserved | 浙ICP证000001号音像制品经营许可证。</a>
+        <address>通讯地址：浙江工业大学 读者服务部&nbsp;&nbsp;电话：(010)62781733&nbsp;&nbsp;网管信箱： netadmin@tup.zjut.edu.cn</address>
+    </section>
+</body>
+</html>
