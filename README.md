@@ -16,13 +16,15 @@
 
 - 计算机科学、编程语言
   - [C++程序设计（大一上）](./computer%20science/cppfirst/index.md) Archived
-  - [面向对象程序设计（大一下）](./computer%20science/cppobj/index.md) Archived
-  - [面向对象程序设计（大一下）大实验](https://github.com/h1542462994/homework.contact) Archived
+  - [面向对象程序设计（大一下）](./computer%20science/cppobj/index.md) Archived | TODO
+  - [面向对象程序设计（大一下）课程设计](https://github.com/h1542462994/homework.contact) Archived
+  - [计算机网络（大二上）](./computer%20science/net/index.md) Archived | TODO
+  - [数据结构（大二上）课程设计](https://github.com/h1542462994/homework.avl-tree) Archived
+  - [Java（大二上）课程设计](https://github.com/h1542462994/homework.getprize) Archived
+  - [计算机网络（大二上）课程设计](https://github.com/h1542462994/homework.package_analyse) Archived
   - [计算方法及实现（大二下）](./computer%20science/caclulate_method/index.md) Archived
-  - [计算机网络（大二上）](./computer%20science/net/index.md)
-
-
-- 大二上学期
-  - [计算机网络]
-- 大二下学期
-  - [汇编程序与设计](./.asm/index.md) 更新日期：2020年6月5日
+  - [汇编程序设计（大二下）](./computer%20science/assembly/index.md) Archived | TODO
+  - [Web前端（大二下）大作业](https://github.com/h1542462994/homework.xzjutcom) Archived
+  - [Web应用开发（大二下）课程设计](https://github.com/h1542462994/homework.xhealthcode) Archived
+  - [人工智能导论（大二下）自主实验](https://github.com/h1542462994/homework.pokeman_selector) Archived
+  - [工程实训-智能车（大二短）最终代码](https://github.com/h1542462994/homework.4wd) Archived
