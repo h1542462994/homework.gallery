@@ -29,8 +29,12 @@
 - [Web前端开发（大二下）](./computer%20science/web_front/index.md) Archived
 - [Web应用开发（大二下）](./computer%20science/web/index.md) Archived
 - [数据库原理及其应用（大二下）](./computer%20science/mssql/index.md) Archived
-- [算法（大二下）](./computer%20science/mssql/index.md) Archived
-
+- [算法（大二下）](./computer%20science/algorithm/index.md) Archived
+- 操作系统（大三上） No Content
+- 编译原理（大三上） No Content
+- 软件工程（大三上） No Content
+- JavaEE技术（大三上） No Content
+- C#程序设计（大三上） No Content
 
 ### 计算机科学、编程语言（大作业、课程设计等）
 
