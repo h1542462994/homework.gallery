@@ -15,7 +15,11 @@
 
 ## 目录
 
-### 数学、理学
+### 数学
+
+### 理学
+
+- [热力学（大三上）](./science/thermodynamics/index.md)
 
 ### 社会科学
 
@@ -30,7 +34,7 @@
 - [Web应用开发（大二下）](./computer%20science/web/index.md) Archived
 - [数据库原理及其应用（大二下）](./computer%20science/mssql/index.md) Archived
 - [算法（大二下）](./computer%20science/algorithm/index.md) Archived
-- [ctf](./computer%20science/ctf/index.md)
+- [ctf](./computer%20science/ctf/index.md) Updating
 - 操作系统（大三上） No Content
 - 编译原理（大三上） No Content
 - 软件工程（大三上） No Content
