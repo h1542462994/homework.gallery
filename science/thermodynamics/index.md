@@ -128,6 +128,88 @@
 
 $$ pV_{m}=RT $$
 
-R = 8.3143J/(mol*K)
+$$V=\upsilon V_m$$
 
-p = sum(p_{i}) 道尔顿分压定律
+$$R = 8.3143J/(mol*K) $$
+
+道尔顿分压定律
+
+$$ p = \sum p_{i} $$
+
+### 范德瓦尔斯方程
+
+范德瓦尔斯方程是理想气体向真实气体的推广。对理想气体作了两点修正。微观图像与宏观测量之间的桥梁。
+
+1. 理想气体没有体积。真实气体要占据一定体积，修正$p(V_{m}-b)=RT$
+
+设气体分子的有效直径$d$。没有分子间碰撞时所占体积为$b=N_{A}V_{0}$。当两分子发生碰撞时，一个分子所能达到的空间体积减少了$\frac{4}{3}\pi d^3$。1mol气体中含有阿伏伽德罗常数$N_{A}$个气体分子，这些分子的可能的配对方式有$\frac {N_{A}(N_{A}-1)}{2}=N_A^2/2$种，因而$N_A$个分子减少的体积为$N_A \frac{4}{3}\pi d^3$
+
+$$b=\frac{1}{2}N_{A}(\frac{4}{3}\pi d^3) = 4N_{A}V_{0}$$
+
+2. 理想气体不考虑分子间作用力
+
+考虑分子间作用力（主要是吸引力），碰撞器壁的分子由于受到容器内分子吸引力的影响动量减小，就要引入内压强$\Delta p$
+
+$$p=\frac{RT}{V_m-b}-|\Delta p|$$。
+
+内压力正比于碰撞器壁的粒子数$N'$。
+
+$$|\Delta p|\varpropto N'N \varpropto N^2 \varpropto \rho^2 \varpropto \frac{1}{V_m^2}$$
+
+可以推出
+
+$$(p+\frac{a}{V_m^2})(V_m-b)=RT$$
+
+对摩尔质量为$\upsilon$的方程，有
+
+$$(p+\frac{\upsilon^2a}{V^2})(V-\upsilon b)=\upsilon RT$$
+
+可以证明，如果分子间作用力为苏则朗势，则$a=4V_{0}\varepsilon_0N_A^2$
+
+$\psi(r)=-\varepsilon_0(\frac{d}{r})^\delta$
+
+### 范德瓦尔斯方程等温线
+
+$$V_m^3-V_m^2(b+\frac{RT}{p})+V_m\frac{a}{p}-\frac{ab}{p}=0$$
+
+特点：（1）出现气-液相变（2）出现临界点（3）可以从临界点的测量得到a,b
+
+临界点有：
+
+$$(\frac{\partial p}{\partial V_m})_{V_c}=0;(\frac{\partial^2p}{\partial V_m^2})_{V_c}=0$$
+
+$$p=\frac{RT}{V_m-b}-\frac{a}{V_m^2}$$
+
+$$(\frac{\partial p}{\partial V_m})_{V_c}=0 \Longrightarrow \frac{-RT_c}{(V_{mc}-b)^2}+\frac{2a}{V_{mc}^3}=0$$
+
+$$(\frac{\partial^2p}{\partial V_m^2})_{V_c}=0 \Longrightarrow \frac{2RT_c}{(V_{mc}-b)^3}-\frac{6a}{V_{mc}^4}=0$$
+
+解得：
+
+$$V_{mc}=3b,T_c=\frac{8a}{27Rb}$$
+
+带入范式方程：
+
+$$(p+\frac{a}{V_m^2})(V_m-b)=RT \Longrightarrow$$
+
+$$ (p_c+\frac{a}{9b^2})2b=\frac{8a}{27Rb}R \Longrightarrow$$
+
+$$p_c=\frac{a}{27b^2}$$
+
+测量范式方程系数：
+
+$$RT_c=(p_c+3p_c)(V_m-\frac13V_{mc})$$
+
+$$R=\frac83\frac{p_cV_{mc}}{T_c}$$
+
+宏观和微观的关系
+
+$$b=\frac{V_{mc}}3,V_{mc}=\frac38\frac{RT_c}{p_c} \Longrightarrow b=\frac{RT_c}{8p_c}$$
+
+$$p_c=\frac{a}{27b^2}, a=27b^2p_c \Longrightarrow a=\frac{27}{64}\frac{R^2T_c^2}{p_c}$$
+
+由此可以计算气体分子的体积和相互作用力
+
+$$b=4N_AV_0 \space\space a=4V_0\varepsilon_0N_A^2$$
+
+### 真实气体温度测量
