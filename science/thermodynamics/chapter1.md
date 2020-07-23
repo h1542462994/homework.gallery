@@ -80,6 +80,22 @@
 
 本质：温度是组成物体的大量分子无规则运动剧烈程度的表现。
 
+### 查理定律
+
+$p=p_0(1+\alpha_pt)$ 其中t为摄氏温度
+
+定义温标$\Theta=t_{cs}+1/\alpha_p$
+
+定体温标$\Theta_V(p)=1/\alpha_p \times\lim_{p_0\rightarrow0}(P/P_{tr})$
+
+### 盖·吕萨克定律
+
+$V=V_0(1+\alpha_V{t})$其中t为摄氏温度
+
+定义温标 $\Theta=t_{cs}+1/\alpha_V$
+
+定压温标 $T_p(V)=1/\alpha_V\lim_{p_0\rightarrow0}(\frac{V}{V_{tr}})$
+
 ### 热力学第零定律
 
 如果两个热力学系统中的每一个斗鱼第三个热力学系统处于热平衡，则它们彼此也必定处于热平衡。
@@ -212,4 +228,83 @@ $$p_c=\frac{a}{27b^2}, a=27b^2p_c \Longrightarrow a=\frac{27}{64}\frac{R^2T_c^2}
 
 $$b=4N_AV_0 \space\space a=4V_0\varepsilon_0N_A^2$$
 
+其他展开方式
+
+维利展开:
+
+$$pV=A+Bp+Cp^2+\cdots$$
+
+卡末林-昂奈斯公式
+
+$$pV=A+\frac{B'}{V}+\frac{C'}{V^2}+\cdots$$
+
 ### 真实气体温度测量
+
+例题：证明范德瓦尔斯方程满足当$p_0\rightarrow0$时，$\alpha_p$与气体种类无关，并计算$\alpha_p-p_0$斜率。
+
+查理定律：$p=p_0(1+\alpha_p{t})$
+
+范德瓦尔斯方程
+
+$$p=\frac{nRT}{V-nb}-\frac{n^2a}{V^2}$$
+
+以摄氏温标为温度的范德瓦尔斯方程为
+
+$$p=\frac{nR(T_0+t)}{V-nb}-\frac{n^2a}{V^2}$$
+
+$$p=(\frac{T_0nR}{V-nb}-\frac{n^2a}{V^2})(1+\frac{nR}{(V-nb)(\frac{T_0nR}{V-nb}-\frac{n^2a}{V^2})}t)$$
+
+$$\lim_{p_0\rightarrow0}\alpha_t=\frac{1}{T_0}$$
+
+得到
+
+$$p_0=\frac{T_0nR}{V-nb}-\frac{n^2a}{V^2}$$
+
+$$\alpha_p=\frac{R}{T_0R-\frac{na(V-nb)}{V^2}}$$
+
+设$V\gg nb$，则$V-nb\approx V$
+
+$$p_0=\frac{T_0nR}{V}-\frac{n^2a}{V^2}$$
+
+$$\alpha_p=\frac{R}{T_0R-\frac{na}{V}}\Longrightarrow n=\frac{VR}{a}(T_0-\frac{1}{\alpha_p})$$
+
+带入第一个式子，得到
+
+$$p_0=\frac{T_0R^2}{a}(T_0-\frac{1}{\alpha_p})-\frac{R^2}{a}(T_0-\frac{1}{\alpha_p})^2$$
+
+得出
+
+$$\frac{\partial\alpha_p}{\partial p_0}=\frac{a}{T_0^3R^2}$$
+
+## 状态方程的应用
+
+
+体膨胀系数或等压膨胀系数
+
+$$\alpha=\frac{1}{V}(\frac{\partial V}{\partial T})_p$$
+
+等体压强系数
+
+$$\beta=\frac{1}{p}(\frac{\partial p}{\partial T})_V$$
+
+等温压缩系数
+
+$$\kappa=-\frac{1}{V}(\frac{\partial V}{\partial p})_T$$
+
+三个系数并不独立，利用状态方程的概念，可以得到三者的关系
+
+$$\alpha=\kappa\beta p$$
+
+对于理想气体$pV_m=RT$
+
+有
+
+$$\alpha=\frac{1}{T}; \beta=\frac{1}{T};\kappa=\frac{1}{p}$$
+
+## 理想气体的微观图像
+
+### 物质的微观结构
+
+原子分子学说。所有“物质”都有“分子、原子”组成，它们的线性尺度~0.1nm
+
+无序运动。物质分子处于不停顿的无规则运动状态。不停顿：单个分子动量不为0；无规则：整体质心动量为0.
