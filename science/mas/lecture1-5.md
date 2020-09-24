@@ -98,7 +98,7 @@ $$=?\quad\frac{1}{2\pi i}\oint_C\frac{f(\zeta)}{(\zeta-z)^2}d\zeta$$
 
 $$f'(z)=\frac{df(z)}{dz}=\frac{d}{dz}[2\pi i\oint_{C}\frac{f(\zeta)}{\zeta-z}d\zeta]$$
 
-$$=?\quad\frac{1}{2\pi i}\oint_C\frac{d}{dz}\cdot\frac{f(\zeta)}{\zeta-z}d\zeta$$
+$$=?\quad\frac{1}{2\pi i}\oint_C\frac{d}{dz}[\frac{f(\zeta)}{\zeta-z}]d\zeta$$
 
 $$=!\quad \frac{1}{2\pi i}\oint_C\frac{f(\zeta)}{(\zeta-z)^2}d\zeta$$
 
