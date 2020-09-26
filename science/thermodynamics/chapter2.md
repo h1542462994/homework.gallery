@@ -173,6 +173,8 @@ $$f(v_x,v_y,v_z)=g(v_x)g(v_y)g(v_z)=(\frac{m}{2\pi k_BT})^{3/2}e^{\frac{-m}{2k_B
 
 性质：
 
+![麦克斯韦速率分布](./2.png)
+
 1. $f(\vec{v}=0)有极大值$
 
 2. 随T增大$f(\vec{v})$变化减缓
@@ -222,3 +224,52 @@ $$\overline{v^2}=\frac{3k_BT}{m}$$
 $$v_{rms}=\sqrt{\frac{3k_BT}{m}}$$
 
 $$v_{rms}:\overline{v}:v_p=\sqrt{3}:\sqrt{8/\pi}:\sqrt{2}$$
+
+### 麦克斯韦分布律的应用
+
+#### 1.逃逸速度
+
+$$v_{rms}=\sqrt{\overline{v^2}}=\sqrt{\frac{3k_BT}{m}}=\sqrt{\frac{3N_Ak_BT}{M}}=\sqrt{\frac{3RT}{M}}$$
+
+$$\frac12mv_e^2=\frac{GM_um}{R_u}\rightrightarrows v_e=\sqrt{2g_uR_u}$$
+
+$$k=\frac{v_e}{v_{rms}}=\sqrt{\frac{2gmR_u}{3k_BT}}=\sqrt{\frac{2gM_uR_u}{3RT}}$$
+
+在地球上
+
+$$k_{N_2}=22.0，k_{O_2}=23.5，k_{H_2}=5.88$$
+
+用$v_p=\sqrt{2k_BT/m}$做速度单位，引出无量纲速率$u=v/v_p$
+
+$$f(u)du=f(v)dv;f(u)=\frac4{\sqrt{\pi}}u^2e^{-u^2}$$
+
+计算无量纲速率大于$k'$的气体分子比率
+
+$$\frac{\Delta N(u\gt k')}{N}=\int_{k'}^{\infty}f(u)du$$
+
+![逃逸速度](3.png)
+
+#### 2. 泻流速率
+
+泻流：对面积dS的小孔，当dS的**线度**小于粒子的**平均自由程**时，粒子束流从小孔dS射出的现象的称为泻流，用$\Gamma$表示
+
+分析，对于速度处于$\vec{v}\sim\vec{v}+d\vec{v}$的粒子，在$dt$时间内碰到器壁$dS$上的粒子数为
+
+$$d\Gamma dtdS=[n(\vec{v})dv_xdv_ydv_z]v_xdtdS=nf(v_x,v_y,v_z)v_xdtdSdv_xdv_ydv_z$$
+
+$$\Gamma dtdS=n\int_0^\infty v_x[\iint_{v_y,v_z}f(v_x,v_y,v_z)dv_ydv_z]dv_xdtdS$$
+
+$$=n\int_0^\infty v_xf(v_x)dv_xdtdS$$
+
+$$f(v_x)=(\frac{m}{2\pi k_BT})^{1/2}e^{-\frac{mv_x^2}{2k_BT}}$$
+
+$$\Gamma=n\sqrt{\frac{m}{2\pi k_BT}}\frac{k_BT}{m}=\frac14n\sqrt{\frac{8k_BT}{\pi m}}=\frac14n\overline{v}$$
+
+在标准情况下
+
+$$n\approx 3\times10^{19}cm^{-3},\overline{v}\approx300m/s,\Gamma\approx2\times10^{23}cm^{-2}s^{-1}$$
+
+> 泻流速度非常快，泻流出去的粒子的平均能量比容器内大。
+
+## 第四节 近独立子系统的最概然分布
+
