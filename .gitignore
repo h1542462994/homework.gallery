@@ -335,3 +335,8 @@ ASALocalRun/
 *.zip
 
 *.exe
+
+# libs
+
+*.jar
+*.class
