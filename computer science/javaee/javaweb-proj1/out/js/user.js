@@ -22,45 +22,16 @@ function validateUser(username, password){
     return true /* pass validation */
 }
 
-function validateRegisterUser(username, password, re_password){
-    let validateResult1 = validateUser(username, password)
-    if (validateResult1 !== true){
-        return validateResult1
-    }
-
-    if (password === re_password){
-        return true
-    }
-
-    return "两次输入的密码不一致"
-}
-
-
 function onLoginClick(clickHandle = 0){
     let username = document.querySelector("input[name='username']").value /* get input data */
     let password = document.querySelector("input[name='password']").value
-    console.log(`before login:\t username = ${username} password = ${password}`)
+    console.log(`before login:\t username= ${username} password = ${password}`)
     let validateResult = validateUser(username, password) /* validate */
     if (validateResult === true){
         return true
     }
 
     alert(validateResult) /* show the validation result. */
-
-    return false
-}
-
-function onRegisterClick(clickHandle = 0){
-    let username = document.querySelector("input[name='username']").value /* get input data */
-    let password = document.querySelector("input[name='password']").value
-    let re_password= document.querySelector("input[name='re-password']").value
-    console.log(`before register:\t username = ${username} password = ${password}`)
-    let validateResult = validateRegisterUser(username, password, re_password)
-    if (validateResult === true) {
-        return true
-    }
-
-    alert(validateResult)
 
     return false
 }

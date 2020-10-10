@@ -12,15 +12,6 @@
   <table>
     <tbody>
       <tr>
-        <td>用户类型:</td>
-        <td>
-          <select name="type">
-            <option value="2">普通用户</option>
-            <option value="1">管理员</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
         <td>请输入用户名：</td>
         <td><input name="username" type="text"></td>
       </tr>
@@ -33,8 +24,8 @@
       </tr>
     </tbody>
   </table>
-  <a href="register.jsp">注册新用户</a>
+
 </form>
-<script type="application/javascript" src="js/user.js" charset="utf-8"></script>
+<script type="application/javascript" src="js/login.js" charset="utf-8"></script>
 </body>
 </html>

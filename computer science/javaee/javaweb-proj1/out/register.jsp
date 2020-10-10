@@ -8,7 +8,7 @@
     <title>用户注册页面</title>
 </head>
 <body>
-<form id="login" action="register" method="post" onsubmit="return onRegisterClick()">
+<form id="login" action="login" method="post" onsubmit="return onLoginClick()">
     <table>
         <tbody>
         <tr>
@@ -27,10 +27,6 @@
         <tr>
             <td>请输入密码：</td>
             <td><input name="password" type="password"></td>
-        </tr>
-        <tr>
-            <td>重复输入一次密码：</td>
-            <td><input name="re-password" type="password"></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="登录" style="width: 100%"></td>
