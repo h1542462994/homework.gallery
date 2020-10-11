@@ -1,0 +1,43 @@
+using System;
+
+namespace DataType 
+{
+    class DataType 
+    {
+        // static void Main()
+        // {
+        //     // int myInt = 3;
+        //     // short myShort = 32765;
+        //     // uint myUint = 1;
+        //     // float myFloat = 100.15f;
+        //     // double myDouble = -99;
+        //     // long myLong = 10000;
+        //     // decimal myDecimal = -1.88m;
+
+        //     // Console.Write("myInt:{0},myShort:{1},myUint:{2},myFloat:{3}",myInt,myShort,myUint,myFloat);
+        //     // Console.Write("myDouble:{0},myLong:{1},myDecimal",myDouble,myLong,myDecimal);
+        //     // Console.ReadLine();
+
+
+        //     // short  shortResult, shortVal = 4;
+        //     // int    integerVal = 67;
+        //     // long   longResult;
+        //     // float  floatVal = 10.5F;
+        //     // double doubleResult, doubleVal = 99.999;
+        //     // string stringResult, stringVal = "17";
+        //     // bool   boolVal = true;
+
+        //     // Console.WriteLine("Variable Conversion Examples\n");
+        //     // doubleResult = floatVal * shortVal;
+        //     // Console.WriteLine("Implicit, -> double: {0} * {1} -> {2}", floatVal, shortVal, doubleResult);
+        //     // shortResult = (short)floatVal;
+        //     // Console.WriteLine("Explicit, -> short:  {0} -> {1}", floatVal, shortResult);
+        //     // stringResult = Convert.ToString(boolVal) + Convert.ToString(doubleVal);
+        //     // Console.WriteLine("Explicit, -> string: \"{0}\" + \"{1}\" -> {2}", boolVal, doubleVal, stringResult);
+        //     // longResult = integerVal + Convert.ToInt64(stringVal);
+        //     // Console.WriteLine("Mixed,    -> long:   {0} + {1} -> {2}",  integerVal, stringVal, longResult);
+        //     // Console.ReadLine();
+
+        // }
+    }
+}
