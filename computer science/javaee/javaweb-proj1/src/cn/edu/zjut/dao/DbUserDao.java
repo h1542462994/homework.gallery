@@ -71,7 +71,9 @@ public class DbUserDao implements UserDao {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setInt(3, user.getType());
-            return preparedStatement.execute();
+            preparedStatement.execute();
+
+            return true;
         } catch (SQLException e){
             e.printStackTrace();
         } finally {

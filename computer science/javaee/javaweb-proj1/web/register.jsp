@@ -33,11 +33,11 @@
             <td><input name="re-password" type="password"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="µÇÂ¼" style="width: 100%"></td>
+            <td colspan="2"><input type="submit" value="×¢²á" style="width: 100%"></td>
         </tr>
         </tbody>
     </table>
-
+    <a href="register.jsp">Ç°ÍùµÇÂ¼</a>
 </form>
 <script type="application/javascript" src="js/user.js" charset="utf-8"></script>
 </body>
