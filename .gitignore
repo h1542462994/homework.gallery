@@ -340,3 +340,5 @@ ASALocalRun/
 
 *.jar
 *.class
+computer science/javaee/struts2-proj1/build/*
+computer science/javaee/struts2-proj1/.gradle/*

@@ -72,3 +72,31 @@ tail  # 尾部
 touch
 ```
 
+```
+grep
+sort
+uniq -- delete the duplicated lines in a sorted file
+comm
+cmp
+
+cp
+rm
+
+mkdir
+rmdir
+cd
+pwd -- print working directory
+ps -- process snapshot
+
+gzip -- global zip
+tar
+
+.tar.gz
+.dpkg
+.deb
+```
+
+1
+15
+16
+2
