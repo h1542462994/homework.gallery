@@ -12,14 +12,12 @@
     <title>登录界面</title>
 </head>
 <body>
-    <s:form action="login" method="POST">
-        <div>
-            <label>请输入用户名：<s:textfield name="loginUser.account"/></label>
-        </div>
-        <div>
-            <label>请输入密码：<s:password name="loginUser.password"/></label>
-        </div>
-        <s:submit/>
-    </s:form>
+    <s:i18n name="local.message" >
+        <s:form action="login" method="POST">
+            <s:textfield name="loginUser.account" key="login.account.lable"/>
+            <s:password name="loginUser.password" key="login.password.lable"/>
+            <s:submit name="submit" key="login.submit.button"/>
+        </s:form>
+    </s:i18n>
 </body>
 </html>

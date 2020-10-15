@@ -23,7 +23,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
+    // 加入struts2-core核心库
     compile group: 'org.apache.struts', name: 'struts2-core', version: '2.5.25'
+    // 使用dojo扩展库
+    compile group: 'org.apache.struts', name: 'struts2-dojo-plugin', version: '2.3.37'
 }
 
 test {
