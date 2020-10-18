@@ -5,7 +5,7 @@ namespace exp2
     public class Power
     {
        //  public void MyPower(ref int x, ref int y)
-        public void MyPower(ref int x,ref int y)
+        public void MyPower(int x,int y)
         {
             //x = 1; y = 2;
             Console.WriteLine("x={0},y={1}", x, y);

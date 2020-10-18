@@ -96,7 +96,50 @@ tar
 .deb
 ```
 
-1
-15
-16
-2
+### 文本编辑器
+
+```
+notepad
+visual studio code
+记事本
+gedit:gnome
+kwrite:KDE
+
+vi/vim
+nano
+```
+
+#### vi
+
+```
+:wq write and quit
+:x save and quit
+:q! quit without save
+:q quit and prompt if it changes
+
+h left
+j up
+k down
+l right
+
+Ctrl+f scroll down one screen
+Ctrl+b scroll up one screen
+Ctrl+u scroll up a half screen
+Ctrl+d scroll down a half screen
+
+$ the end of the line
+0 the beginning of the line
+^ move cursor to the first character of the line
+nG move cursor to the beginning of the nth line
+gg beginning of the file
+
+:line-number
+
+x delete the character under the cursor
+X delete the character before the cursor
+dw delete -> word
+dd delete the whole line
+d0 delete <- start of the line
+d$/D delete -> end of the line
+```
+

@@ -50,4 +50,41 @@
 - 语法规则集$P=product$
 - 开始符号$S=start\quad symbol;S\in V$
   
-产生式集合
+$G=(V,T,P,S)$，$T\cap V=\Phi$
+
+产生式集合：
+
+$$\alpha\rightarrow\beta；\alpha\in(T\cup V)^+；\beta\in(T\cup V)^*；$$
+
+算数表达式的文法：
+
+$$G=(\{E\},\{id,+,-,*,/\},P,E)$$
+
+表达式的直接推到与规约：$\Longrightarrow；\Longleftarrow$
+
+$$开始符号\Longrightarrow句型\Longrightarrow句子（一个只含终结符的行）$$
+
+#### 文法G产生的语言
+
+$$L(G)=\{x|S\Longrightarrow^*x\&x\in T^*\}$$
+
+最左/规范规约。推导始终施于最右变量。
+
+### 文法的分类
+
+- 如果G是满足文法的要求，则G是0型文法，PSG
+- 1型文法，CSG
+- 2型文法，CFG：
+- 正规文法
+
+如果文法是RG则，一定是CFG。
+
+$$RG\subseteq CFG\subseteq CSG \subseteq PSG$$
+
+$$CFG的语法分析树$$
+
+如果一个文法的句子存在两棵分析树，那么该句子是二义性的。如果一个文法包含二义性的句子，则称这个文法是二义性的；否则，该文法是无二义性的。
+
+> 对于任意一个CFG，不存在算法判定它是不是二义性的；但能给出一组充分条件，满足这组充分条件的文法是无二义性的。
+
+造成二义性文法的原因是忽略了算符的优先级。
