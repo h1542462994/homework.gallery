@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <package name="strutsBean" extends="struts-default" namespace="/">
+        <global-allowed-methods>login,register</global-allowed-methods>
+        <action name="*Action" class="action.UserAction" method="{1}">
+            <result name="success">/{1}Success.jsp</result>
+            <result name="fail">/{1}Fail.jsp</result>
+        </action>
+    </package>
+</struts>
