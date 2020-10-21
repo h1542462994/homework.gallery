@@ -27,3 +27,5 @@ RegisterAction
 在web.xml中配置structs2
 
 拦截器 Interceptor
+
+### Action自定义方法
