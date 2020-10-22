@@ -16,18 +16,20 @@
     <sx:head parseContent="true" extraLocales="UTF-8"/>
 </head>
 <body>
-<s:form action="registerAction" method="post">
-    <s:textfield name="loginUser.account" label="请输入用户名"/>
-    <s:password name="loginUser.password" label="请输入密码"/>
-    <s:password name="loginUser.repassword" label="重复输入密码"/>
-    <s:textfield name="loginUser.name" label="真实姓名"/>
-
-    <sx:datetimepicker name="loginUser.birthday" displayFormat="yyyy-MM-dd" label="请输入生日"/>
-    <s:textfield name="loginUser.address" label="联系地址"/>
-    <s:textfield name="loginUser.phone" label="联系电话"/>
-    <s:textfield name="loginUser.email" label="电子邮箱"/>
-    <s:submit value="注册"/>
-    <s:reset value="重置"/>
+<s:fielderror/>
+<s:actionerror/>
+<s:form action="register" method="post">
+    <s:textfield name="loginUser.account" key="label.account"/>
+    <s:password name="loginUser.password" key="label.password"/>
+    <s:password name="loginUser.repassword" key="label.repassword"/>
+    <s:textfield name="loginUser.name" key="label.name"/>
+    <s:select list="#{0: '男', 1: '女'}" key="label.sex"/>
+    <sx:datetimepicker name="loginUser.birthday" displayFormat="yyyy-MM-dd" key="label.birthday"/>
+    <s:textfield name="loginUser.address" key="label.address"/>
+    <s:textfield name="loginUser.phone" key="label.phone"/>
+    <s:textfield name="loginUser.email" key="label.email"/>
+    <s:submit key="register.text"/>
+    <s:reset key="reset.text"/>
 </s:form>
 </body>
 </html>
