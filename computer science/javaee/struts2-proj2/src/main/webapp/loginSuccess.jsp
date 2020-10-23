@@ -13,5 +13,8 @@
 </head>
 <body>
     <s:actionmessage/>
+    本站访问次数为：<s:property value="#application.counter"/><br/>
+    <s:property value="#session.user"/>,
+    <s:property value="#request.tip"/>
 </body>
 </html>
