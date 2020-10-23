@@ -12,9 +12,25 @@
     <title>登录成功</title>
 </head>
 <body>
-    <s:actionmessage/>
-    本站访问次数为：<s:property value="#application.counter"/><br/>
-    <s:property value="#session.user"/>,
-    <s:property value="#request.tip"/>
+    <s:property value="count"/>
+    <table style="border: 1px">
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>说明</th>
+            <th>单价</th>
+            <th>数量</th>
+        </tr>
+        <s:iterator value="#session.shoppingCart.itemOrderList" var="item">
+            <tr>
+                <td><s:property value="item.itemId"/> </td>
+                <td><s:property value="item.name"/> </td>
+                <td><s:property value="item.description"/> </td>
+                <td><s:property value="item.cost"/> </td>
+                <td><s:property value="numItems"/> </td>
+            </tr>
+        </s:iterator>
+    </table>
+
 </body>
 </html>

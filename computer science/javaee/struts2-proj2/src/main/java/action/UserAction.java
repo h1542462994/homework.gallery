@@ -1,9 +1,11 @@
 package action;
 
+import bean.ShoppingCart;
 import bean.UserBean;
 import bean.UserRegisterBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.util.ServletContextAware;
@@ -16,11 +18,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-public class UserAction extends ActionSupport implements ServletContextAware, ServletResponseAware, ServletRequestAware {
+public class UserAction extends ActionSupport {
     private UserRegisterBean loginUser;
     private HttpServletRequest request;
-    private HttpServletResponse response;
     private ServletContext context;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    private Integer count = 0;
+
+    public UserAction() {
+        System.out.println("创建了一个UserAction类对象");
+    }
 
     public UserRegisterBean getLoginUser() {
         return loginUser;
@@ -38,25 +49,17 @@ public class UserAction extends ActionSupport implements ServletContextAware, Se
 
     @SuppressWarnings({"unchecked"})
     public String login() {
+        ++count;
+        context = ServletActionContext.getServletContext();
+        request = ServletActionContext.getRequest();
 
-
-        // 访问 application 范围的属性值
-        Integer counter = (Integer) context.getAttribute(COUNTER);
-        if (counter == null) {
-            counter = 1;
-        } else {
-            ++counter;
-        }
-        // 设置 application 范围的属性
-        context.setAttribute(COUNTER, counter);
-        context.
-
+        HttpSession session = request.getSession();
 
         UserService userService = new UserService();
         if (userService.login(loginUser)) {
             this.addActionMessage(getText("login.action.success"));
-            .put(USER, loginUser.getAccount());
-            request.put(TIP, "您已登录成功");
+            ShoppingCart shoppingCart = new ShoppingCart();
+            session.setAttribute("shoppingCart", shoppingCart);
             return SUCCESS;
         }
         this.addActionError(getText("login.action.fail"));
@@ -69,21 +72,6 @@ public class UserAction extends ActionSupport implements ServletContextAware, Se
             return SUCCESS;
         }
         return FAIL;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest request) {
-        this.request = request;
-    }
-
-    @Override
-    public void setServletResponse(HttpServletResponse response) {
-        this.response = response;
-    }
-
-    @Override
-    public void setServletContext(ServletContext context) {
-        this.context = context;
     }
 
 
