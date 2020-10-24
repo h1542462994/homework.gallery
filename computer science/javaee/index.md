@@ -17,49 +17,30 @@ SpringMVC+Mybatis+Spring
     - 演示+提问
     - 上交源代码+文档
 
-### JavaEE的特点
+## 笔记
 
-1. 开放的，基于标准的平台。 
-2. 简化企业级的解决方案
-3. 是一系列技术标准，其核心是包含各类组件、服务架构的技术标准
+[第一章](chapter1.md)
 
-### JaveWeb复习
+> TODO：笔记暂不完整，之后补充
 
-```
-forword(),include()的区别
+## 实验
 
-<%@include %>和<jsp:include>的区别
-```
+### 实验1
 
-bean在JSP页面中的应用
+[源文件](javaweb-proj1)
 
-表单bean
+[源文件-快照](javaweb-proj2)
 
-### 设计线程安全三个解决方案
+[实验报告](1.pdf)
 
-实现SingleThreadModel接口
+### 实验2
 
-```java
-public class OurSTServlet extends HttpServlet implements SingleThreadModel {
-    ...
-}
-```
+[源文件](strut2-proj1)
 
-```java
-synchronized(this){
-}
-```
+[实验报告](2.pdf)
 
-```java
-int localCount;
-synchronized(this){
-    localCount = ++count;
+### 实验3
 
-}
-out.print("Count is " + localCount);
+[源文件](strut2-proj2)
 
-```
-
-### 状态
-
-session和cookie
+> TODO：实验报告将会等待作业提交截至后上传
