@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+    <package name="strutsBean" extends="struts-default" namespace="/" strict-method-invocation="false">
+        <interceptors>
+            <interceptor name="authority" class="interceptors.AuthorityInterceptor"/>
+        </interceptors>
+        <action name="login" class="action.UserAction" method="login">
+            <result name="success">/loginSuccess.jsp</result>
+            <result name="fail">/login.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        <action name="register" class="action.UserAction" method="register">
+            <result name="success">/registerSuccess.jsp</result>
+            <result name="fail">/register.jsp</result>
+            <result name="input">/register.jsp</result>
+        </action>
+        <action name="allItems" class="action.ItemAction" method="getAllItems">
+            <result name="login">/login.jsp</result>
+            <result name="success">/itemList.jsp</result>
+            <!-- 配置系统默认拦截器 -->
+            <interceptor-ref name="defaultStack"/>
+            <!-- 配置authority拦截器 -->
+            <interceptor-ref name="authority"/>
+        </action>
+    </package>
+</struts>
