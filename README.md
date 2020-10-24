@@ -17,7 +17,7 @@
 
 ### 数学与理学
 
-- [数学物理方法（课外）](./science/mas/index.md) Updating
+- [数学物理方法（课外）](./science/mas/index.md) Paused
 - [热力学（课外）](./science/thermodynamics/index.md) Updating
 
 ### 社会科学
@@ -33,12 +33,12 @@
 - [Web应用开发（大二下）](./computer%20science/web/index.md) Archived
 - [数据库原理及其应用（大二下）](./computer%20science/mssql/index.md) Archived
 - [算法（大二下）](./computer%20science/algorithm/index.md) Archived
-- [ctf](./computer%20science/ctf/index.md) Updating | Paused
-- [操作系统（大三上）](./computer%20science/os/index.md) Completed
-- 编译原理（大三上） No Content
-- 软件工程（大三上） No Content
-- JavaEE技术（大三上） No Content
-- C#程序设计（大三上） No Content
+- [ctf](./computer%20science/ctf/index.md) Paused
+- [操作系统（大三上）](./computer%20science/os/index.md) Updating
+- [编译原理（大三上）](./computer%20science/compile%20principle/index.md) Updating
+- [软件工程（大三上）](./computer%20science/software/index.md) Updating
+- [JavaEE技术（大三上）](./computer%20science/javaee/index.md) Updating
+- [C#程序设计（大三上）](./computer%20science/csharp/index.md) Updating
 
 ### 计算机科学、编程语言（大作业、课程设计等）
 
