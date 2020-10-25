@@ -47,7 +47,6 @@ public class UserAction extends ActionSupport {
     private final static String USER = "user";
     private final static String TIP = "tip";
 
-    @SuppressWarnings({"unchecked"})
     public String login() {
         ++count;
         context = ServletActionContext.getServletContext();
