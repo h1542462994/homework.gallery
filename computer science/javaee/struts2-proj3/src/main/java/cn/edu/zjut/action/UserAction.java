@@ -1,13 +1,16 @@
 package cn.edu.zjut.action;
 
-import cn.edu.zjut.bean.UserBean;
-import cn.edu.zjut.service.UserService;
+import cn.edu.zjut.bean.*;
+import cn.edu.zjut.service.*;
 import com.opensymphony.xwork2.*;
-import com.sun.jmx.snmp.SnmpUnknownAccContrModelException;
+import java.util.*;
 
 public class UserAction extends ActionSupport {
     private static final String FAIL = "fail";
+    private static final String USER = "user";
     private UserBean loginUser;
+
+    private Map<String, Object> session;
 
     public UserBean getLoginUser() {
         return loginUser;
@@ -18,8 +21,11 @@ public class UserAction extends ActionSupport {
     }
 
     public String login(){
+        ActionContext actionContext = ActionContext.getContext();
+        session = actionContext.getSession();
         UserService userService = new UserService();
         if (userService.login(loginUser)) {
+            session.put(USER, loginUser.getAccount());
             return SUCCESS;
         }
 

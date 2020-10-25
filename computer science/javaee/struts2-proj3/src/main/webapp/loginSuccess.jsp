@@ -11,6 +11,6 @@
     <title>登录成功</title>
 </head>
 <body>
-
+    <a href="allItems.action">查看所有商品信息</a>
 </body>
 </html>
