@@ -9,13 +9,21 @@
         <interceptors>
             <interceptor name="authority" class="cn.edu.zjut.interceptors.AuthorityInterceptor"/>
         </interceptors>
+        <global-results>
+            <result name="sqlExcp">/loginException.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.sql.SQLException" result="sqlExcp"/>
+        </global-exception-mappings>
         <action name="index" class="cn.edu.zjut.action.IndexAction" method="execute">
             <result name="success">/index.jsp</result>
         </action>
         <action name="login" class="cn.edu.zjut.action.UserAction" method="login">
+            <exception-mapping exception="cn.edu.zjut.exception.UserException" result="userExcp"/>
             <result name="success">/loginSuccess.jsp</result>
             <result name="fail">/login.jsp</result>
             <result name="input">/login.jsp</result>
+            <result name="userExcp">/loginException.jsp</result>
         </action>
         <action name="register" class="cn.edu.zjut.action.UserAction" method="register">
             <result name="success">/registerSuccess.jsp</result>

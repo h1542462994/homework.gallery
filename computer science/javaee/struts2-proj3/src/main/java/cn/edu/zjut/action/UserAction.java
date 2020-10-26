@@ -20,10 +20,11 @@ public class UserAction extends ActionSupport {
         this.loginUser = loginUser;
     }
 
-    public String login(){
+    public String login() throws Exception {
         ActionContext actionContext = ActionContext.getContext();
         session = actionContext.getSession();
         UserService userService = new UserService();
+
         if (userService.login(loginUser)) {
             session.put(USER, loginUser.getAccount());
             return SUCCESS;
