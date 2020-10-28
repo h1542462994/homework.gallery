@@ -143,3 +143,27 @@ d0 delete <- start of the line
 d$/D delete -> end of the line
 ```
 
+## bash
+
+### 用户定义变量
+
+```
+$varName = `command`
+$varName = $(command)
+shift
+
+$*,$@
+"$*","$@"
+```
+
+### Job controll
+
+```
+top
+kill
+bg
+fg
+[ctrl+c]
+[ctrl+z]
+[ctrl+d]
+```

@@ -22,3 +22,11 @@
 ## 互斥部分
 
 软件方法
+
+- Dekker's算法
+- Barkely算法
+- Peterson算法
+
+## 硬件部分
+
+- 特殊的机器指令 Testset，exchange
