@@ -30,3 +30,8 @@
 ## 硬件部分
 
 - 特殊的机器指令 Testset，exchange
+
+## 操作系统实现方式
+
+- 信号量（Semaphore）
+- Binary Semaphore，Semaphore
