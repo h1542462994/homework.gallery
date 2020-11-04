@@ -1,0 +1,64 @@
+using System;
+struct Fraction
+{
+    private int numerator;
+    private int denominator;
+    
+    public Fraction(int initNumerator, int initDenominator)
+    {
+        numerator = initNumerator;
+        denominator = initDenominator;
+    }
+    
+    public int Numerator
+    {
+        get
+        {
+            return numerator;
+        }
+        
+        set
+        {
+            numerator = value;
+        }
+    }
+    
+    public int Denominator
+    {
+        get
+        {
+            return denominator;
+        }
+        
+        set
+        {
+            denominator = value;
+        }
+    }
+
+    public double Value
+    {
+        get
+        {
+            return (double)numerator / (double)denominator;
+        }
+    }
+    
+    public override string ToString()
+    {
+        string returnString;
+        
+        returnString = "Fraction value: " + Value;
+        
+        return returnString;
+    }
+}
+
+class Tester
+{
+    public static void Main()
+    {
+        Fraction myFraction = new Fraction(1, 3);
+        Console.WriteLine(myFraction);
+    }
+}

@@ -1,0 +1,62 @@
+﻿using System;
+ 
+public interface IComparable
+{
+    int CompareTo(IComparable comp);
+}
+ 
+public class TimeSpan : IComparable
+{
+    private uint totalSeconds;
+     
+    public TimeSpan()
+    {
+        totalSeconds = 0;
+    }
+ 
+    public TimeSpan(uint initialSeconds)
+    {
+        totalSeconds = initialSeconds;
+    }
+     
+    public uint Seconds
+    {
+        get
+        {
+            return totalSeconds;
+        }
+         
+        set
+        {
+            totalSeconds = value;
+        }
+    }
+             
+    public int CompareTo(IComparable comp)
+    {
+        TimeSpan compareTime = (TimeSpan) comp;
+         
+        if(totalSeconds > compareTime.Seconds)
+            return 1;
+        else if(compareTime.Seconds == totalSeconds)
+            return 0;
+        else
+            return -1;
+    }
+}
+ 
+class Tester
+{
+    public static void Main()
+    {
+        TimeSpan myTime = new TimeSpan(3450);
+        TimeSpan worldRecord = new TimeSpan(1239);
+         
+        if(myTime.CompareTo(worldRecord) < 0)
+            Console.WriteLine("My time is below the world record");
+        else if(myTime.CompareTo(worldRecord) == 0)
+            Console.WriteLine("My time is the same as the world record");
+        else
+            Console.WriteLine("I spent more time than the world record holder");  
+    }
+}

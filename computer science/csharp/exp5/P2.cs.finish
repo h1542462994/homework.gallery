@@ -1,0 +1,82 @@
+using System;
+
+public interface IComparable
+{
+    int CompareTo(IComparable comp);
+}
+
+class Number : IComparable
+{
+    public Number(int value) {
+        Value = value;
+    }
+    public int Value { get; set; }
+    public int CompareTo (IComparable comp){
+        return Value - ((Number)comp).Value;
+    }
+
+    public static  implicit operator Number (int value) {
+        return new Number(value);
+    }
+}
+
+class Sorter
+{
+    // Sort the comparable elements of an array in ascending order    
+    public static void BubbleSortAscending(IComparable[] bubbles)
+    {
+        bool swapped = true;
+
+        for (int i = 0; swapped; i++)
+            //for (int i = 0; i< bubbles.Length; i++)
+        {
+            Console.WriteLine("run outter");
+            swapped = false;
+            for (int j = 0; j < (bubbles.Length - (i + 1)); j++)
+            {
+                if (bubbles[j].CompareTo(bubbles[j + 1]) > 0)
+                {
+                    Console.WriteLine("run inner");
+                    Swap(j, j + 1, bubbles);
+                    swapped = true;
+                }
+            }
+        }
+    }
+
+    //Swap two elements of an array
+    public static void Swap(int first, int second, IComparable[] arr)
+    {
+        IComparable temp;
+
+        temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
+    }
+}
+
+
+
+class Tester
+{
+    public static void Main()
+    {
+        Number[] numbers =  {
+            110, 114, 76, 54, 142, 12, 9, 65, 88, 87
+        };
+      
+        foreach (var number in numbers)
+        {
+            Console.WriteLine(number.Value);
+        }
+
+        Sorter.BubbleSortAscending(numbers);
+
+        Console.WriteLine("List of sorted numbers:");
+        foreach (var number in numbers)
+        {
+            Console.WriteLine(number.Value);
+        }
+        Console.ReadLine();
+    }
+}

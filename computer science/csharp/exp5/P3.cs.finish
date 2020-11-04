@@ -1,0 +1,53 @@
+using System;
+
+struct MyCircle
+{
+    public int r;
+}
+struct MyCylinder
+{
+    public MyCircle c;
+    public int h;
+    public int volumn;
+}
+struct MyCone
+{
+    public MyCircle c;
+    public int h;
+    public int volumn;
+}
+public class Tester
+{
+    public static void Main()
+    {
+        Console.Write("请输入底面半径：");
+        //MyCircle c = new MyCircle();
+        //c.r = int.Parse(Console.ReadLine());
+        int r = int.Parse(Console.ReadLine());
+        Console.Write("请输入圆柱体高度：");
+        //MyCylinder cy = new MyCylinder();
+        //cy.h = int.Parse(Console.ReadLine());
+        //cy.c = c;
+        int h1 = int.Parse(Console.ReadLine());
+        Console.Write("请输入圆锥体高度：");
+        //MyCone co = new MyCone();
+        //co.h = int.Parse(Console.ReadLine());
+        //co.c = c;
+        int h2 = int.Parse(Console.ReadLine());
+        //计算圆柱体体积
+        double x = Math.PI * r * r;
+        double y = x * h1;
+        int volumn1 = (int)y;
+        //计算圆锥体体积
+        double x2 = Math.PI * r * r;
+        double y2 = x2 * h2/3;
+        int volumn2 = (int)y2;
+        //输出结果
+        Console.WriteLine("圆柱体的体积为：{0}", volumn1);
+        //Console.Write("圆柱体的体积为：");
+        //Console.Write(cy.volumn);
+        Console.Write("圆锥体的体积为：");
+        Console.Write(volumn2);
+        Console.ReadLine();
+    }
+}
