@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'cn.edu.zjut'
+version '1.0'
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.6.2'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation 'org.jetbrains:annotations:19.0.0'
+    compileOnly('javax:javaee-web-api:8.0.1')
+
+    // 加入struts2-core核心库
+    compile group: 'org.apache.struts', name: 'struts2-core', version: '2.5.25'
+    // 使用dojo扩展库
+    compile group: 'org.apache.struts', name: 'struts2-dojo-plugin', version: '2.3.37'
+    // commons-logging
+    compile 'commons-logging:commons-logging:1.1.1'
+    // hibernate
+    compile 'org.hibernate:hibernate-core:5.4.22.Final'
+    // mysql
+    compile 'mysql:mysql-connector-java:8.0.22'
+
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
