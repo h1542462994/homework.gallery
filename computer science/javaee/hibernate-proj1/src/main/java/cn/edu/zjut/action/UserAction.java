@@ -21,4 +21,10 @@ public class UserAction {
         }
         return "fail";
     }
+
+    public String register() {
+        UserService userService = new UserService();
+        userService.register(loginUser);
+        return "success";
+    }
 }

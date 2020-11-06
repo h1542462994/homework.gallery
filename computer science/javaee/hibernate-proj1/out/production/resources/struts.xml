@@ -9,5 +9,11 @@
             <result name="success">/loginSuccess.jsp</result>
             <result name="fail">/login.jsp</result>
         </action>
+        <action name="register" class="cn.edu.zjut.action.UserAction" method="register">
+            <result name="success">/registerSuccess.jsp</result>
+        </action>
+        <action name="allItems" class="cn.edu.zjut.action.ItemAction" method="allItems">
+            <result name="success">/itemList.jsp</result>
+        </action>
     </package>
 </struts>

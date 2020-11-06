@@ -1,17 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: cht
-  Date: 2020/11/4
-  Time: 14:03
+  Date: 2020/11/6
+  Time: 21:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>登录成功界面</title>
+    <title>Title</title>
 </head>
 <body>
-    登录成功
-    <a href="allItems.action">查看所有商品信息</a>
+    注册成功！<s:property value="loginUser.name"/>
 </body>
 </html>

@@ -23,20 +23,23 @@
         <property name="birthday" type="date">
             <column name="birthday" length="10"/>
         </property>
-        <property name="phone" type="string">
-            <column name="phone" length="20"/>
-        </property>
-        <property name="email" type="string">
-            <column name="email" length="100"/>
-        </property>
-        <property name="address" type="string">
-            <column name="address" length="200"/>
-        </property>
-        <property name="zipcode" type="string">
-            <column name="zipcode" length="10"/>
-        </property>
-        <property name="fax" type="string">
-            <column name="fax" length="20"/>
-        </property>
+        <component name="contactInfo" class="cn.edu.zjut.po.ContactInfo">
+            <property name="phone" type="string">
+                <column name="phone" length="20"/>
+            </property>
+            <property name="email" type="string">
+                <column name="email" length="100"/>
+            </property>
+            <property name="address" type="string">
+                <column name="address" length="200"/>
+            </property>
+            <property name="zipcode" type="string">
+                <column name="zipcode" length="10"/>
+            </property>
+            <property name="fax" type="string">
+                <column name="fax" length="20"/>
+            </property>
+        </component>
+
     </class>
 </hibernate-mapping>

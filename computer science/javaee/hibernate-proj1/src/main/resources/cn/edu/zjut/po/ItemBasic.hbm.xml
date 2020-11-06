@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.edu.zjut.po.ItemBasic" table="item" schema="chtHibernateDb">
+        <id name="ISBN" type="string">
+            <column name="ISBN" length="20"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="title" type="string">
+            <column name="title" length="30"/>
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="120"/>
+        </property>
+        <property name="cost" type="java.lang.Float">
+            <column name="cost"/>
+        </property>
+    </class>
+</hibernate-mapping>
