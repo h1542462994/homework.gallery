@@ -17,8 +17,8 @@
 
 ### 数学与理学
 
-- [数学物理方法（课外）](./science/mas/index.md) Paused
-- [热力学（课外）](./science/thermodynamics/index.md) Updating
+- [数学物理方法（课外）](./science/mas/index.md) Paused ..until 2021/1/1
+- [热力学（课外）](./science/thermodynamics/index.md) Paused ..until ?
 
 ### 社会科学
 
