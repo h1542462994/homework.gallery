@@ -1,0 +1,106 @@
+一、实验步骤
+1.1、创建项目以及配置环境
+由于此次使用到了struts框架，而通过初步验证，下载的struts包并不足以支撑起配置struts框架。
+此实验用到的IDE是Intellij IDEA，使用到的包管理器是Gradle。
+第一步：创建一个新的项目（New>Project…），选择Java Enterprise，Build Tool选择Gradle。点击Next。
+然后选择Version为Java EE 8，架构选择Web Profile
+ 
+根据需要选择Name、Location、Group
+ 
+然后添加structs2的插件。
+删除resources\META-INF文件夹和webapp\WEB-INF下的faces-config.xml
+
+第二步：进行Gradle的配置
+在build.gradle的repositories内加上maven { url "https://maven.aliyun.com/repository/public" } dependencies内加上compile group: 'org.apache.struts', name: 'struts2-core', version: '2.5.25'。表示启用aliyun的镜像站，并导入structs需要的依赖。
+第三步：添加启动项配置
+启动项，选了Tomcat Server > Local，然后选择运行的war包，修改部署的Application Context
+ 
+第四步：添加必要的文件
+在src\main\java\resources下添加struct.xml文件
+1.2、实验一
+	第一步：新建UserBean，UserService和UserAction类，编写相应的程序代码
+ 
+第二步：配置struts.xml文件
+  
+第三步：配置web.xml文件
+第四步：创建login.jsp，loginSuccess.jsp，loginFailed.jsp，然后编写相应的代码
+ 
+登录成功界面
+ 
+第五步：尝试修改struts2的配置，跟踪对应的错误。
+1.	修改login.jsp和LoginAction，使得parameter与LoginAction不一致。
+ 
+结果：访问login.jsp没有发生错误，点击提交时发生500错误
+ 
+ 
+由于报的错误是在login方法内的NullPointerException，因此我们得到的结果是表单进行填充时，首先创建一个UserBean对象，然后对表单内出现的字段进行填充，因此调用login方法时，account:=null，因此报错。
+我们进行进一步修改，将account修改为account="123"
+我们发现输入"";123时，仍然能够登录，因此"123"是account的默认字段，这时容易出现奇怪的问题。
+2. 修改loginAction和struts.xml，是返回的结果和result不一致
+ 
+ 
+1.3、实验二
+步骤一：修改UserBean，在UserService和UserAction中分别添加相关的业务逻辑。
+步骤二：修改struts.xml文件，添加注册的相关页面调用逻辑。
+ 
+步骤三：创建register.jsp、registerSuccess.jsp、registerFail.jsp，并修改相关的页面，使用struts和sturts-dojo标签库。
+步骤四：启动调试
+ 
+ 
+1.4、实验三
+ 
+ 
+	应用国际化的关键代码：
+ 
+需要一个struts.properties文件，由于配置i18n，然后两个对应的资源字典，组合成一个Bundle，然后在对应的resource bundle中编辑。
+ 
+二、实验结果及分析
+2.1、实验一
+（2）
+struts框架是一个解决MVC问题的非侵入式框架，一般用于解决网页的MVC构建问题。首先，Filter和struts.xml属于struts框架的配置部分，相当于MVC框架中的Controller，而Service类属于服务模型，JavaBean属于业务模型，同属于MVC框架中的Model部分。而jsp页面属于MVC框架中的View部分。
+首先浏览器发送一个请求，由Filter接收，进入struts2的逻辑回路。框架查看struts.xml文件中的配置，找到对应的action，创建bean数据模型，然后创建对应的action实例，注入bean，然后调用对应的方法。等待action返回结果后，struts框架再次根据结果找到对应的返回页面。
+（3）
+表单参数与Action属性必须一一对应，表单参数中，使用.来表示层级的观念，例如loginUser.name.first表示三级属性。其中二级属性可以是一个JavaBean对象。
+（4）
+Action中的execute()方法用来执行对应的业务逻辑，并返回不同的结果，特点是返回的值一定是String，用来和struts.xml对应来确定将要返回的页面。
+（5）
+struts是根节点，package表示一类action，其具有相似的特征，但是一般小的项目只需要一个package。
+package的子级是action，表示一个action动作，其具有name，class，method:"execute"三个attribute，其中name表示aciton的名字，其对于jsp页面中的action，class表示执行action的类，是类的全名，而method表示执行的方法，默认为execute。
+action的子级是result，其有name一个attribute，表示一个结果分支，应当与action的返回结果保持一致，而其内容应当是forword的页面。
+（6）
+问题1：执行action后导致500错误，原因，没有在web.xml中配置对应的Filter。
+2.2、实验二
+struts2中标签有很多种，从类型上大致分为四类，控制标签、数据标签、表单标签和Ajax标签，各个功能的概述如下
+控制标签：
+标签名	作用
+s:if，s:elseif，s:else	一组分支选择语句，用于进行条件判断。
+s:iterator	迭代输出其内容。
+s:merge	以两个或多个列表为参数，用来合并列表，每个元素为一个多元组。
+s:append	以两个或多个列表为参数，用来附加列表，每个列表的元素类型保持一致。
+s:generator	创建一个迭代器，用来辅助iterator迭代。
+数据标签：
+s:action	通过指定的action名称和可选的命名空间直接从jsp页面调用action。
+s:include	用于在一个jsp页面中包含一个jsp页面。
+s:bean	用于实例化一个符合JavaBeans规范的类，
+s:date	以快速简单的方式格式化日期。
+s:param	子属性，用于表示父级标签的参数。
+s:property	用于获取一个值的属性
+s:push	用于推送堆栈的值
+s:set	用于为指定范围内的变量赋值
+s:text	用于呈现i18n文本消息
+s:url	用于创建url标签。
+表单标签和Ajax标签：
+sturts标签使用dojo框架来实现ajax标签。
+2.3、实验三
+sturts.properties的作用：struts.properites文件用来定义大量的struts属性，其是一个规范的key=value键值对文件，常见的属性如下。
+struts.configuration	用来指定加载struts2配置文件的配置文件管理器。
+struts.locale	指定Web应用的默认locale
+struts.i18n.encoding	指定Web应用的默认编码集
+struts.objectFactory	指定struts2默认的ObjectFactory Bean
+struts.multipart.parser	该属性指定处理multipart/form-data的MIME类型（文件上传）请求的框架，该属性支持cos、pell和jakarta等属性值
+struts.multipart.saveDir	该属性指定上传文件的临时保存路径
+struts.multipart.maxSize	该属性指定struts2文件上传中整个请求允许的最大字节数。
+struts.custom.properties	该属性指定struts2应用加载用户自定义的属性文件
+struts.custion.i18n.resources	该属性指定struts2应用所需要的国际化资源文件
+struts.configuration	该属性指定加载struts2配置文件的配置文件管理器。
+

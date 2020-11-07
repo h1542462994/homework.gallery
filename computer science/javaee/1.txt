@@ -1,0 +1,125 @@
+一、实验步骤
+4.1、创建项目以及配置环境
+创建项目的步骤适应Intellj IDEA 2020.2版本。
+4.1.1、先创建一个普通项目，选择New Project > Java，点击Next，之后设置项目的名称和路径。
+ 
+图1 创建项目
+4.2.2、创建项目结构，右键项目，点击Add Framework Support…，勾选JavaEE下的Web Application。
+ 
+图2 创建项目
+
+4.2.3、创建网页文件夹，再web>WEB-INF下创建classes文件夹和lib文件夹。
+4.2.4、修改项目的Project Struture，再Module > Sources 下设置src为Source Folders，lib为Excluded，修改Path和Dependecies
+ 
+图3 创建项目
+ 
+图4 创建项目
+4.2.5、配置lib，找到tomcat下的lib文件夹，将jsp-api.jar和servlet-api.jar复制到lib文件夹下，然后再Project Structure > Library 中导入此文件夹。
+ 
+图5 创建项目
+4.2、实验一
+ 
+图6 实验1执行结果
+
+ 图7 实验1执行结果
+ 
+图8 实验1执行结果
+ 
+图9 实验1 表格对齐实验结果
+关键代码：
+<table>
+  <tbody>
+    <tr>
+      <td>用户类型:</td>
+      <td>
+        <select name="type">
+          <option value="2">普通用户</option>
+          <option value="1">管理员</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>请输入用户名：</td>
+      <td><input name="username" type="text"></td>
+    </tr>
+    <tr>
+      <td>请输入密码：</td>
+      <td><input name="password" type="password"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" value="登录" style="width: 100%"></td>
+    </tr>
+  </tbody>
+</table>
+
+ 
+图10 实验1 前端js验证实验结果
+
+ 图11 实验1 前端js验证实验结果
+关键代码：
+/* functions */
+function validateUser(username, password){
+/*
+    if (!(username instanceof String && password instanceof  String)){
+        throw new TypeError("username and password should be String instance.")
+    }
+*/
+
+    if (username.length === 0) {
+        return "用户名不能为空"
+    } else if(username.length > 6){
+        return "用户名长度不能超过6位"
+    }
+
+    if (password.length === 0) {
+        return "密码不能为空"
+    } else if (password.length > 6){
+        return "密码长度不能超过6位"
+    }
+
+    return true /* pass validation */
+}
+4.3、实验二 
+图12 实验2实验结果
+关键代码：
+// 属性声明
+private int type;
+private String username;
+private String password;
+
+boolean checkUser(UserBean user){
+    if(user.getType() == UserBean.ADMIN && "zjut".equals(user.getUsername()) &&
+            "zjut".equals(user.getPassword())) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+ 
+图13 实验2实验结果
+4.4、实验三
+ 
+图14 实验3实验结果
+ 
+图15 实验3注册部分实验结果
+ 
+图16 实验3注册部分实验结果
+ 
+图17 实验3注册部分实验结果
+ 
+图18 实验3注册部分实验结果
+二、实验结果及分析（16分）
+2.1、实验一
+这部分的主要部分是开发环境的配置，由于这里用的是Intellij IDEA 2020.2版本，配置的方式和老版本的Intellij IDEA和Eclipse有不同的地方。但是原理是相通的，需要了解的是web文件夹的结构，WEB-INF中的classes和lib等的位置。
+其他需要注意的问题是非常常见也非常麻烦的乱码问题，首先html中很多文件的声明都是可以设置charset的，例如引入js文件时应当设置charset，在mysql连接字符串中也应当声明charset，防止出现由于乱码导致的查询错误。
+2.2、实验二
+MVC设计模式的优缺点：
+一切现代框架的出现和逐步完善都是为了解决工程逐渐复杂导致的模块之间关联度非常大的问题，MVC设计模式可以“解耦”模块，让各个模块分成相互独立的部分，从而实现逻辑上相互独立，然后功能上相互依赖。或者说，就像零件一样可以“插拔”。当然，框架的考虑和使用也是需要考虑到实际需求的，成熟的框架很可能隐藏了很多的技术细节，导致初学者难以理解，甚至产生过度设计的问题，这些问题都是需要和实际项目结合来理解的。
+实验二通过HttpServlet充当Controller，UserBean充当Model，jsp充当View，已经有了MVC的初步雏形。当然，为了剔除Model层中业务逻辑无关的部分，我们常常使用拦截器。
+2.3、实验三
+Dao设计模式实际上是一种工厂设计模式，标准的Dao设计模式应当由一组预定义的存储逻辑和相关的实现来实现，在之后的Ioc中应当会详细介绍这一个设计模式，例如在此项目中UserDao表示与UserBean相关的存储逻辑，MockUserDao是一种实现方式（使用Hashset做存储对象），DbUserDao是另一种实现方式。
+Dao设计模式将数据存储相关的逻辑抽象出来，形成一个接口，也是使用到了“解耦”的概念，这种方式有利于扩展和修改应用，如果一种实现不行，只要把接口的实现换成另外一个就好了。
+备注：
+三个实验的相关代码放在javaweb-proj1-snapshot中，存放了三个版本，分别对应了三个实验。

@@ -51,3 +51,4 @@
 - [🔗人工智能导论（大二下）自主实验](https://github.com/h1542462994/homework.pokeman_selector) Archived
 - [🔗工程实训-智能车（大二短）最终代码](https://github.com/h1542462994/homework.4wd) Archived
 - [🔗数据库原理及其应用（大二短）课程设计](https://github.com/h1542462994/homework.dbgrade) Archived
+- [🔗软件工程（大三上）课程设计](https://github.com/h1542462994/teamwork-software-engineering) Updating

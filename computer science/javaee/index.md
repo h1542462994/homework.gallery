@@ -19,28 +19,52 @@ SpringMVC+Mybatis+Spring
 
 ## 笔记
 
-[第一章](chapter1.md)
+[第一章 struts](chapter1.md)
 
 > TODO：笔记暂不完整，之后补充
 
+[第二章 hibernate](./chapter2.md)
+
 ## 实验
+
+> 由于JavaEE实验量比较大且文档格式比较复杂，故不再提供markdown版本。但会提供记事本的快照（不含图片）。
 
 ### 实验1
 
-[源文件](javaweb-proj1)
+javaweb-proj1
 
-[源文件-快照](javaweb-proj2)
+[源文件](javaweb-proj1) [源文件-快照](javaweb-proj2)
 
-[实验报告](1.pdf)
+[实验报告](1.pdf) [实验报告-快照](1.txt)
 
 ### 实验2
 
-[源文件](strut2-proj1)
+struts2-proj1
 
-[实验报告](2.pdf)
+[源文件](struts2-proj1) 
+
+[实验报告](2.pdf) [实验报告-快照](2.txt)
 
 ### 实验3
 
-[源文件](strut2-proj2)
+struts2-proj2
 
-> TODO：实验报告将会等待作业提交截至后上传
+[源文件](struts2-proj2)
+
+[实验报告](3.pdf) [实验报告-快照](3.txt)
+
+### 实验4
+
+struts2-proj3
+
+[源文件](struts2-proj3)
+
+[实验报告](4.pdf) [实验报告-快照](4.txt)
+
+### 实验5
+
+hibernate-proj1
+
+[源文件](struts2-proj1)
+
+实验报告在之后的更新中提供

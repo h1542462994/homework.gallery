@@ -1,0 +1,536 @@
+一、实验步骤
+1.1、实验一
+第一步：编写UserBean，UserService和UserAction的相关代码
+ 
+第二步：配置struts.xml文件
+ 
+第三步：配置web.xml文件
+第四步：登录和注册调试
+ 
+图1 实验1运行结果
+ 
+图2 实验1运行结果
+ 
+图3 实验1运行结果
+第五步：测试多种action绑定方式
+（1）方法1：在struts.xml中使用action绑定方法名。（传统）
+（2）方法2：使用动态调用方式（DMI）
+1. 在struts.xml的struts根内中添加如下内容
+<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+2. 修改action，并修改UserAction类，使得四种情况下范围的结果都不同
+修改后的action片段
+<action name="userAction" class="action.UserAction">
+    <result name="success">/loginSuccess.jsp</result>
+    <result name="fail">/loginFail.jsp</result>
+    <result name="registerSuccess">/registerSuccess.jsp</result>
+    <result name="registerFail">/registerFail.jsp</result>
+</action>
+修改后的UserAction片段
+public String login(){
+    UserService userService = new UserService();
+    if (userService.login(loginUser)){
+        return "success";
+    }
+    return "fail";
+}
+
+public String register(){
+    UserService userService = new UserService();
+    if (userService.register(loginUser).isPass()){
+        return "registerSuccess";
+    }
+    return "registerFail";
+}
+3. 修改调用页面的action以actionName!method的方式
+<s:form action="UserAction!login" method="POST">
+    <s:textfield name="loginUser.account" key="login.account.lable"/>
+    <s:password name="loginUser.password" key="login.password.lable"/>
+    <s:submit name="submit" key="login.submit.button"/>
+</s:form>
+4. 发现此时仍然不能以动态的方式访问login方法，查找资料后，发现在strtus.xml中需要添加一个允许方法的配置，添加后的部分代码如下
+<package name="strutsBean" extends="struts-default" namespace="/">
+    <global-allowed-methods>login,register</global-allowed-methods>
+    <action name="userAction" class="action.UserAction">
+        <result name="success">/loginSuccess.jsp</result>
+        <result name="fail">/loginFail.jsp</result>
+        <result name="registerSuccess">/registerSuccess.jsp</result>
+        <result name="registerFail">/registerFail.jsp</result>
+    </action>
+</package>
+ 
+图4 实验1运行结果
+（3）方法三：使用s:submit中的method属性（此时struts.xml的配置与方法（2）相同）
+修改后的表单片段
+<s:form action="userAction" method="POST">
+    <s:textfield name="loginUser.account" key="login.account.lable"/>
+    <s:password name="loginUser.password" key="login.password.lable"/>
+    <s:submit name="submit" key="login.submit.button" method="login"/>
+</s:form>
+ 
+图5 实验1运行结果
+
+（4）方法四：使用通配符配置action
+1. 修改struts.xml
+<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+<package name="strutsBean" extends="struts-default" namespace="/">
+    <global-allowed-methods>login,register</global-allowed-methods>
+    <action name="*Action" class="action.UserAction" method="{1}">
+        <result name="success">/{1}Success.jsp</result>
+        <result name="fail">/{1}Fail.jsp</result>
+    </action>
+</package>
+其中*表示通配符，如果对应的action为loginAction，则{1}=login，则会调用到login方法。后面的返回页面中的{1}也是同一个道理。
+2. 修改UserAction使得返回结果为success或者fail，当然，也可以在name属性中使用{1}。
+public String login(){
+    UserService userService = new UserService();
+    if (userService.login(loginUser)){
+        return "success";
+    }
+    return "fail";
+}
+
+public String register(){
+    UserService userService = new UserService();
+    if (userService.register(loginUser).isPass()){
+        return "success";
+    }
+    return "fail";
+}
+3. 修改form表单，action为loginAction和registerAction
+<s:form action="loginAction" method="POST">
+    <s:textfield name="loginUser.account" key="login.account.lable"/>
+    <s:password name="loginUser.password" key="login.password.lable"/>
+</s:form>
+ 
+图6 实验1运行结果
+
+第六步：测试action的生命周期。
+无论刷新多少次，count的值都为1，这表明每一次请求都会新建一个UserAction实例。
+ 
+图7 实验1运行结果
+ 
+图8 实验1运行结果
+将type改成redirect后，无论刷新多少次，都不显示count的值，此时count为null。
+图9 实验1运行结果
+ 
+1.2、实验二
+第一步：添加validate方法和在struts中配置input的result
+public void validateLogin() {
+    String account = loginUser.getAccount();
+    String password = loginUser.getPassword();
+    if (account == null || account.equals("")) {
+        this.addFieldError("loginUser.account", getText("login.account.error"));
+    }
+    if (password == null || password.equals("")) {
+        this.addFieldError("loginUser.password", getText("login.password.error"));
+    }
+}
+
+<action name="*Action" class="action.UserAction" method="{1}">
+    <result name="success">/{1}Success.jsp</result>
+    <result name="fail">/{1}Fail.jsp</result>
+    <result name="input">/{1}.jsp</result>
+</action>
+
+ 
+第二步：添加<s:fielderror>标签
+ 
+第三步：修改UserAction的login方法，并添加<s:actionerror>，<s:actionmessage>标签
+UserAction.java的部分代码
+public String login() {
+    UserService userService = new UserService();
+    if (userService.login(loginUser)) {
+        this.addActionMessage(getText("login.action.success"));
+        return "success";
+    }
+    this.addActionError(getText("login.action.fail"));
+    return "fail";
+}
+struts.xml的部分代码
+<action name="*Action" class="action.UserAction" method="{1}">
+    <result name="success">/{1}Success.jsp</result>
+    <result name="fail">/{1}.jsp</result>
+    <result name="input">/{1}.jsp</result>
+</action>
+login.jsp的部分代码
+<s:actionerror/>
+<s:fielderror/>
+<s:form action="loginAction" method="POST">
+    <s:textfield name="loginUser.account" key="login.account.lable"/>
+    <s:password name="loginUser.password" key="login.password.lable"/>
+    <s:submit name="submit" key="login.submit.button"/>
+</s:form>
+loginSuccess.jsp的部分代码
+<s:actionmessage/>
+ 
+ 
+第四步：编写UserAction-login-validation.xml文件
+问题：注意放在java文件夹下是不会将此拷贝到生成目录下的，需要放在resources中的对应目录。如下图所示。
+ 
+ 
+第五步：对校验器和UserAction进行国际化
+UserAction-login-validation.xml中的代码
+<validators>
+    <field name="loginUser.account">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message key="login.account.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.password">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message key="login.password.error"/>
+        </field-validator>
+    </field>
+</validators>
+UserAction中的代码
+public String login() {
+    UserService userService = new UserService();
+    if (userService.login(loginUser)) {
+        this.addActionMessage(getText("login.action.success"));
+        return "success";
+    }
+    this.addActionError(getText("login.action.fail"));
+    return "fail";
+}
+ 
+第六步：将UserBean中的birthday字段改为java.util.Date类型
+private String repassword;
+private String name;
+private String sex;
+private Date birthday;
+private String address;
+private String phone;
+private String email;
+ 
+第七步：添加类型转换的校验信息
+ 
+第八步：添加register的输入校验
+UserAction-register-validation.xml的内容
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="loginUser.account">
+        <field-validator type="requiredstring">
+            <message key="login.account.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.password">
+        <field-validator type="requiredstring">
+            <message key="login.password.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.repassword">
+        <field-validator type="fieldexpression">
+            <param name="expression"><![CDATA[password==repassword]]]></param>
+            <message key="login.repassword.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.name">
+        <field-validator type="requiredstring">
+            <message key="login.name.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.address">
+        <field-validator type="requiredstring">
+            <message key="login.address.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.phone">
+        <field-validator type="stringlength">
+            <param name="minLength">5</param>
+            <param name="maxLength">15</param>
+            <message key="login.phone.error"/>
+        </field-validator>
+    </field>
+    <field name="loginUser.email">
+        <field-validator type="email">
+            <message key="login.email.error"/>
+        </field-validator>
+    </field>
+</validators>
+
+ 
+第九步：添加regiter的手动校验
+public void validateRegister(){
+    String emailRegular = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    //begins.. account
+    String account = loginUser.getAccount();
+    if (account == null || account.equals("")) {
+        this.addFieldError("loginUser.account", getText("login.account.error"));
+    }
+    String password = loginUser.getPassword();
+    if(password == null || password.equals("")) {
+        this.addFieldError("loginUser.password", getText("login.password.error"));
+    }
+    String repassword = loginUser.getRepassword();
+    if(repassword == null || !repassword.equals(password)) {
+        this.addFieldError("loginUser.repassword", getText("login.repassword.error"));
+    }
+    String name = loginUser.getName();
+    if (name == null || name.equals("")) {
+        this.addFieldError("loginUser.name", getText("login.name.error"));
+    }
+    String address = loginUser.getAddress();
+    if (address == null || address.equals("")) {
+        this.addFieldError("loginUser.address"), getText("login.address.error");
+    }
+    String phone = loginUser.getPhone();
+    if( phone == null || phone.length() < 5 || phone.length() > 15){
+        this.addFieldError("loginUser.phone", getText("login.phone.error"));
+    }
+
+    String email = loginUser.getEmail();
+    if(email == null || !email.matches(emailRegular) {
+        this.addFieldError("loginUser.email", getText("login.email.error"));
+    }
+}
+ 
+1.3、实验三
+第一步：使用域map（UserAction.java的部分代码）
+private final static String REQUEST = "request";
+private final static String COUNTER = "counter";
+private final static String FAIL = "fail";
+private final static String USER = "user";
+private final static String TIP = "tip";
+
+@SuppressWarnings({"unchecked"})
+public String login() {
+    // 获取ActionContext对象
+    ActionContext actionContext = ActionContext.getContext();
+    request = (Map<String, Object>) actionContext.get(REQUEST);
+    session = actionContext.getSession();
+    application = actionContext.getApplication();
+
+    // 访问 application 范围的属性值
+    Integer counter = (Integer) application.get(COUNTER);
+    if (counter == null) {
+        counter = 1;
+    } else {
+        ++counter;
+    }
+    // 设置 application 范围的属性
+    application.put(COUNTER, counter);
+
+    UserService userService = new UserService();
+    if (userService.login(loginUser)) {
+        this.addActionMessage(getText("login.action.success"));
+        session.put(USER, loginUser.getAccount());
+        request.put(TIP, "您已登录成功");
+        return SUCCESS;
+    }
+    this.addActionError(getText("login.action.fail"));
+    return FAIL;
+}
+
+loginSuccess.jsp的部分片段
+<s:actionmessage/>
+本站访问次数为：<s:property value="#application.counter"/><br/>
+<s:property value="#session.user"/>,
+<s:property value="#request.tip"/>
+ 
+第二步：使用ApplicationAware，RequestAware，SessionAware
+@Override
+public void setApplication(Map<String, Object> application) {
+    this.application = application;
+}
+
+@Override
+public void setRequest(Map<String, Object> request) {
+    this.request = request;
+}
+
+@Override
+public void setSession(Map<String, Object> session) {
+    this.session = session;
+}
+ 
+第三步：使用ServletContextAware，ServletResponseAware，ServletRequestAware
+UserAction的部分代码
+private HttpServletRequest request;
+private HttpServletResponse response;
+private ServletContext context;
+
+@SuppressWarnings({"unchecked"})
+public String login() {
+    // 访问 application 范围的属性值
+    Integer counter = (Integer) context.getAttribute(COUNTER);
+    if (counter == null) {
+        counter = 1;
+    } else {
+        ++counter;
+    }
+    // 设置 application 范围的属性
+    context.setAttribute(COUNTER, counter);
+
+    HttpSession session = request.getSession();
+
+    UserService userService = new UserService();
+    if (userService.login(loginUser)) {
+        this.addActionMessage(getText("login.action.success"));
+        session.setAttribute(USER, loginUser.getAccount());
+        request.setAttribute(TIP, "您已登录成功");
+        return SUCCESS;
+    }
+    this.addActionError(getText("login.action.fail"));
+    return FAIL;
+}
+
+@Override
+public void setServletRequest(HttpServletRequest request) {
+    this.request = request;
+}
+
+@Override
+public void setServletResponse(HttpServletResponse response) {
+    this.response = response;
+}
+
+@Override
+public void setServletContext(ServletContext context) {
+    this.context = context;
+}
+
+ 
+第四步：使用ServletActionContext工具类获取ServletContext，HttpServletRequest对象
+context = ServletActionContext.getServletContext();
+request = ServletActionContext.getRequest();
+ 
+第五步：购物车对象存储在Session中
+UserAction.login()的部分片段
+if (userService.login(loginUser)) {
+    this.addActionMessage(getText("login.action.success"));
+    ShoppingCart shoppingCart = new ShoppingCart();
+    session.setAttribute("shoppingCart", shoppingCart);
+    return SUCCESS;
+}
+loginSuccess.jsp的部分片段
+<table style="border: 1px">
+    <tr>
+        <th>编号</th>
+        <th>名称</th>
+        <th>说明</th>
+        <th>单价</th>
+        <th>数量</th>
+    </tr>
+    <s:iterator value="#session.shoppingCart.itemOrderList" var="item">
+        <tr>
+            <td><s:property value="item.itemId"/> </td>
+            <td><s:property value="item.name"/> </td>
+            <td><s:property value="item.description"/> </td>
+            <td><s:property value="item.cost"/> </td>
+            <td><s:property value="numItems"/> </td>
+        </tr>
+    </s:iterator>
+</table>
+ 
+二、实验结果及分析
+2.1、实验一
+（3）Action的实例化情况
+Action实例将在每次调用到该Action时会创建一个新的实例，因此每次访问login()时，都会创建一个UserAction实例，这将会导致每次count的初始值为0，执行++count操作后，count始终为1。但是Servlet会在Web容器初始化时初始化，然后装入Web容器。
+（4）Jsp文件中获取Action属性的主要过程。
+创建Action实例时，其所有的实例变量都会加入值栈，因此，在<s:property>中，就能获取到Action的实例变量。
+（5）type=redirect的区别
+forward表示先前传递，将会保留Request，Session，Appication和Action域的变量，而redirect表示重定向，将不会保留Request和Action域内的变量，因此使用type=redirect时，将不会读取到count的值，因此不显示。
+（6）result类型
+<result-types>
+    <result-type name="chain" class="com.opensymphony.xwork2.ActionChainResult"/>
+    <result-type name="dispatcher" class="org.apache.struts2.result.ServletDispatcherResult" default="true"/>
+    <result-type name="freemarker" class="org.apache.struts2.views.freemarker.FreemarkerResult"/>
+    <result-type name="httpheader" class="org.apache.struts2.result.HttpHeaderResult"/>
+    <result-type name="redirect" class="org.apache.struts2.result.ServletRedirectResult"/>
+    <result-type name="redirectAction" class="org.apache.struts2.result.ServletActionRedirectResult"/>
+    <result-type name="stream" class="org.apache.struts2.result.StreamResult"/>
+    <result-type name="velocity" class="org.apache.struts2.result.VelocityResult"/>
+    <result-type name="xslt" class="org.apache.struts2.views.xslt.XSLTResult"/>
+    <result-type name="plainText" class="org.apache.struts2.result.PlainTextResult" />
+    <result-type name="postback" class="org.apache.struts2.result.PostbackResult" />
+</result-types>
+（7）碰到的问题及解决方案或思考
+出现于实验1第10题（使用DMI的方式进行动态访问），发现按照实验的步骤进行配置后出现错误“无法调用UserAction.login方法”，经检查没有出现拼写问题后，尝试网络搜索，发现少了一个配置项。
+<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+<package name="strutsBean" extends="struts-default" namespace="/">
+    <global-allowed-methods>login,register</global-allowed-methods>
+    <action name="*Action" class="action.UserAction" method="{1}">
+        <result name="success">/{1}Success.jsp</result>
+        <result name="fail">/{1}Fail.jsp</result>
+    </action>
+</package>
+需要在action内添加global-allowed-methods的选项，但是实验操作说明书中并没有出现这一问题。
+继续查找资料和询问同学后发现了问题：
+ 
+此项目使用的struct2-core库的版本2.5.25，而实验的版本是2.3.15。2.5版本为了动态访问的安全性，添加了strict-mode，而且默认是open模式，因此需要添加global-allowed-methods选项。
+或者修改成下列的情况也能解决问题。
+<package name="strutsBean" extends="struts-default" namespace="/" strict-method-invocation="false"> 
+（8）实验收获
+通过第一个实验，了解了structs框架的运行流程和运行流程，掌握了多种action的访问方式，对于MVC框架的设计理念也有了一定的了解。通过实验区分了Action和Servlet生命周期模型的不同特征，以及structs2框架是一个非侵入式框架的概念。
+2.2、实验二
+（3）校验规则文件的作用
+各种校验规则及其用法
+<validators>
+    <validator name="required" class="com.opensymphony.xwork2.validator.validators.RequiredFieldValidator"/>
+    <validator name="requiredstring" class="com.opensymphony.xwork2.validator.validators.RequiredStringValidator"/>
+    <validator name="int" class="com.opensymphony.xwork2.validator.validators.IntRangeFieldValidator"/>
+    <validator name="long" class="com.opensymphony.xwork2.validator.validators.LongRangeFieldValidator"/>
+    <validator name="short" class="com.opensymphony.xwork2.validator.validators.ShortRangeFieldValidator"/>
+    <validator name="double" class="com.opensymphony.xwork2.validator.validators.DoubleRangeFieldValidator"/>
+    <validator name="date" class="com.opensymphony.xwork2.validator.validators.DateRangeFieldValidator"/>
+    <validator name="expression" class="com.opensymphony.xwork2.validator.validators.ExpressionValidator"/>
+    <validator name="fieldexpression" class="com.opensymphony.xwork2.validator.validators.FieldExpressionValidator"/>
+    <validator name="email" class="com.opensymphony.xwork2.validator.validators.EmailValidator"/>
+    <validator name="creditcard" class="com.opensymphony.xwork2.validator.validators.CreditCardValidator"/>
+    <validator name="url" class="com.opensymphony.xwork2.validator.validators.URLValidator"/>
+    <validator name="visitor" class="com.opensymphony.xwork2.validator.validators.VisitorFieldValidator"/>
+    <validator name="conversion" class="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator"/>
+    <validator name="stringlength" class="com.opensymphony.xwork2.validator.validators.StringLengthFieldValidator"/>
+    <validator name="regex" class="com.opensymphony.xwork2.validator.validators.RegexFieldValidator"/>
+    <validator name="conditionalvisitor" class="com.opensymphony.xwork2.validator.validators.ConditionalVisitorFieldValidator"/>
+</validators>
+
+类型	说明	用法
+required	必填	
+requiredstring	必须包含非空字符	
+int	整型的范围值	min~max/minExpressin~maxExpression
+long	长整型的范围值	min~max
+short	短整型的范围值	min~max
+double	双精度浮点数的范围值	min~max
+date	日期的范围值	min~max
+expression	正则表达式	expression，message
+field	与字段比较	expression，message
+email	邮箱	
+creditcard	不适用与中国	
+url	一个资源定位符	
+vistor	复合校验器	context,appendPrefix
+conversion	转换校验器	
+stringlength	字符串长度	minLength，maxLength，trim
+regex	正则表达式的复杂形式	regex
+conditionalvistor	ognl表达式验证	expression
+配置方法：
+在resouce的文件夹和action的同级目录下创建xxxAction-xxxmethod-validation.xml文件，然后按照格式编写验证器，如果要写公共的验证器，则可以编写xxxAction-xxxmethod-validation.xml文件
+ 
+（4）在Action中使用国际化资源文件的步骤及方法。
+首先该action类必须继承ActionSupport积累，然后使用getText()来访问对应的国际化资源
+ 
+（5）struct2常用的内置类型转换器及其使用方法
+structs默认支持String到下列类型的内置类型转换
+String，Boolean，Charcter...Float...，Date，arrays，collections
+只要在对应的model类中声明对应的类型，变为使用内置类型转换。
+（6）碰到的问题及解决方案或思考
+配置UserAction-login-validation.xml时无法生效的问题
+原因：因为此项目的文件被分为java、resources、webapp三部分，而IDE编译的行为时不编译java文件夹之下的非java文件，因此.xml并不会拷贝到对应的build目录。而应当在resources文件夹下创建相同的目录并放置此类资源文件。
+（7）实验收获
+我们之前写纯Servlet项目时的字段校验和类型转换都是写在对应的业务逻辑中的，这也经常导致业务无关代码占据了较大的量，而且这些都是重复性的代码，structs使用组件化和AOP的概念，将字段校验和类型转换单独分离出来，构成自己的逻辑，从而提高了代码的可阅读性。
+2.3、实验三
+（2）访问Servlet API
+方法	返回类型	特点
+使用ActionContext工具类	ActionContext，Map<String,Object>	非侵入式
+实现ApplicationAware等接口	Map<String,Object>	非侵入式
+使用ServletActionContext工具类	ServletActionContext，HttpServletRequest，HttpServletResponse	侵入式
+实现ServletApplicationAware等接口	ServletActionContext，HttpServletRequest，HttpServletResponse	侵入式
+（4）碰到的问题及解决方案或思考
+没有碰到复杂的问题
+（5）实验收获
+学习了在Action实例中保存持久化对象的方法，因为Action实例是每次请求时单独创建的，因此Action中的实例变量的作用范围和requestAttributes是等效的，因此在Action中要存储在应用中不变或者在一次会话中不变的对象，需要借助SessionAware和ApplicationAware接口或者对应的ActionContext工具类。
