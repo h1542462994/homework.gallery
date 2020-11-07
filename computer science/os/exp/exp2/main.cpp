@@ -1,3 +1,5 @@
+// @environ=ubuntu18.04，c11
+
 #include <iostream>
 #include <semaphore.h>
 #include <cstdlib>
