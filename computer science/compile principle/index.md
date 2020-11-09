@@ -6,8 +6,10 @@
 
 ## 笔记
 
-[第一章 引论](./chapter1.md)
+[第1章 引论](./chapter1.md)
 
-[第二章 高级语言及其文法](./chapter2.md)
+[第2章 高级语言及其文法](./chapter2.md)
 
-[第三章 自顶向下的语法分析](./chapter3.md)
+[第3章 词法分析](./chapter3.md)
+
+[第4章 自顶向下的语法分析](./chapter4.md)
