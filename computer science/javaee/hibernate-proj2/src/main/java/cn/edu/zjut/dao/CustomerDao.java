@@ -20,10 +20,10 @@ public class CustomerDao extends BaseHibernateDao<Customer, Integer> {
     }
 
     public List<Customer> findByAccountAndPassword(String account, String password){
-        return findByHql("from Customer as user where account=? and password=?", account, password);
+        return findByHql("from Customer as user where account=?0 and password=?1", account, password);
     }
 
     public List<Customer> findByAccount(String account) {
-        return findByHql("from Customer as user where account=?", account);
+        return findByHql("from Customer as user where account=?0", account);
     }
 }

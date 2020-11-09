@@ -6,7 +6,7 @@
     <class name="cn.edu.zjut.po.Customer" table="customer" schema="chtHibernateDb">
         <id name="customerId" type="int">
             <column name="customerId"/>
-            <generator class="assigned"/>
+            <generator class="increment"/>
         </id>
         <property name="account" type="string">
             <column name="account" length="20" unique="true"/>

@@ -43,7 +43,7 @@ public abstract class BaseHibernateDao<TEntity, TKey> {
     public void update(TEntity entity) {
         getLog().debug("update entity");
         try {
-            getSession().save(entity);
+            getSession().update(entity);
             getLog().debug("update entity successful");
         } catch (RuntimeException e) {
             getLog().error("update failed", e);

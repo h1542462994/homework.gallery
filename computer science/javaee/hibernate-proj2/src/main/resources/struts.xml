@@ -5,4 +5,22 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <package name="strutsBean" extends="struts-default" namespace="/">
+        <action name="login" class="cn.edu.zjut.action.UserAction" method="login">
+            <result name="success">/loginSuccess.jsp</result>
+            <result name="fail">/login.jsp</result>
+        </action>
+        <action name="register" class="cn.edu.zjut.action.UserAction" method="register">
+            <result name="success">/registerSuccess.jsp</result>
+            <result name="fail">/register.jsp</result>
+        </action>
+        <action name="update" class="cn.edu.zjut.action.UserAction" method="update">
+            <result name="success">/loginSuccess.jsp</result>
+            <result name="fail">/CURDFail.jsp</result>
+        </action>
+        <action name="delete" class="cn.edu.zjut.action.UserAction" method="delete">
+            <result name="success">/login.jsp</result>
+            <result name="fail">/CURDFail.jsp</result>
+        </action>
+    </package>
 </struts>
