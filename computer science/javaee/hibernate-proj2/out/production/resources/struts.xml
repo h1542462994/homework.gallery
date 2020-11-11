@@ -22,5 +22,8 @@
             <result name="success">/login.jsp</result>
             <result name="fail">/CURDFail.jsp</result>
         </action>
+        <action name="findItems" class="cn.edu.zjut.action.ItemAction" method="findItems">
+            <result name="success">/itemList.jsp</result>
+        </action>
     </package>
 </struts>

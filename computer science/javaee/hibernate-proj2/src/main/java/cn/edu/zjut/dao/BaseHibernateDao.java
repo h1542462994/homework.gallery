@@ -15,13 +15,30 @@ public abstract class BaseHibernateDao<TEntity, TKey> {
     protected abstract Log getLog();
     protected abstract Class<TEntity> getEntityClass();
 
-    public List<TEntity> findByHql(String hql, Object... args) {
+    @Deprecated
+    public <T> List<T> findByHql(String hql, Object... args) {
         getLog().debug("finding entity by hql");
         try {
-            Query<TEntity> queryObject = (Query<TEntity>)getSession().createQuery(hql);
+            Query<T> queryObject = (Query<T>)getSession().createQuery(hql);
             for (int i = 0; i < args.length; ++i) {
                 queryObject.setParameter(i, args[i]);
             }
+            return queryObject.list();
+        } catch (RuntimeException e) {
+            getLog().debug("find entity by hql failed", e);
+            throw e;
+        }
+    }
+
+    public <T> List<T> findByHql(String hql){
+        return findByHql(hql, (query) -> {});
+    }
+
+    public <T> List<T> findByHql(String hql, QueryFiller<T> filler){
+        getLog().debug("finding entity by hql");
+        try {
+            Query<T> queryObject = (Query<T>)getSession().createQuery(hql);
+            filler.fill(queryObject);
             return queryObject.list();
         } catch (RuntimeException e) {
             getLog().debug("find entity by hql failed", e);
@@ -74,4 +91,5 @@ public abstract class BaseHibernateDao<TEntity, TKey> {
         }
         return entity;
     }
+
 }

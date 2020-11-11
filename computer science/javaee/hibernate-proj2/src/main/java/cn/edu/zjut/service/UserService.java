@@ -26,6 +26,7 @@ public class UserService {
         String password = loginUser.getPassword();
         List<Customer> list = customerDao.findByAccountAndPassword(account, password);
         if (list.isEmpty()) {
+            request.put("tip", "登录失败！");
             return false;
         } else {
             session.put("user", account);

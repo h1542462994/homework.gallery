@@ -10,6 +10,7 @@
 </head>
 <body>
     <s:property value="#request.tip"/>
+    <a href="findItems.action">查看商品信息</a>
     <s:form action="update" method="post">
         <s:hidden name="loginUser.customerId" value="%{#request.loginUser.customerId}"/>
         <s:textfield name="loginUser.account" label="用户名不能修改" value="%{#request.loginUser.account}" readonly="true"/>
