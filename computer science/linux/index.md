@@ -167,3 +167,49 @@ fg
 [ctrl+z]
 [ctrl+d]
 ```
+
+## Make
+
+```
+$@ 引用名称
+$^ 引用所有参数表
+$< 引用第一个参数
+$? 需要修改
+
+gcc：GNU Compiler Collection
+GDB：GNU Debug tools
+make：
+```
+
+## Linux Programming Environment
+
+### System call and Library Function
+
+```cpp
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+
+#include<unistd.h>
+int open(const char *path, int flags);
+int fd = open("~/Desktop/test.c", O_RDWR);
+```
+
+```cpp
+creat(), open(), close();
+read(), write();
+chmod(), chown();
+
+
+```
+
+```c
+int nice(int inc);  // 提高优先级
+unsigned int sleep(unsigned int seconds); // 睡眠
+
+void _exit(int status); // 立即退出
+void exit(int stauts); // 清理退出
+
+int pipe(int filedes[2]);
+int mkfifo(const char *pathname, mode_t mode);
+```

@@ -1,0 +1,185 @@
+using System;
+class Account
+{
+    public decimal Balance { get; private set; }
+    public decimal InterestRate { get; set; }
+    public decimal TotalInterstPaid { get; private set; }
+
+    public Account() {}
+
+    public void Withdraw (decimal amount)
+    {
+        Balance -= amount;
+    }
+
+    public void Deposit(decimal amount) 
+    {
+        Balance += amount;
+    }
+
+    public decimal UpdateInterest(){
+        var interest = Balance * InterestRate;
+        TotalInterstPaid += interest;
+        Balance += interest;
+        return interest;
+    }
+}
+
+class Bank 
+{
+    private Account[] accounts;
+
+          
+    public Bank()
+    {
+        Console.WriteLine("Congratulations! You have created a new bank");
+        Console.Write("Please enter number of accounts in bank: ");
+        accounts = new Account[int.Parse(Console.ReadLine())];
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            accounts[i] = new Account();
+        }
+    }
+
+    private int GetAccountNumber(String template) {
+        Console.Write($"{template}. Please enter account number: ");
+        return int.Parse(Console.ReadLine());
+    }
+
+    private decimal GetAmount(String template) {
+        Console.Write($"Enter amount to {template}: ");
+        return decimal.Parse(Console.ReadLine());
+    }
+
+    private void PrintNewBalance(int accountNumber) {
+        Console.WriteLine("New balance of account {0}: {1:C}",
+        accountNumber, accounts[accountNumber - 1].Balance);
+    }
+
+    private decimal GetIntersetRate() {
+        Console.Write("Enter interest rate: ");
+        return decimal.Parse(Console.ReadLine());
+    }
+
+    public void Deposit() {
+        int accountNumber = GetAccountNumber("Deposit");
+        decimal amount = GetAmount("deposit");
+        accounts[accountNumber - 1].Deposit(amount);
+        PrintNewBalance(accountNumber);
+    }
+
+    public void Withdraw()
+    {
+        int accountNumber = GetAccountNumber("WithDraw");
+        decimal amount = GetAmount("withdraw");
+        
+        accounts[accountNumber - 1].Withdraw(amount);
+        PrintNewBalance(accountNumber);
+    }
+
+    public void SetInterestRate() {
+        int accountNumber = GetAccountNumber("Set Interest Rate");
+        accounts[accountNumber - 1].InterestRate = GetIntersetRate();
+    }
+
+    public void PrintAllInterestRates()
+    {
+        Console.WriteLine("Interest rates for all accounts:");
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Account {0,-3}: {1,-10}",
+                (i + 1), accounts[i].InterestRate);       
+        }
+    }
+
+    public void PrintAllBalances()
+    {
+        Console.WriteLine("Account balances for all accounts:");
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Account {0,-3}: {1,12:C}",
+                (i + 1), accounts[i].Balance);
+        }
+    }
+        
+    public void PrintTotalInterestPaidAllAccounts()
+    {
+        Console.WriteLine("Total interest paid for each individual account");
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Account {0,-3}: {1,12:C}",
+                (i + 1), accounts[i].TotalInterstPaid);
+        }
+    }
+
+    public void UpdateInterestAllAccounts()
+    {
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Interest added to account number {0,-3}: {1,12:C}",
+                (i + 1), accounts[i].UpdateInterest());
+        }
+    }
+
+}
+
+class BankSimulation 
+{
+    private static Bank bigBucksBank;
+
+    public static void Main()
+    {
+        string command;
+                
+        bigBucksBank = new Bank();       
+        do
+        {
+            PrintMenu();
+            command = Console.ReadLine().ToUpper();
+            switch (command)
+            {
+                case "D":
+                    bigBucksBank.Deposit();
+                    break;
+                case "W":
+                    bigBucksBank.Withdraw();
+                    break;
+                case "S":
+                    bigBucksBank.SetInterestRate();
+                    break;
+                case "U":
+                    bigBucksBank.UpdateInterestAllAccounts();
+                    break;
+                case "P":
+                    bigBucksBank.PrintAllBalances();
+                    break;
+                case "T":
+                    bigBucksBank.PrintTotalInterestPaidAllAccounts();
+                    break;
+                case "I":
+                    bigBucksBank.PrintAllInterestRates();
+                    break;
+                case "E":
+                    Console.WriteLine("Bye Bye!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
+        } while (command != "E");
+    }
+        
+    private static void PrintMenu()
+    {
+        Console.WriteLine("\nWhat would you like to do?\n" +
+            "D)eposit\n" +
+            "W)ithdraw\n" +
+            "S)et interest rate\n" +
+            "U)pdate all accounts for interest\n" +
+            "P)rint all balances\n" +
+            "T)otal interest paid printed for all accounts\n" +
+            "I)nterest rates printed for all accounts\n" +  
+            "E)nd session\n" +
+            "Note: First account has account number one");
+    }
+}

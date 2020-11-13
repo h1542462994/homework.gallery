@@ -1,0 +1,204 @@
+using System;
+class Account
+{
+    private decimal balance;
+    private decimal currentInterestRate;
+    private decimal totalInterestPaid;
+         
+    public Account()
+    {
+        balance = 0;
+        currentInterestRate = 0;
+        totalInterestPaid = 0;  
+    } 
+         
+    public void SetInterestRate(decimal newInterestRate)
+    {
+        currentInterestRate = newInterestRate;
+    }
+     
+    public decimal GetInterestRate()
+    {
+        return currentInterestRate;
+    }
+     
+    public void UpdateInterest()
+    {
+        totalInterestPaid += balance * currentInterestRate;
+        balance += balance * currentInterestRate;  
+    }
+      
+    public void Withdraw (decimal amount)
+    {
+        balance -= amount;
+    }
+     
+    public void Deposit (decimal amount)
+    {
+        balance += amount;
+    }
+      
+    public decimal GetBalance()
+    {
+        return balance;
+    }
+     
+    public decimal GetTotalInterestPaid()
+    {
+        return totalInterestPaid;
+    }
+}
+ 
+class Bank
+{
+    private Account [] accounts;
+      
+    public Bank()
+    {
+        Console.WriteLine("Congratulations! You have created a new bank");
+        Console.Write("Please enter number of accounts in bank: ");
+        accounts = new Account[Convert.ToInt32(Console.ReadLine())];
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            accounts[i] = new Account();
+        }
+    }
+     
+    public void Deposit()
+    {
+        int accountNumber;
+        decimal amount;
+        Console.Write("Deposit. Please enter account number: ");
+        accountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter amount to deposit: ");
+        amount = Convert.ToDecimal(Console.ReadLine());
+        accounts[accountNumber - 1].Deposit(amount);
+        Console.WriteLine("New balance of account {0}: {1:C}",
+            accountNumber, accounts[accountNumber - 1].GetBalance());
+    }
+     
+    public void Withdraw()
+    {
+        int accountNumber;
+        decimal amount;
+        Console.Write("Withdraw. Please enter account number: ");
+        accountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter amount to withdraw: ");
+        amount = Convert.ToDecimal(Console.ReadLine());
+        accounts[accountNumber - 1].Withdraw(amount);
+        Console.WriteLine("New balance of account {0}: {1:C}",
+            accountNumber, accounts[accountNumber - 1].GetBalance());
+    }
+     //注意，{1：C}这里代表本位置上输出的数字以货币形式显式。如$100.
+    public void SetInterestRate()
+    {
+        int accountNumber;
+        decimal newInterestRate;
+        Console.Write("Set interest rate. Please enter account number: ");
+        accountNumber = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter interest rate: ");
+        newInterestRate = Convert.ToDecimal(Console.ReadLine());
+        accounts[accountNumber - 1].SetInterestRate(newInterestRate);
+    }
+    
+    public void PrintAllInterestRates()
+    {
+        Console.WriteLine("Interest rates for all accounts:");
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Account {0,-3}: {1,-10}",
+                (i + 1), accounts[i].GetInterestRate());       
+        }
+    }
+     
+    public void PrintAllBalances()
+    {
+        Console.WriteLine("Account balances for all accounts:");
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Account {0,-3}: {1,12:C}",
+                (i + 1), accounts[i].GetBalance());
+        }
+    }
+        
+    public void PrintTotalInterestPaidAllAccounts()
+    {
+        Console.WriteLine("Total interest paid for each individual account");
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Account {0,-3}: {1,12:C}",
+                (i + 1), accounts[i].GetTotalInterestPaid());
+        }
+    }
+     
+    public void UpdateInterestAllAccounts()
+    {
+        for (int i = 0; i < accounts.Length; i++)
+        {
+            Console.WriteLine("Interest added to account number {0,-3}: {1,12:C}",
+                (i + 1), accounts[i].GetBalance() * accounts[i].GetInterestRate());
+            accounts[i].UpdateInterest();
+        }
+    }
+}
+ 
+class BankSimulation
+{
+    private static Bank bigBucksBank;
+     
+    public static void Main()
+    {
+        string command;
+                
+        bigBucksBank = new Bank();       
+        do
+        {
+            PrintMenu();
+            command = Console.ReadLine().ToUpper();
+            switch (command)
+            {
+                case "D":
+                    bigBucksBank.Deposit();
+                    break;
+                case "W":
+                    bigBucksBank.Withdraw();
+                    break;
+                case "S":
+                    bigBucksBank.SetInterestRate();
+                    break;
+                case "U":
+                    bigBucksBank.UpdateInterestAllAccounts();
+                    break;
+                case "P":
+                    bigBucksBank.PrintAllBalances();
+                    break;
+                case "T":
+                    bigBucksBank.PrintTotalInterestPaidAllAccounts();
+                    break;
+                case "I":
+                    bigBucksBank.PrintAllInterestRates();
+                    break;
+                case "E":
+                    Console.WriteLine("Bye Bye!");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
+        } while (command != "E");
+    }
+        
+    private static void PrintMenu()
+    {
+        Console.WriteLine("\nWhat would you like to do?\n" +
+            "D)eposit\n" +
+            "W)ithdraw\n" +
+            "S)et interest rate\n" +
+            "U)pdate all accounts for interest\n" +
+            "P)rint all balances\n" +
+            "T)otal interest paid printed for all accounts\n" +
+            "I)nterest rates printed for all accounts\n" +  
+            "E)nd session\n" +
+            "Note: First account has account number one");
+    }
+}

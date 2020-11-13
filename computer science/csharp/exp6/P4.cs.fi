@@ -1,0 +1,67 @@
+using System;
+ 
+class ElevatorRequestTracker
+{
+    public static void Main()
+    {
+        ushort[,] requests = new ushort [7,24];
+        Random randomizer = new Random();
+        int sum;
+         
+         // Randomly generate number of requests received for every
+         // hour of the day and every day of the week.
+        for (int i = 0; i < 7; i++)
+        {
+            for (int j = 0; j < 24 ; j++)
+            {
+                if ((j < 8) || (j > 18))
+                    requests[i,j] = (ushort)randomizer.Next(1,10);
+                else
+                    requests[i,j] = (ushort)randomizer.Next(20,99);
+            } 
+        }
+
+         //Print out table showing requests of all hours of every day
+        Console.WriteLine("                                  Hour\n");
+        Console.Write("    ");
+        for (int i = 0; i < 24; i++)
+        {
+            Console.Write("{0,2} ",i);
+        }
+         
+        Console.Write("\nDay");
+        for (int i = 0; i < 7; i++)
+        {
+            Console.Write("\n{0}   ", (i + 1));
+            for (int j = 0; j < 24; j++)
+            {
+                Console.Write("{0,2} ", requests[i,j]);
+            }
+        }
+          
+         // Calculate and print total number of requests on a daily basis
+        Console.WriteLine("\n\nTotal number of request per day:\n");
+        for (int i = 0; i < 7; i++)
+        {
+            sum = 0;
+            for (int j = 0; j < 24; j++)
+                sum += requests[i,j];
+            Console.WriteLine("Day {0}: {1}", (i + 1), sum);
+        }
+         
+         // Calculate and print average requests on an hourly basis
+        Console.Write("\nAverage requests per hour:\n\nHour:");
+        for (int i = 0; i < 24; i++)
+        {
+            Console.Write("{0,2} ",i);
+        }
+        Console.Write("\nAver:");
+        for (int j = 0; j < 24; j++)
+        {
+            sum = 0;
+            for (int i = 0; i < 7; i++)
+                sum += requests[i,j];
+            Console.Write("{0,2} ", (sum / 7)); 
+        }             
+    }
+}
