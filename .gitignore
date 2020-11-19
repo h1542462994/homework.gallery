@@ -343,3 +343,5 @@ ASALocalRun/
 computer science/javaee/*/build/*
 computer science/javaee/*/.gradle/*
 hibernate.cfg.xml
+
+computer science/os/create_process/cmake-build-debug/
