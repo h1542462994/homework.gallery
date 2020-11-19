@@ -18,5 +18,17 @@
         </tr>
     </s:iterator>
 </table>
+<table style="border: 1px solid black">
+    <tr>
+        <th>书名</th>
+        <th>单价</th>
+    </tr>
+    <s:iterator value="others" var="item">
+        <tr>
+            <td><s:property value="#item[0]"/></td>
+            <td><s:property value="#item[1]"/></td>
+        </tr>
+    </s:iterator>
+</table>
 </body>
 </html>

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ItemAction extends ActionSupport {
     private List<Object[]> items;
+    private List<Object[]> others;
 
     public List<Object[]> getItems() {
         return items;
@@ -17,9 +18,18 @@ public class ItemAction extends ActionSupport {
         this.items = items;
     }
 
+    public List<Object[]> getOthers() {
+        return others;
+    }
+
+    public void setOthers(List<Object[]> others) {
+        this.others = others;
+    }
+
     public String findItems(){
         ItemService itemService = new ItemService();
         items = itemService.findAllTitleAndCost();
+        others = itemService.findOthers();
         System.out.println("Item Action executed");
         return "success";
     }

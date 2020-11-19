@@ -28,9 +28,12 @@ dependencies {
     // commons-logging
     compile 'commons-logging:commons-logging:1.1.1'
     // hibernate
-    compile 'org.hibernate:hibernate-core:5.4.22.Final'
+    compile 'org.hibernate:hibernate-core:5.4.24.Final'
+    // hibernate-c3p0
+    compile 'org.hibernate:hibernate-c3p0:5.4.24.Final'
     // mysql
     compile 'mysql:mysql-connector-java:8.0.22'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

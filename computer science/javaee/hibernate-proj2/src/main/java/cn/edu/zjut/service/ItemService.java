@@ -26,4 +26,11 @@ public class ItemService {
         itemDao.getSession().close();
         return list;
     }
+
+    public List<Object[]> findOthers() {
+        ItemDao itemDao = new ItemDao();
+        List<Object[]> list = itemDao.findByHql("select item.title, item.cost from Item as item where item.cost in (select min(item.cost) from Item as item)");
+        itemDao.getSession().close();
+        return list;
+    }
 }
