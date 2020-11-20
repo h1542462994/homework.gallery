@@ -345,3 +345,4 @@ computer science/javaee/*/.gradle/*
 hibernate.cfg.xml
 
 computer science/os/create_process/cmake-build-debug/
+computer science/javaee/mybatis-proj1/src/main/resources/mybatis-config.xml

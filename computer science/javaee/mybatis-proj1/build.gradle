@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'cn.edu.zjut'
+version '1.0.0'
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.6.2'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compileOnly('javax:javaee-web-api:8.0.1')
+
+    // mybatis
+    compile 'org.mybatis:mybatis:3.5.6'
+    // mysql
+    compile 'mysql:mysql-connector-java:8.0.22'
+    // commons-logging
+    compile 'commons-logging:commons-logging:1.1.1'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

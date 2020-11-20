@@ -44,6 +44,24 @@ collection.reduce(state, action(state))
 状态、符号栈
 分析表：动作表、转移表
 
-```cpp
+当句柄在栈顶形成时，进行归结。否则，进行移进的操作。
 
-```
+### 项目
+
+移进项目、待约项目、归约项目
+
+后继项目
+
+项目的定义：
+$$
+A\rightarrow\alpha . \beta
+$$
+
+
+核心项目、项目闭包
+
+LR(0)、SLR(1)、LR(1)
+
+LR(0)+FOLLOW=SLR
+
+LR(0)+ANY FOLLOW=LR(1)

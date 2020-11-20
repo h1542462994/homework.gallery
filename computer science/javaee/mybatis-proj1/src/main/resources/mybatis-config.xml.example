@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--\u6253\u5F00\u5EF6\u8FDF\u52A0\u8F7D\u673A\u5173-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--\u5C06\u79EF\u6781\u52A0\u8F7D\u6539\u4E3A\u6309\u9700\u52A0\u8F7D-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://$path?useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="$user"/>
+                <property name="password" value="$password"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="cn/edu/zjut/mapper/UserMapper.xml"/>
+        <mapper resource="cn/edu/zjut/mapper/IdCardMapper.xml"/>
+        <mapper resource="cn/edu/zjut/mapper/PersonMapper.xml"/>
+        <mapper resource="cn/edu/zjut/mapper/IndentMapper.xml"/>
+    </mappers>
+</configuration>

@@ -57,5 +57,5 @@
 ## 课程设计
 
 - [ ] !import 操作系统：Pintos
-- [ ] !import CSharp：课程设计要求以提交至超星平台。
+- [x] !import CSharp：课程设计要求以提交至超星平台。
 

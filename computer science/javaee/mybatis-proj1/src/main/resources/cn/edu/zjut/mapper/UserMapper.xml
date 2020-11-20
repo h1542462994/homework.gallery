@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zjut.mapper.UserMapper">
+    <select id="selectUserById" parameterType="java.lang.Integer" resultType="cn.edu.zjut.po.MyUser">
+        select * from user where uid = #{uid}
+    </select>
+    <!-- create a map resource -->
+    <resultMap id="myResult" type="cn.edu.zjut.po.MapUser">
+        <!-- column是查询结果的列名，可以来自不同的表 -->
+        <id property="m_uid" column="uid"/>
+        <result property="m_uname" column="uname"/>
+        <result property="m_usex" column="usex"/>
+    </resultMap>
+    <parameterMap id="myResult" type="cn.edu.zjut.po.MapUser">
+        <parameter property="m_uid"/>
+        <parameter property="m_uname"/>
+        <parameter property="m_usex"/>
+    </parameterMap>
+    <select id="selectAllUser" resultMap="myResult">
+        select * from user
+    </select>
+    <insert id="addUser" parameterType="cn.edu.zjut.po.MyUser">
+        insert into user (uname, usex) values (#{uname}, #{usex})
+    </insert>
+    <update id="updateUser" parameterType="cn.edu.zjut.po.MyUser">
+        update user set uname = #{uname}, usex = #{usex} where uid = #{uid}
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where uid = #{uid}
+    </delete>
+    <insert id="addUserMap" parameterMap="myResult">
+        insert into user (uname, usex) values (#{m_uname}, #{m_usex})
+    </insert>
+    <update id="updateUserMap" parameterMap="myResult">
+        update user set uname = #{m_uname}, usex = #{m_usex} where uid = #{m_uid}
+    </update>
+
+    <select id="selectAllUserByMap" resultType="cn.edu.zjut.po.MyUser" parameterType="map">
+        select * from user where uname like concat('%', #{u_name}, '%') and usex = #{u_sex}
+    </select>
+    <select id="selectAllUserByUserParam" resultType="cn.edu.zjut.po.MyUser" parameterType="cn.edu.zjut.po.UserParam">
+        select * from user where uname like concat('%', #{u_name}, '%') and usex = #{u_sex}
+    </select>
+</mapper>
