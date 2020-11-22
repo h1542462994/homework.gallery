@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.edu.zjut.po.Customer" table="customer" schema="chtHibernateDb">
+        <id name="customerId" type="int">
+            <column name="customerId"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="account" type="string">
+            <column name="account" length="20" unique="true"/>
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20"/>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="20"/>
+        </property>
+        <property name="sex" type="boolean">
+            <column name="sex" length="1"/>
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100"/>
+        </property>
+        <set name="addresses" inverse="true" cascade="all" lazy="false">
+            <key column="customerId"/>
+            <one-to-many class="cn.edu.zjut.po.Address"/>
+        </set>
+    </class>
+</hibernate-mapping>
