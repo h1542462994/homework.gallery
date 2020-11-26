@@ -60,8 +60,11 @@ $$
 
 核心项目、项目闭包
 
-LR(0)、SLR(1)、LR(1)
+### 几种算法
 
-LR(0)+FOLLOW=SLR
-
-LR(0)+ANY FOLLOW=LR(1)
+```
+LR(0)：0步LR分析
+SLR(1)：简单LR分析，只在矛盾时进行FOLLOW集分析
+LR(1)：1步LR分析，始终进行FOLLOW集分析
+LALR分析：
+```

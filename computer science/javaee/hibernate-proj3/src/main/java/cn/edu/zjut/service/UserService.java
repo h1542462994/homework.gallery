@@ -16,12 +16,15 @@ public class UserService {
     private final ActionContext context;
     private final CustomerDao customerDao = new CustomerDao();
     public boolean login(Customer loginUser){
+        Map<String,Object> request = (Map<String, Object>) context.get("request");
         Customer user = customerDao.findByAccount(loginUser.getAccount());
-        if (user == null)
-            return false;
-        if (!user.getPassword().equals(loginUser.getPassword())) {
+        if (user == null || !user.getPassword().equals(loginUser.getPassword())){
+            request.put("tip", "登录成功");
+            request.put("loginUser", user);
             return false;
         }
+
+        request.put("tip", "登录失败");
         return true;
     }
 

@@ -6,6 +6,12 @@
 
 <struts>
     <package name="strutsBean" extends="struts-default" namespace="/">
-
+        <action name="login" class="cn.edu.zjut.action.UserAction" method="login">
+            <result name="success">/loginSuccess.jsp</result>
+            <result name="fail">/login.jsp</result>
+        </action>
+        <action name="addAddr" class="cn.edu.zjut.action.UserAction" method="addAddr">
+            <result name="success">/loginSuccess.jsp</result>
+        </action>
     </package>
 </struts>
