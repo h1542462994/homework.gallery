@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'cn.edu.zjut'
+version '1.0'
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.7.0'
+    springVersion = '5.3.1'
+    strutsVersion = '2.5.25'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compileOnly('javax:javaee-web-api:8.0.1')
+    compile("org.springframework:spring-web:${springVersion}")
+    compile("org.springframework:spring-context:${springVersion}")
+    compile("org.springframework:spring-orm:${springVersion}")
+    // hibernate,update:2020/11/17
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.24.Final'
+    // hibernate-c3p0,update:2020/11/17
+    compile group: 'org.hibernate', name: 'hibernate-c3p0', version: '5.4.24.Final'
+    // mysql-connector-java,update:2020/10/17
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+    compile("org.apache.struts:struts2-core:${strutsVersion}")
+    compile("org.apache.struts:struts2-dojo-plugin:2.3.37")
+    compile("org.apache.struts:struts2-spring-plugin:${strutsVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
