@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>local.message</value>
+            </list>
+        </property>
+    </bean>
+<!--    <bean class="cn.edu.zjut.listener.EmailNotifier"/>-->
+    <bean id="item1" class="cn.edu.zjut.bean.impl.Item">
+        <constructor-arg index="0" type="java.lang.String" value="978-7-121-12345-1"/>
+        <constructor-arg index="1" type="java.lang.String" value="JAVAEE 技术实验指导教程"/>
+        <constructor-arg index="2" type="java.lang.String" value="WEB 程序设计知识回顾、轻量级 JAVAEE 应用框架、企业级 EJB 组
+件编程技术、JAVAEE 综合应用开发"/>
+        <constructor-arg index="3" type="java.lang.Double" value="19.95"/>
+    </bean>
+    <bean id="item2" class="cn.edu.zjut.bean.impl.Item" scope="prototype">
+
+        <constructor-arg index="0" type="java.lang.String" value="978-7-121-12345-2"/>
+        <constructor-arg index="1" type="java.lang.String" value="JAVAEE 技术"/>
+        <constructor-arg index="2" type="java.lang.String" value="Struts 框架、Hibernate 框架、Spring 框架、会话 Bean、实体
+Bean、消息驱动 Bean"/>
+        <constructor-arg index="3" type="java.lang.Double" value="29.95"/>
+    </bean>
+    <bean id="itemOrder1" class="cn.edu.zjut.bean.impl.ItemOrder" init-method="init" destroy-method="finish">
+        <property name="numItems" value="1"/>
+        <property name="item" ref="item1"/>
+    </bean>
+    <bean id="itemOrderFactory" class="cn.edu.zjut.bean.factory.ItemOrderFactory"/>
+    <bean id="itemOrder2" factory-bean="itemOrderFactory" factory-method="createItemOrder">
+        <property name="numItems" value="2"/>
+        <property name="item" ref="item2"/>
+    </bean>
+    <bean id="shoppingCart" class="cn.edu.zjut.bean.impl.ShoppingCart">
+        <property name="itemOrders">
+            <list>
+                <ref bean="itemOrder1"/>
+                <ref bean="itemOrder2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="shoppingCartMap" class="cn.edu.zjut.bean.impl.ShoppingCartMap">
+        <property name="itemOrders">
+            <map>
+                <entry key="978-7-121-12345-1" value-ref="itemOrder1"/>
+                <entry key="978-7-121-12345-2" value-ref="itemOrder2"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="shoppingCartSet" class="cn.edu.zjut.bean.impl.ShoppingCartSet">
+        <property name="itemOrders">
+            <set>
+                <ref bean="itemOrder1"/>
+                <ref bean="itemOrder2"/>
+            </set>
+        </property>
+    </bean>
+    <bean id="shoppingCartProperties" class="cn.edu.zjut.bean.impl.ShoppingCartProperties">
+        <property name="properties">
+            <map>
+                <entry key="978-7-121-12345-1" value-ref="itemOrder1"/>
+                <entry key="978-7-121-12345-2" value-ref="itemOrder2"/>
+            </map>
+        </property>
+    </bean>
+</beans>
