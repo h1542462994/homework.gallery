@@ -1,6 +1,6 @@
-# 敏捷开发
+## 敏捷开发
 
-## Agile
+### Agile
 
 emphasize:
 - close collaboration
@@ -26,7 +26,7 @@ emphasize:
 - Scrum
 - ScrumBan
 
-## Scrum Overview
+### Scrum Overview
 
 - 减少交接
 - Product Owner：What to do
@@ -62,3 +62,10 @@ Commerial:
   - Conclude the lost and gain
   - Make action plan for further improvement
 - Daily standup meeting
+
+## 持续集成(Continuous Integration)
+
+plan,code,build,test,release,deploy,operate,monitor
+
+git configuration system/global/local
+
