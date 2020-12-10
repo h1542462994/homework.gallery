@@ -69,3 +69,16 @@ plan,code,build,test,release,deploy,operate,monitor
 
 git configuration system/global/local
 
+## Docker容器
+
+硬件虚拟化，操作系统虚拟化
+
+虚拟机 vs docker容器
+
+容器概念：
+
+- Dockerfile
+- 镜像Image
+- 容器Container
+- 镜像仓库Registry
+
