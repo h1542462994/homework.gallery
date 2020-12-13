@@ -3,4 +3,4 @@ project(re2dfa)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(re2dfa main.cpp)
+add_executable(re2dfa main.cpp RegularExpression.h ReUnit.h UnitType.h DfaBuilder.h Edge.h)

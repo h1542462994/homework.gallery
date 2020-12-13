@@ -25,6 +25,23 @@
             <tx:method name="*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
+    <!-- 增强处理定义 -->
+    <bean id="logAdvice" class="cn.edu.zjut.advice.LoggingAdvice"/>
+    <bean id="logInterceptor" class="cn.edu.zjut.advice.LoggingInterceptor"/>
+    <!-- 设定代理 -->
+    <bean id="logProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!-- 设定代理的是接口 -->
+        <property name="proxyInterfaces" value="cn.edu.zjut.service.UserService"/>
+        <!-- 设定代理的目标类 -->
+        <property name="target" ref="userService"/>
+        <!-- 设定切入的Advice -->
+        <property name="interceptorNames">
+            <list>
+                <value>logAdvice</value>
+                <value>logInterceptor</value>
+            </list>
+        </property>
+    </bean>
     <bean id="securityHandler" class="cn.edu.zjut.aspect.SecurityHandler"/>
     <bean id="securityHandler2" class="cn.edu.zjut.aspect.SecurityHandler2"/>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -54,7 +71,7 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <bean id="customerDao" class="cn.edu.zjut.dao.impl.CustomerDao">
+    <bean id="customerDao" class="cn.edu.zjut.dao.impl.CustomerDao" parent="baseDao">
     </bean>
     <bean id="userService" class="cn.edu.zjut.service.impl.UserService">
         <property name="customerDao" ref="customerDao"/>
