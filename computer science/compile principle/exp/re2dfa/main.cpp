@@ -1,9 +1,11 @@
 #include <iostream>
 #include "ReUnit.h"
 #include "UnitType.h"
-#include "DfaBuilder.h"
+#include "NfaBuilder.h"
+#include "SortedSet.h"
 using namespace std;
 using namespace texting;
+using namespace util;
 int main() {
 
     std::cout << "Hello, World!" << std::endl;
@@ -17,8 +19,9 @@ int main() {
              })
             });
     cout << expression.getExpression() << endl;
-    DfaBuilder builder(expression);
-    builder.compileToNfa();
-    //cout << builder << endl;
+    NfaBuilder builder(expression);
+    DfaBuilder builder1 = builder.compileToDfa();
+    builder1.compile();
+
     return 0;
 }

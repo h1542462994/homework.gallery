@@ -7,6 +7,7 @@ namespace texting {
     class Edge {
     private:
     public:
+        int index = 0;
         int startPoint;
         int endPoint;
         ReUnit reUnit;

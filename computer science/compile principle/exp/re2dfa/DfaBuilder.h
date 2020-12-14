@@ -1,145 +1,196 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <utility>
 #include <vector>
+#include <map>
+#include <string>
+#include <set>
 #include "Edge.h"
-#include "UnitType.h"
+#include "SortedSet.h"
+
 using namespace std;
-using namespace texting;
+using namespace util;
 
 namespace texting {
+    // DfaBuilder，用于编译DfaBuilder到ReMatcher
     class DfaBuilder {
     private:
-        int maxPoint = 0;
+        // 继承于NfaBuilder
+        int maxPoint;
         vector<Edge> edges;
-        int printIndex = 0;
+        // 点集的闭包
+        vector<SortedSet<int>> pointClosures;
+        // unit集合
+        SortedSet<string> options;
+        // 跳跃点
+        map<string, vector<Edge>> jumpEdges;
+
+        // 新的点集合
+        vector<SortedSet<int>> newPoints;
+        vector<vector<SortedSet<int>>> newEdges;
+
+        void addSkipEdge(const Edge& edge){
+            jumpEdges[edge.reUnit.getExpression()].emplace_back(edge);
+        }
+        void initialize() {
+            for (int i = 0; i < edges.size(); ++i) {
+                edges[i].index = i;
+            }
+
+            // 初始化存储区
+            for (int i = 0; i <= maxPoint; ++i) {
+                pointClosures.emplace_back();
+                pointClosures[i].add(i);
+            }
+
+            // 进行统计
+            for (const auto& edge: edges) {
+                auto type = edge.reUnit.getUnitType();
+                if (type == UnitType::unit) {
+                    string content = edge.reUnit.getExpression();
+                    options.add(content);
+                    pointClosures[edge.startPoint].add(edge.startPoint);
+                    addSkipEdge(edge);
+                } else if (type == UnitType::empty) {
+                    pointClosures[edge.startPoint].add(edge.endPoint);
+                }
+            }
+            debugPrintInitialize();
+        }
+
     public:
         bool openDebug = true;
-        DfaBuilder() = default;
-        explicit DfaBuilder(const ReUnit& root) {
-            maxPoint = 1;
-            edges = {Edge(0, 1, root)};
+        DfaBuilder(int maxPoint, vector<Edge> edges, bool openDebug = true): maxPoint(maxPoint), edges(std::move(edges)), openDebug(openDebug) {
+            initialize();
         }
-        // 获取一个新的点
-        int newPoint() {
-            return ++maxPoint;
-        }
-        void debugClean() {
-            printIndex = 0;
-        }
-        void debugPrint(int proceedIndex, bool before = false) {
+        void debugPrintInitialize() {
             if (openDebug) {
-                if (before) {
-                    cout << "=============before " << printIndex++ << "=============" << endl;
-                }
-                cout << "line:" << proceedIndex << endl;
-                cout << *this << endl;
-                if (!before) {
-                    cout << "===================================" << endl;
-                }
+                printClosures();
+                cout << endl;
+                printOptions();
+                cout << endl;
+                printSkipEdges();
             }
         }
-        // 编译成NFA
-        void compileToNfa() {
-            debugClean();
-            int proceedIndex = 0;
-            while (proceedIndex < edges.size()) {
-                debugPrint(proceedIndex, true);
-                auto current = edges[proceedIndex];
-                auto type = current.reUnit.getUnitType();
-                if(type == UnitType::unit || type == UnitType::empty) {
-                    proceedIndex++;
-                } else {
-                    if(type == UnitType::star) {
-                        // 复杂边解构
-                        // 先移除复杂边
-                        edges.erase(edges.cbegin() + proceedIndex);
-                        proceedStar(current);
-                    } else if(type == UnitType::optional) {
-                        edges.erase(edges.cbegin() + proceedIndex);
-                        proceedOptional(current);
-                    } else if(type == UnitType::any) {
-                        edges.erase(edges.cbegin() + proceedIndex);
-                        proceedAny(current);
-                    } else if(type == UnitType::concatGroup) {
-                        edges.erase(edges.cbegin() + proceedIndex);
-                        proceedConcatGroup(current);
-                    } else if(type == UnitType::orGroup) {
-                        edges.erase(edges.cbegin() + proceedIndex);
-                        proceedOrGroup(current);
-                    } else {
-                        // 不处理
-                        proceedIndex++;
-                    }
-                }
-                debugPrint(proceedIndex);
+        void debugPrint() {
+            if (openDebug) {
+                printTable();
             }
         }
-        // 处理a*或者(ab)*的情况
-        void proceedStar(const Edge& edge) {
-            int point = newPoint();
+        SortedSet<int> jumpEdgeIndexAt(int option){
+            auto data = jumpEdges.find(options[option])->second;
+            SortedSet<int> set;
+            for (const auto& v: data) {
+                set.add(v.index);
+            }
+            return set;
+        }
+        void putPoint(const SortedSet<int>& point) {
+            if (point.size() == 0) {
+                return;
+            }
+            for (const auto& p: newPoints) {
+                if (p == point){
+                    return;
+                }
+            }
+            newPoints.emplace_back(point);
+        }
+        int findPointIndex(const SortedSet<int>& point) {
+            for (int i = 0; i < newPoints.size(); ++i) {
+                if (newPoints[i] == point) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        // 跳边
+        SortedSet<int> jump(const SortedSet<int>& point, int option) {
+            // 获取与option有关的边
+            SortedSet<int> es = jumpEdgeIndexAt(option);
+            SortedSet<int> result;
+            // 查找每一条边
+            for (auto e: es.data) {
+                // 找到边
+                Edge edge = edges[e];
+                // 如果边的起始点位于point集合内
+                if (point.contains(edge.startPoint)) {
+                    // 那么将endPoint的闭包加入result集合
+                    result.addAnother(pointClosures[edge.endPoint]);
+                }
+            }
+            return result;
+        }
+        string getCombinationPointAndPointIndex(const SortedSet<int>& point) {
+            ostringstream o_str;
+            if (point.size() == 0) {
+                o_str << "/";
+            } else {
+                if (point.contains(1)){
+                    o_str << "*";
+                }
+                o_str << findPointIndex(point) << ",";
+                o_str << point;
+            }
 
-            // 增加一条空边
-            edges.emplace_back(edge.startPoint, point, ReUnit::empty());
-            // 增加一条环边，其边内容为子元素
-            edges.emplace_back(point, point, edge.reUnit.first());
-            // 增加一条空边
-            edges.emplace_back(point, edge.endPoint, ReUnit::empty());
+            return o_str.str();
         }
-        // 处理a?或者(ab)?的情况
-        void proceedOptional(const Edge& edge) {
-            // 添加一条边，其为?的子元素
-            edges.emplace_back(edge.startPoint, edge.endPoint, edge.reUnit.first());
-            // 添加一条空边
-            edges.emplace_back(edge.startPoint, edge.endPoint, ReUnit::empty());
-        }
-        // 处理a+的情况，分解为aa*的解决方式
-        void proceedAny(const Edge& edge) {
-            // 添加一个点
-            int point = newPoint();
-            auto child = edge.reUnit.first();
-            // a边
-            edges.emplace_back(edge.startPoint, point, child);
-            // a*边
-            edges.emplace_back(point, edge.endPoint, ReUnit::star(child));
-        }
-        // 处理a|b或者a|b*的情况
-        void proceedOrGroup(const Edge& edge) {
-            // 或边不需要创建新的点集，只需要拆分边就可以了
-            for(const auto& unit: edge.reUnit.getChildren()) {
-                edges.emplace_back(edge.startPoint, edge.endPoint, unit);
+        // 进行编译
+        void compile() {
+            int proceedIndex = 0;
+            putPoint(pointClosures[0]); // 放置初始点集
+            // 构建表格
+            while (proceedIndex < newPoints.size()) {
+                auto point = newPoints[proceedIndex];
+                newEdges.emplace_back();
+                for (int i = 0; i < options.size(); ++i) {
+                    //auto collection = newEdges[proceedIndex];
+                    auto newPoint = jump(point, i);
+                    putPoint(newPoint);
+                    newEdges[proceedIndex].emplace_back(newPoint);
+                }
+                proceedIndex++;
             }
+            debugPrint();
         }
-        // 处理abc或者ab(abc*)的情况
-        void proceedConcatGroup(const Edge& edge) {
-            int count = edge.reUnit.getChildren().size();
-            int oldPoint = edge.startPoint; // 起始点为edge.startPoint
+        void printClosures() {
+            int count = pointClosures.size();
+            cout << "==========pointClosures==========" << endl;
+            cout << " | " << setw(6) << "point" << " | " << "closure" << endl;
             for (int i = 0; i < count; ++i) {
-                // 获取当前点
-                auto current = edge.reUnit.getChildren()[i];
-                if (i < count - 1) {
-                    // 创建一个点并添加一条边
-                    int point = newPoint();
-                    edges.emplace_back(oldPoint, point, current);
-                    oldPoint = point;
-                } else {
-                    // 最后一项时，不需要添加点
-                    edges.emplace_back(oldPoint, edge.endPoint, current);
-                }
+                cout << " | " << setw(6) << i << " | " << pointClosures[i] << endl;
             }
+            cout << "=================================";
         }
-        // 打印所有的边
-        friend ostream & operator << (ostream& o_str, const DfaBuilder& v){
-            o_str << " | " << setw(6) << "start" << " | " << setw(6) << "end" << " | " << setw(10) << "type" << " | " << "expression" << endl;
-            int edgeCount = v.edges.size();
-            for (int i = 0; i < edgeCount; ++i) {
-                auto edge = v.edges[i];
-                o_str << " | " << setw(6) << edge.startPoint << " | " << setw(6) << edge.endPoint << " | " << setw(10) << edge.reUnit.getUnitTypeString() << " | " << edge.reUnit.getExpression();
-                if (i < edgeCount - 1){
-                    o_str << endl;
-                }
+        void printOptions() {
+            cout << "options:" << options;
+        }
+        void printSkipEdges(){
+            cout << " | " << setw(6) <<  "option" << " | " << "edges" << endl;
+            cout << "==========jumpEdges==========" << endl;
+            for (int i = 0; i < options.size(); ++i) {
+                cout << " | " << setw(6) << options[i] << " | " << jumpEdgeIndexAt(i) << endl;
             }
-            return o_str;
+            cout << "=============================" << endl;
         }
+        void printTable(){
+            cout << "===============table=============" << endl;
+            cout << " | " << setw(20) << "point" << " | ";
+            for (int i = 0; i < options.size(); ++i) {
+                cout << setw(20) << options[i] << " | ";
+            }
+            cout << endl;
+            for (int i = 0; i < newEdges.size(); ++i) {
+                auto collection = newEdges[i];
+                cout << " | " << setw(20) << getCombinationPointAndPointIndex(newPoints[i]) << " | ";
+                for (int j = 0; j < options.size(); ++j) {
+                    cout << setw(20) << getCombinationPointAndPointIndex(newEdges[i][j]) << " | ";
+                }
+                cout << endl;
+            }
+
+        }
+
     };
 }
