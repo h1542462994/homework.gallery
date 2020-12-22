@@ -49,6 +49,9 @@ namespace texting {
         string getData() const {
             return data;
         }
+        vector<ReUnit>& childrenRef() {
+            return children;
+        }
         vector<ReUnit> getChildren() const {
             return children;
         }
@@ -125,11 +128,11 @@ namespace texting {
             } else if (unitType == UnitType::unit) {
                 return data;
             } else if(unitType == UnitType::star) {
-                return first().getExpression() + "*";
+                return getWrappedExpression() + "*";
             } else if(unitType == UnitType::optional) {
-                return first().getExpression() + "?";
+                return getWrappedExpression() + "?";
             } else if (unitType == UnitType::any) {
-                return first().getExpression() + "+";
+                return getWrappedExpression() + "+";
             } else if (unitType == UnitType::concatGroup) {
                 return getExpressionOfConcatGroup();
             } else if (unitType == UnitType::orGroup) {
@@ -137,8 +140,21 @@ namespace texting {
             }
             return "";
         }
+        string getWrappedExpression() const {
+            ostringstream o_str;
+            if (first().unitType == UnitType::orGroup || first().unitType == UnitType::concatGroup) {
+                o_str << "(";
+            }
+            o_str << first().getExpression();
+            if (first().unitType == UnitType::orGroup || first().unitType == UnitType::concatGroup)  {
+                o_str << ")";
+            }
+            return o_str.str();
+        }
+
         string getExpressionOfConcatGroup() const {
             ostringstream o_str;
+
             for (const auto& token: getChildren()) {
                 auto c = token.getChildren();
                 if (c.size() > 1) {
@@ -151,15 +167,24 @@ namespace texting {
             }
             return o_str.str();
         }
+        static bool hasOrGroupChildren(ReUnit& unit) {
+            for (auto& v : unit.getChildren()) {
+                if (v.getUnitType() == UnitType::orGroup){
+                    return true;
+                }
+            }
+            return false;
+        }
         string getExpressionOfOrGroup() const {
             ostringstream o_str;
             for(size_t i = 0; i < getChildren().size(); ++i) {
                 auto c = getChildren()[i].children;
-                if (c.size() > 1) {
+                bool needLeftAndRight = hasOrGroupChildren(getChildren()[i]);
+                if (c.size() > 1 && needLeftAndRight) {
                     o_str << "(";
                 }
                 o_str << getChildren()[i].getExpression();
-                if (c.size() > 1) {
+                if (c.size() > 1 && needLeftAndRight) {
                     o_str << ")";
                 }
                 if(i < getChildren().size() - 1){

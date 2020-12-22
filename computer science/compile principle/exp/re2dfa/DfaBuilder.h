@@ -8,6 +8,7 @@
 #include <set>
 #include "Edge.h"
 #include "SortedSet.h"
+#include "ReMatcher.h"
 
 using namespace std;
 using namespace util;
@@ -29,6 +30,9 @@ namespace texting {
         // 新的点集合
         vector<SortedSet<int>> newPoints;
         vector<vector<SortedSet<int>>> newEdges;
+        int compiledCount = 0;
+        vector<Edge> newEdgesCompiled = {};
+        SortedSet<int> terminalPoints;
 
         void addSkipEdge(const Edge& edge){
             jumpEdges[edge.reUnit.getExpression()].emplace_back(edge);
@@ -44,18 +48,28 @@ namespace texting {
                 pointClosures[i].add(i);
             }
 
-            // 进行统计
-            for (const auto& edge: edges) {
-                auto type = edge.reUnit.getUnitType();
-                if (type == UnitType::unit) {
-                    string content = edge.reUnit.getExpression();
-                    options.add(content);
-                    pointClosures[edge.startPoint].add(edge.startPoint);
-                    addSkipEdge(edge);
-                } else if (type == UnitType::empty) {
-                    pointClosures[edge.startPoint].add(edge.endPoint);
+            int added;
+            do {
+                added = false;
+                // 进行统计
+                for (const auto& edge: edges) {
+                    auto type = edge.reUnit.getUnitType();
+                    if (type == UnitType::unit) {
+                        string content = edge.reUnit.getExpression();
+                        options.add(content);
+                        //pointClosures[edge.startPoint].add(edge.startPoint);
+                        addSkipEdge(edge);
+                    } else if (type == UnitType::empty) {
+                        for (auto& points: pointClosures) {
+                            if (points.contains(edge.startPoint) && !points.contains(edge.endPoint)) {
+                                added = true;
+                                points.add(edge.endPoint);
+                            }
+                        }
+                    }
                 }
-            }
+            } while (added);
+
             debugPrintInitialize();
         }
 
@@ -124,7 +138,7 @@ namespace texting {
         }
         string getCombinationPointAndPointIndex(const SortedSet<int>& point) {
             ostringstream o_str;
-            if (point.size() == 0) {
+            if (point.empty()) {
                 o_str << "/";
             } else {
                 if (point.contains(1)){
@@ -137,22 +151,31 @@ namespace texting {
             return o_str.str();
         }
         // 进行编译
-        void compile() {
+        ReMatcher compileToDfa() {
             int proceedIndex = 0;
             putPoint(pointClosures[0]); // 放置初始点集
             // 构建表格
+
             while (proceedIndex < newPoints.size()) {
                 auto point = newPoints[proceedIndex];
+                if (point.contains(1)) {
+                    terminalPoints.add(proceedIndex);
+                }
                 newEdges.emplace_back();
                 for (int i = 0; i < options.size(); ++i) {
                     //auto collection = newEdges[proceedIndex];
                     auto newPoint = jump(point, i);
                     putPoint(newPoint);
                     newEdges[proceedIndex].emplace_back(newPoint);
+                    if (!newPoint.empty()) {
+                        newEdgesCompiled.emplace_back(proceedIndex, findPointIndex(newPoint),ReUnit::unit(options[i]));
+                    }
                 }
                 proceedIndex++;
             }
             debugPrint();
+
+            return ReMatcher(proceedIndex - 1, newEdgesCompiled, terminalPoints, openDebug);
         }
         void printClosures() {
             int count = pointClosures.size();
@@ -167,8 +190,8 @@ namespace texting {
             cout << "options:" << options;
         }
         void printSkipEdges(){
-            cout << " | " << setw(6) <<  "option" << " | " << "edges" << endl;
             cout << "==========jumpEdges==========" << endl;
+            cout << " | " << setw(6) <<  "option" << " | " << "edges" << endl;
             for (int i = 0; i < options.size(); ++i) {
                 cout << " | " << setw(6) << options[i] << " | " << jumpEdgeIndexAt(i) << endl;
             }

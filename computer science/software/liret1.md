@@ -82,3 +82,15 @@ git configuration system/global/local
 - 容器Container
 - 镜像仓库Registry
 
+## 自动化
+
+测试的目的是为了评估软件是否能够按照预期的方式执行。
+
+- development engineer
+- testing engineer
+- software development engineer in test
+- life is short, you need python
+
+## TA(Test Automation)
+
+

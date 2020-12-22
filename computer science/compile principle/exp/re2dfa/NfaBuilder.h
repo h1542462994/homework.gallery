@@ -42,7 +42,7 @@ namespace texting {
             }
         }
         // 编译成DFA
-        DfaBuilder compileToDfa() {
+        DfaBuilder compileToNfa() {
             debugClean();
             int proceedIndex = 0;
             while (proceedIndex < edges.size()) {

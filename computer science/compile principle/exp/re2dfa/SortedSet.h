@@ -40,6 +40,9 @@ namespace util {
         int size() const {
             return data.size();
         }
+        bool empty() const {
+            return data.empty();
+        }
         void addAnother(SortedSet<int> other){
             addRange(other.data);
         }
