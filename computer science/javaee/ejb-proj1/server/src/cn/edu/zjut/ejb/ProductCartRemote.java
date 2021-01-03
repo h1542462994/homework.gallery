@@ -1,11 +1,11 @@
 package cn.edu.zjut.ejb;
 
 import javax.ejb.Remote;
-import java.util.ArrayList;
+import java.util.List;
 
 @Remote
 public interface ProductCartRemote {
     void addProduct(String productName, int price);
-    ArrayList<String> listProducts();
+    List<String> listProducts();
     int totalPrice();
 }

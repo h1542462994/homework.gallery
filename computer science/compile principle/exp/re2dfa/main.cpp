@@ -22,7 +22,7 @@ int main() {
     // phase 3: ReUnit(treeType) -> nfa(vector<Edge>)
     DfaBuilder dfaBuilder = nfaBuilder.compileToNfa();
 
-    // phase 4: nfa(vector<Edge>) -> dfa(vector<Edge>)aaaaaaaaaaaa
+    // phase 4: nfa(vector<Edge>) -> dfa(vector<Edge>)
     ReMatcher reMatcher = dfaBuilder.compileToDfa();
 
 

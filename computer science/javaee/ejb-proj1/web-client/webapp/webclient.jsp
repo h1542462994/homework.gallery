@@ -3,30 +3,23 @@
 <%@ page import="javax.naming.InitialContext" %>
 <%@ page import="cn.edu.zjut.ejb.UserServiceRemote" %>
 <%@ page import="javax.naming.NamingException" %>
+<%@ page import="cn.edu.zjut.ejb.EJBFactory" %>
+<%@ page import="java.io.PrintWriter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>EJB实验，登录</title>
 </head>
 <body>
 <%
     try {
-        final Hashtable<String, Object> jndiProperties = new Hashtable<>();
-        jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
-        jndiProperties.put(Context.PROVIDER_URL,"http-remoting://localhost:8080");
-        final Context context = new InitialContext(jndiProperties);
-        final String appName = "";
-        final String modelName = "ejb_proj1";
-        final String distinctName = "";
-        final String beanName = "UserService";
-        final String viewClassName = UserServiceRemote.class.getName();
-        final String namespace = "ejb:" + appName + "/" + modelName + "/" + distinctName + "/" + beanName + "!" + viewClassName;
-        UserServiceRemote usBean = (UserServiceRemote) context.lookup(namespace);
-        System.out.println(usBean);
-        if (usBean.login("zjut", "123456")){
-            out.println("login ok!");
+        EJBFactory ejbFactory = new EJBFactory();
+        ejbFactory.configure();
+        UserServiceRemote usBean = (UserServiceRemote) ejbFactory.getBean(UserServiceRemote.class.getName(), "UserService", false);
+        if (usBean.login("zjut", "zjut")){
+            out.println("login OK!");
         } else {
-            out.println("login failed");
+            out.println("login Failed!");
         }
     } catch (NamingException e) {
         e.printStackTrace();

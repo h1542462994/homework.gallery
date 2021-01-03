@@ -1,13 +1,12 @@
 package cn.edu.zjut.ejb;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateful;
 import java.util.ArrayList;
+import java.util.List;
 
 @Stateful
-@Remote(ProductCartRemote.class)
 public class ProductCartBean implements ProductCartRemote {
-    private ArrayList<String> cartList = new ArrayList<>();
+    private final ArrayList<String> cartList = new ArrayList<>();
     private int totalPrice = 0;
 
     @Override
@@ -17,7 +16,7 @@ public class ProductCartBean implements ProductCartRemote {
     }
 
     @Override
-    public ArrayList<String> listProducts() {
+    public List<String> listProducts() {
         return cartList;
     }
 
