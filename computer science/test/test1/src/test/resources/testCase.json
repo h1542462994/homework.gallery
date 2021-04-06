@@ -1,0 +1,234 @@
+{
+  "testCase": [
+    {
+      "scope": "RectGetAreaTest",
+      "data": [
+        {
+          "length": 4,
+          "width": 3,
+          "error": false,
+          "result": 12
+        }, {
+          "length": 4,
+          "width": 1,
+          "error": false,
+          "result": 4
+        }, {
+          "length": 4,
+          "width": 4,
+          "error": false,
+          "result": 16
+        }, {
+          "length": 1,
+          "width": 1,
+          "error": false,
+          "result": 1
+        }, {
+          "length": 3,
+          "width": 4,
+          "error": false,
+          "result": 12
+        }, {
+          "length": 1,
+          "width": 4,
+          "error": false,
+          "result": 4
+        }, {
+          "length": 4,
+          "width": 0,
+          "error": true,
+          "result": null
+        }, {
+          "length": 4,
+          "width": -4,
+          "error": true,
+          "result": null
+        }, {
+          "length": 0,
+          "width": 4,
+          "error": true,
+          "result": null
+        }, {
+          "length": -4,
+          "width": 4,
+          "error": true,
+          "result": null
+        }
+      ]
+    },
+    {
+      "scope": "RectGetPerimeterTest",
+      "data": [
+        {
+          "length": 4,
+          "width": 3,
+          "error": false,
+          "result": 14
+        }, {
+          "length": 4,
+          "width": 1,
+          "error": false,
+          "result": 10
+        }, {
+          "length": 4,
+          "width": 4,
+          "error": false,
+          "result": 16
+        }, {
+          "length": 1,
+          "width": 1,
+          "error": false,
+          "result": 4
+        }, {
+          "length": 3,
+          "width": 4,
+          "error": false,
+          "result": 14
+        }, {
+          "length": 1,
+          "width": 4,
+          "error": false,
+          "result": 10
+        }, {
+          "length": 4,
+          "width": 0,
+          "error": true,
+          "result": null
+        }, {
+          "length": 4,
+          "width": -4,
+          "error": true,
+          "result": null
+        }, {
+          "length": 0,
+          "width": 4,
+          "error": true,
+          "result": null
+        }, {
+          "length": -4,
+          "width": 4,
+          "error": true,
+          "result": null
+        }
+      ]
+    },
+    {
+      "scope": "RectFindMaxTest",
+      "data": [
+        {
+          "input": [
+            {
+              "length": 4,
+              "width": 4
+            }, {
+              "length": 8,
+              "width": 2
+            }, {
+              "length": 3,
+              "width": 6
+            }, {
+              "length": 1,
+              "width": 8
+            }
+          ],
+          "error": false,
+          "resultArea": {
+            "length": 3,
+            "width": 6
+          },
+          "resultPerimeter": {
+            "length": 8,
+            "width": 2
+          }
+        }, {
+          "input": [
+            {
+              "length": 2,
+              "width": 8
+            }, {
+              "length": 2,
+              "width": 2
+            }, {
+              "length": 2,
+              "width": 4
+            }
+          ],
+          "error": false,
+          "resultArea": {
+            "length": 2,
+            "width": 8
+          },
+          "resultPerimeter": {
+            "length": 2,
+            "width": 8
+          }
+        }, {
+          "input": [
+            {
+              "length": 2,
+              "width": 2
+            }, {
+              "length": 2,
+              "width": 8
+            }, {
+              "length": 2,
+              "width": 4
+            }
+          ],
+          "error": false,
+          "resultArea": {
+            "length": 2,
+            "width": 8
+          },
+          "resultPerimeter": {
+            "length": 2,
+            "width": 8
+          }
+        }, {
+          "input": [
+            {
+              "length": 2,
+              "width": 4
+            }, {
+              "length": 2,
+              "width": 2
+            }, {
+              "length": 2,
+              "width": 8
+            }
+          ],
+          "error": false,
+          "resultArea": {
+            "length": 2,
+            "width": 8
+          },
+          "resultPerimeter": {
+            "length": 2,
+            "width": 8
+          }
+        }, {
+          "input": [
+            {
+              "length": 2,
+              "width": 2
+            }
+          ],
+          "error": false,
+          "resultArea": {
+            "length": 2,
+            "width": 2
+          },
+          "resultPerimeter": {
+            "length": 2,
+            "width": 2
+          }
+        }, {
+          "input": [],
+          "error": true,
+          "resultArea": null,
+          "resultPerimeter": null
+        }
+      ]
+    }
+  ]
+}

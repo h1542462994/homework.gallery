@@ -17,7 +17,7 @@
 
 ### 数学与理学
 
-- [数学物理方法（课外）](./science/mas/index.md) Paused ..until 2021/1/1
+- [数学物理方法（课外）](./science/mas/index.md) Paused ..until ?
 - [热力学（课外）](./science/thermodynamics/index.md) Paused ..until ?
 
 ### 社会科学
@@ -34,11 +34,12 @@
 - [数据库原理及其应用（大二下）](./computer%20science/mssql/index.md) Archived
 - [算法（大二下）](./computer%20science/algorithm/index.md) Archived
 - [ctf](./computer%20science/ctf/index.md) Paused
-- [操作系统（大三上）](./computer%20science/os/index.md) Updating
-- [编译原理（大三上）](./computer%20science/compile%20principle/index.md) Updating
-- [软件工程（大三上）](./computer%20science/software/index.md) Updating
-- [JavaEE技术（大三上）](./computer%20science/javaee/index.md) Updating
-- [C#程序设计（大三上）](./computer%20science/csharp/index.md) Updating
+- [操作系统（大三上）](./computer%20science/os/index.md) Archived
+- [编译原理（大三上）](./computer%20science/compile%20principle/index.md) Archived
+- [软件工程（大三上）](./computer%20science/software/index.md) Archived
+- [JavaEE技术（大三上）](./computer%20science/javaee/index.md) Archived
+- [C#程序设计（大三上）](./computer%20science/csharp/index.md) Archived
+- [软件质量与保证技术（大三下）](./computer%20science/test/index.md) Updating
 
 ### 计算机科学、编程语言（大作业、课程设计等）
 
@@ -51,4 +52,4 @@
 - [🔗人工智能导论（大二下）自主实验](https://github.com/h1542462994/homework.pokeman_selector) Archived
 - [🔗工程实训-智能车（大二短）最终代码](https://github.com/h1542462994/homework.4wd) Archived
 - [🔗数据库原理及其应用（大二短）课程设计](https://github.com/h1542462994/homework.dbgrade) Archived
-- [🔗软件工程（大三上）课程设计](https://github.com/h1542462994/teamwork-software-engineering) Updating
+- [🔗软件工程（大三上）课程设计](https://github.com/h1542462994/teamwork-software-engineering) Archived
