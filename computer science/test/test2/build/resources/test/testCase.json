@@ -1,0 +1,69 @@
+{
+  "testCase": [
+    {
+      "scope": "LoginTest",
+      "data": [
+        {
+          "params": {
+            "username": "admin",
+            "password": "123456"
+          },
+          "result": "ok"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": "1234567"
+          },
+          "result": "fail"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": "01234567"
+          },
+          "result": "fail"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": "124456"
+          },
+          "result": "fail"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": "12345"
+          },
+          "result": "fail"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": "null"
+          },
+          "result": "fail"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": ""
+          },
+          "result": "fail"
+        },{
+          "params": {
+            "username": "admin"
+          },
+          "result": "fail"
+        }, {
+          "params": {
+
+          },
+          "result": "fail"
+        }, {
+          "params": {
+            "username": "admin",
+            "password": "01234567",
+            "_gmmode": 1
+          },
+          "result": "fail"
+        }
+      ]
+    }
+  ]
+}
