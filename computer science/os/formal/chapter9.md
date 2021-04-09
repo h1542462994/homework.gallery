@@ -76,3 +76,12 @@ $$T_s=m\times n\downarrow+s$$
     
 - 第一种方法：连续分配（Contigous allocation）
     - FAT：记录起始块和文件长度。
+- 第二种方法：链式分配（Link allocation）
+- 第三种方法：索引分配（Index allocation）
+
+### 空闲区
+
+- 位表（Bitmap）
+- 链式空闲区（Chained free portition）
+- 索引（Indexing）
+

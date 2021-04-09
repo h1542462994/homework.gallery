@@ -15,15 +15,3 @@
 ### 大型项目的技术性管理组织结构
 
 > 因为开源逐渐走向成功的项目
-
-$\mu'$
-
-```
-Android
-Java
-Linux
-.NET core
-visual studio code
-```
-
-逐步求精法

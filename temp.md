@@ -1,3 +1,14 @@
-{"modulus":"AISPxcXgwYtcAIjr4mKuvU70paRcbJYOzgiWRRsKgx73Yjmu6QDTPNQJN6Oead1i4UlAyJJMu0LP\/AYaCHl8koil1\/bjHBYn+QrJi4XMCiIBVaNNGoR5JOvaFUD6KpcwcrIZ81pg0Zfeg5hJoJijns8fA4Cb\/NmENaEqJ8F2s3kv","exponent":"AQAB"}
-
-burkd5loN/gQjpUib3pSL1+qDUty/83prmeVLard9XSFnCO8tS3Z8uaQYxUNIgX8dxrrmVn3Kg/my16ypMiEgNNFwalyZNfGN9O0y8VKqVsUyFgsecqAN7hSxmkQ9rphfnAwdn6toKkLMBGRGvj4Ro4vTpl7T+dkluQAAVyBkYU=
+```cpp
+ReUnit reNode = ReUnit::orGroup(
+        {ReUnit::unit("a") ,
+            ReUnit::concatGroup({
+                ReUnit::star(ReUnit::unit("b")),
+                ReUnit::unit("d"),
+                ReUnit::optional(ReUnit::unit("c")),
+            })
+        });
+cout << reNode.getExpression() << endl;
+NfaBuilder builder(reNode);
+DfaBuilder reBuilder = builder.compileToNfa();
+ReMatcher reMatcher = reBuilder.compileToDfa();
+```
