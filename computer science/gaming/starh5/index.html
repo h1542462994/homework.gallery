@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star5</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+        label {
+            color: white;
+        }
+        #canvasStar {
+            background-color: black;
+        }
+        #controlPanel {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!--dynamic resize by star.js-->
+    <canvas id="canvasStar" width="600px" height="400px">
+        Your browser doesn't support the HTML5 element canvas.
+    </canvas>
+    <div id="controlPanel">
+        <input id="buttonStart" type="button" value="开始">
+        <input id="buttonClear" type="button" value="清除图层">
+    </div>
+    <script src="star.js" lang="javascript"></script>
+</body>
+</html>
