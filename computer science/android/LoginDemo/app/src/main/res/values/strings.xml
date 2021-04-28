@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LoginDemo</string>
+    <string name="login">登录</string>
+    <string name="hint_account">请输入账号</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="no_account_q">还没有账户?</string>
+    <string name="register_ac">点击注册</string>
+    <string name="link_qq">link_qq</string>
+    <string name="account_link_ac">使用社交用户登录</string>
+</resources>
