@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.tty.test5.model.User" table="user" schema="chtTests">
+        <id name="userId" type="int">
+            <column name="userId"/>
+            <generator class="increment"/>
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="username"/>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password"/>
+        </property>
+    </class>
+</hibernate-mapping>
