@@ -1,10 +1,21 @@
 # Android
 
+## 四大组件
+
+1. Activitiy
+2. Service
+3. Content Provider
+4. Broadcast Receiver
+
+
 ## 进程间通信
 
-1. Binder IPC
-2. ContentProvider
-3. Android Pipeline
+1. 使用Bundle的方式进行通讯
+2. Messenger
+3. AIDL（Android Interface Definition Language）
+4. ContentProvider
+5. Broadcast Receiver
+6. Socket IO
 
 ## 线程间通信
 
@@ -52,3 +63,13 @@
 - room
 - lifecycle
 - compose
+
+## Hilt框架
+
+## Perfetto
+
+## 网络框架
+
+1. async-http
+2. okhtto
+3. retrofit

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- guidelines -->
+    <!-- guideline *titleBar -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lineTitleBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/titleBarHeight"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lineLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/big6x"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lineRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/big6x"/>
+
+    <!-- title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/fontSizeTitle"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/lineTitleBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/medium"/>
+
+    <!-- avatar -->
+    <org.tty.logind.ui.component.ClipImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="@dimen/imageAvatarSize"
+        android:layout_height="@dimen/imageAvatarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lineTitleBar"
+        android:layout_marginTop="@dimen/medium"
+        android:src="@drawable/avatar"/>
+
+    <!-- editText group -->
+    <EditText
+        android:id="@+id/editTextAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageAvatar"
+        app:layout_constraintStart_toStartOf="@id/lineLeft"
+        app:layout_constraintEnd_toEndOf="@id/lineRight"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/ic_baseline_account"
+        android:padding="@dimen/medium"
+        android:layout_marginTop="@dimen/big6x"
+        android:inputType="text"
+        android:hint="@string/hint_account"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/editTextAccount"
+        app:layout_constraintStart_toStartOf="@id/lineLeft"
+        app:layout_constraintEnd_toEndOf="@id/lineRight"
+        android:background="@drawable/custom_edittext_background"
+        android:drawableStart="@drawable/ic_baseline_lock"
+        android:padding="@dimen/medium"
+        android:layout_marginTop="@dimen/big4x"
+        android:inputType="textPassword"
+        android:hint="@string/hint_password"
+        android:autofillHints=""/>
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@id/lineLeft"
+        app:layout_constraintEnd_toEndOf="@id/lineRight"
+        android:layout_marginTop="@dimen/small"
+        android:text="@string/login"
+        android:padding="@dimen/medium"
+        android:textSize="@dimen/fontSizeTitle"/>
+
+    <!-- to register area -->
+    <TextView
+        android:id="@+id/__textViewNoAccountTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/fontSizeNormal"
+        app:layout_constraintEnd_toStartOf="@id/textViewNoAccountLink"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:text="@string/no_account_q"
+        android:layout_marginTop="@dimen/small" />
+
+    <TextView
+        android:id="@+id/textViewNoAccountLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSizeNormal"
+        app:layout_constraintStart_toEndOf="@id/__textViewNoAccountTip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/__textViewNoAccountTip"
+        android:text="@string/register_ac"
+        android:textColor="?attr/colorAccent"/>
+
+
+    <!-- link area -->
+    <ImageView
+        android:id="@+id/imageLinkQq"
+        android:layout_width="@dimen/imageLinkSize"
+        android:layout_height="@dimen/imageLinkSize"
+        android:src="@drawable/qq"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imageLinkWechat"
+        android:layout_marginBottom="@dimen/big8x"
+        android:contentDescription="@string/link_qq" />
+
+    <ImageView
+        android:id="@+id/imageLinkWechat"
+        android:layout_width="@dimen/imageLinkSize"
+        android:layout_height="@dimen/imageLinkSize"
+        android:src="@drawable/wechat"
+        app:layout_constraintTop_toTopOf="@id/imageLinkQq"
+        app:layout_constraintStart_toEndOf="@id/imageLinkQq"
+        app:layout_constraintEnd_toStartOf="@id/imageLinkWeibo"
+        android:contentDescription="@string/link_qq" />
+
+    <ImageView
+        android:id="@+id/imageLinkWeibo"
+        android:layout_width="@dimen/imageLinkSize"
+        android:layout_height="@dimen/imageLinkSize"
+        android:src="@drawable/weibo"
+        app:layout_constraintTop_toTopOf="@id/imageLinkQq"
+        app:layout_constraintStart_toEndOf="@id/imageLinkGithub"
+        app:layout_constraintEnd_toStartOf="@id/imageLinkWechat"
+        android:contentDescription="@string/link_qq" />
+
+    <ImageView
+        android:id="@+id/imageLinkGithub"
+        android:layout_width="@dimen/imageLinkSize"
+        android:layout_height="@dimen/imageLinkSize"
+        android:src="@drawable/github"
+        app:layout_constraintTop_toTopOf="@id/imageLinkQq"
+        app:layout_constraintStart_toEndOf="@id/imageLinkWeibo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/link_qq" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account_link_ac"
+        android:textSize="@dimen/fontSizeNormal"
+        android:textColor="?attr/colorOnSurface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imageLinkQq"
+        android:layout_marginBottom="@dimen/medium"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

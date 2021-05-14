@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small">8dp</dimen>
+    <dimen name="medium">16dp</dimen>
+    <dimen name="big4x">32dp</dimen>
+    <dimen name="big6x">48dp</dimen>
+    <dimen name="big8x">64dp</dimen>
+    <dimen name="titleBarHeight">56dp</dimen>
+    <dimen name="fontSizeTitle">18sp</dimen>
+    <dimen name="fontSizeNormal">16sp</dimen>
+    <dimen name="imageAvatarSize">72dp</dimen>
+    <dimen name="imageLinkSize">36dp</dimen>
+</resources>
