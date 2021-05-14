@@ -1,0 +1,1 @@
+java -cp marauroa.jar;h2.jar;log4j.jar;. marauroa.server.marauroad -c server.ini

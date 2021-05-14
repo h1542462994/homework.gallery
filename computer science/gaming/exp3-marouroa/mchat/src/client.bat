@@ -1,0 +1,1 @@
+java -cp marauroa.jar;log4j.jar;h2.jar;. Test login password
