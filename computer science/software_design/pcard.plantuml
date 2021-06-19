@@ -1,0 +1,65 @@
+@startuml
+title "Card类图"
+
+interface Card {
+    + id: String
+    + info: String :get
+}
+
+annotation CardIdentity
+CardIdentity : + type: String
+
+class GoldCard {
+
+}
+
+class SilverCard {
+
+}
+
+class CopperCard {
+
+}
+
+GoldCard ..|> Card #Green
+SilverCard ..|> Card #Green
+CopperCard ..|> Card #Green
+
+interface CardFactory {
+    + create(String): Card
+}
+
+interface CardIdGenerator {
+    + nextId(Class<? extends Card>): String
+}
+
+class CardFactoryBuilder {
+    - packages: ArrayList<String>
+    - types: ArrayList<Class<? extends Card>>
+    - generator: CardIdGenerator
+    - getType(Class<? extends Card>): String
+    + build(): CardFactory
+    + with(Class<? extends Card>): CardFactoryBuilder
+    + withIdGenerator(CardIdGenerator): CardFactoryBuilder
+    + withPackage(String): CardFactoryBuilder
+}
+
+class ClassScanner {
+
+}
+
+class IncrementalCardIdGenerator {
+    - current: BigInteger
+}
+
+CardFactoryBuilder *--> CardIdGenerator
+CardFactoryBuilder ..> CardFactory #Blue : "<<create>>" 
+CardFactory ..> Card #Blue : "<<create>>"
+CardFactoryBuilder *--> ClassScanner
+IncrementalCardIdGenerator --|> CardIdGenerator #Green
+
+GoldCard ... CardIdentity #GoldenRod
+SilverCard ... CardIdentity #GoldenRod
+CopperCard ... CardIdentity #GoldenRod
+
+@enduml

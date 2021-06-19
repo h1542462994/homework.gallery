@@ -1,0 +1,39 @@
+@startuml
+title "单例模式类图"
+
+class LimitInstanceClass {
+    - isBusy: Boolean
+    - accessMessage: String
+    - {static} generateId: Integer
+    - {static} instances: ConcurrentHashMap<Integer, LimitInstanceClass>
+    - {static} available(): Boolean
+    - {static} first(): Optional<LimitInstanceClass>
+    - {static} newInstance(): LimitInstanceClass
+    + prepare(Properites): void
+    + printAccessMessage(): void
+    + release(): void
+    + writeAccessMessage(String): void
+    + getBusy(): Boolean
+    + getId(): Integer
+    + {static} getInstance(): LimitInstanceClass?
+    + {static} getInstanceLimit(): Integer
+}
+
+class AccessLimitInstanceClassThread {
+    + run(): void
+    + printStart(LimitInstanceClass): void
+}
+
+class Thread
+
+class Program {
+    + {static} main(String[]): void
+}
+
+Program ..> AccessLimitInstanceClassThread #Blue : "<<create>>"
+AccessLimitInstanceClassThread --|> Thread #Green
+Program o--> AccessLimitInstanceClassThread
+AccessLimitInstanceClassThread o--> LimitInstanceClass
+LimitInstanceClass ..> LimitInstanceClass #Blue : "<<create>>"
+
+@enduml

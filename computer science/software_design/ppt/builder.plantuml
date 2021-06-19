@@ -1,0 +1,67 @@
+@startuml
+title "Builder设计模式：例子"
+
+interface KeyBoard
+
+interface Mouse
+
+interface OS
+
+interface Computer {
+    + cpu.get(): CPU
+    + memory.get(): Memory
+    + os.get(): OS
+}
+note right: Immutable
+
+class WindowsComputer {
+    - cpu: CPU
+    - memory: Memory
+    - os: OS
+    + constructor(KeyBoard, Mouse, OS)
+}
+
+class MacBook {
+    - cpu: CPU
+    - memory: Memory
+    - os: OS
+    + constructor(KeyBoard, Mouse, OS)
+}
+
+interface Builder<T> {
+    + build(): T
+} 
+
+interface ComputerBuilder {
+    + build(): Computer
+} 
+
+note right: 支持链式调用
+
+class MacBookBuilder {
+    - cpu: CPU
+    - memory: Memory
+    + build(): Computer
+    + cpu.set(CPU): MacBookBuilder
+    + memory.set(Memory): MacBookBuilder
+}
+
+class WindowsBuilder {
+    - cpu: CPU
+    - memory: Memory
+    + build(): Computer
+    + cpu.set(CPU): WindowsBuilder
+    + memory.set(Memory): WindowsBuilder
+}
+
+Computer *-- KeyBoard #Black
+Computer *-- Mouse #Black
+Computer *-- OS #Black
+WindowsComputer ..|> Computer #Green
+MacBook ..|> Computer #Green
+ComputerBuilder ..|> Builder #Green
+ComputerBuilder --|> Computer #Purple : "<<create>>"
+MacBookBuilder --|> ComputerBuilder #Green
+WindowsBuilder --|> ComputerBuilder #Green
+
+@enduml

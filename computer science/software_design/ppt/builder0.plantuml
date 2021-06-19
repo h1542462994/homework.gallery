@@ -1,0 +1,24 @@
+@startuml
+title "Builder设计模式：通用"
+
+interface Director {
+    + construct()
+}
+
+abstract class Builder {
+    + build(): Product
+}
+
+class ConcreateBuilder {
+    + build(): Product
+}
+
+interface Product {
+
+}
+
+Director o-- Builder #Black
+ConcreateBuilder --|> Builder #Green
+Builder --|> Product #Purple : "<<create>>"
+
+@enduml
