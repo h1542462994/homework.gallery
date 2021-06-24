@@ -39,7 +39,8 @@
 - [软件工程（大三上）](./computer%20science/software/index.md) Archived
 - [JavaEE技术（大三上）](./computer%20science/javaee/index.md) Archived
 - [C#程序设计（大三上）](./computer%20science/csharp/index.md) Archived
-- [软件质量与保证技术（大三下）](./computer%20science/test/index.md) Updating
+- [软件质量与保证技术（大三下）](./computer%20science/test/index.md) Archived
+- [安卓程序设计（大三下）](./computer%20science/android/index.md) Updating
 
 ### 计算机科学、编程语言（大作业、课程设计等）
 

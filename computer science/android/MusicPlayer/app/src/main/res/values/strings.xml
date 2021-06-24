@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MusicPlayer</string>
+    <string name="search">搜索</string>
+    <string name="no_song">无歌曲</string>
+    <string name="song_prev">上一首</string>
+    <string name="song_next">下一首</string>
+    <string name="song_play">播放</string>
+    <string name="song_search">输入名称搜索...</string>
+</resources>
