@@ -1,0 +1,29 @@
+@startuml
+title "服务依赖关系"
+interface AddService {
+    + current(): int
+    + add(): void 
+} 
+
+interface RepeatAddService {
+    + add(): void
+    + add(times: int): void
+    + current(): int
+}
+
+class AddServiceImpl {
+    
+}
+note right: A
+
+class RepeatAddServiceImpl {
+    + addService: AddService
+}
+note right: B
+
+AddServiceImpl ..|> AddService #Green
+RepeatAddServiceImpl ..|> RepeatAddService #Green
+RepeatAddServiceImpl o--> AddService #Black
+RepeatAddService o..> AddService #DeepSkyBlue
+
+@enduml

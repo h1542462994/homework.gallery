@@ -1,0 +1,19 @@
+@startuml
+title "单例模式类图"
+interface PrintTask {
+    + print(): void
+}
+
+class PrintSpooler {
+    - {static} instance: PrintSpooler
+    - tasks: Map<Int, PrintTask>
+    + {static} getInstance(): PrintSpooler
+    + terminate(id: int): void
+    + push(printTask: PrintTask): int
+    + priority(id: int, id: priority): void
+}
+
+PrintSpooler "1" *--> "n" PrintTask
+PrintSpooler --> PrintSpooler : create
+
+@enduml
