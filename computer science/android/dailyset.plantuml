@@ -1,0 +1,71 @@
+@startuml
+title "DailySet"
+
+interface DailyDuration{
+    uid: String,
+    startDate: LocalDate,
+    endDate: LocalDate,
+    name: String,
+}
+note right: 表示一个时间段的数据抽象
+
+interface NormalDailyDuration {
+    tag: String //时间段类型(normal,vacation)
+}
+note right: 表示一个普通的时间段
+
+interface ClazzDailyDuration {
+    bindingDailyTableUid: String,
+    bindingPeriodCode: Int
+}
+note right: 表示一个学期的时间段
+
+NormalDailyDuration --> DailyDuration #Green
+ClazzDailyDuration --> DailyDuration #Green
+
+interface DailySet {
+    uid: String,
+    ownerUid: String,
+    name: String
+}
+note right: 表示一个日程集的数据抽象
+
+interface NormalDailySet {
+    
+}
+note right: 表示一个普通的日程集
+
+interface ClazzDailySet {
+
+}
+note right: 表示一个课表的日程集
+
+interface TaskSpecificDailySet {
+    
+}
+note right: 表示一个任务的日程集
+
+NormalDailySet --> DailySet #Green
+ClazzDailySet --> DailySet #Green
+TaskSpecificDailySet --> DailySet #Green
+
+DailySet *--> DailyDuration #Purple
+
+interface DailyNode 
+note right: 表示一个日程或者一节课的数据抽象
+interface NormalDailyNode
+note right: 表示一个普通的日程
+
+interface TaskDailyNode
+note right: 表示一个Task的日程
+
+interface ClazzDailyNode
+note right: 表示一节课
+
+NormalDailyNode --> DailyNode #Green
+TaskDailyNode --> DailyNode #Green
+ClazzDailyNode --> DailyNode #Green
+
+DailySet *--> DailyNode #Purple
+DailyDuration *..> DailyNode #Purple
+@enduml
