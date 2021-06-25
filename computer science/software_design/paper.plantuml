@@ -1,0 +1,28 @@
+@startuml
+title "Service组件的定义"
+
+class ServiceDeclare {
+    + serviceType: KClass<*>
+    + declarationTypes: List<KClass<*>>
+    + lifecycle: Lifecycle
+    + isLazyService: Boolean
+    + constructor: KFunction<*>
+    + components: List<PropertyComponent>
+}
+
+class PropertyComponent {
+    + name: String
+    + declareType: KClass<*>,
+    + injectPlace: InjectPlace
+    + injectLazy: Boolean
+}
+
+enum InjectPlace {
+    Constructor
+    Property
+    InjectProperty
+}
+
+ServiceDeclare *--> PropertyComponent #Black
+PropertyComponent *--> InjectPlace #Black
+@enduml
