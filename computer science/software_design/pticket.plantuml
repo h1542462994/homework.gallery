@@ -1,0 +1,53 @@
+@startuml
+title "观察者模式类图"
+interface Observer<T> {
+   + onDateChanged(T): void
+}
+note right: 观察者接口
+interface ObserveData<T> {
+    + observe(Observer<T>): void
+    + removeObserver(Observer<T>): void
+    + pushData(T): void
+    + notifyDataChanged()
+}
+note right: 可观察的数据
+
+class ObserveData_Impl<T> {
+    + data: T
+    + observers: CopyOnWriteArrayList<Observer<T>>
+}
+interface Observable<T> {
+    + observeData(): ObserveData<T>
+    + observe(Observer<T>): void
+    + removeObserver(Observer<T>): void
+}
+note right: 可观察的对象
+
+
+ObserveData o--> Observer
+ObserveData_Impl ..> ObserveData #Green
+Observable *--> ObserveData
+Observable ...> Observer #Gray
+
+class Stock {
+    - observeData: ObserveData<Double>
+    - ticketThread: Thread
+    + start()
+    + stop()
+}
+
+Stock ..> Observable #Green
+
+class CurrentPriceReport {
+    - price: Double
+}
+
+class PredictPriceReport {
+    - firstInit: Boolean
+    + current: Double
+}
+
+CurrentPriceReport ..> Observer #Green
+PredictPriceReport ..> Observer #Green
+
+@enduml
