@@ -1,5 +1,5 @@
 @startuml
-title "DailySet"
+title "DailySet 日程集"
 
 interface DailyDuration{
     uid: String,

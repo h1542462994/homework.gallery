@@ -1,0 +1,109 @@
+@startuml
+title "DailySet 持久层"
+
+class RoomDatabase
+
+
+class DailySetRoomDatabase {
+    + {abstract} userDao(): UserDao
+    + {abstract} preferenceDao(): PreferenceDao
+    + {abstract} dailyTableDao(): DailyTableDao
+    + {abstract} dailyRowDao(): DailyRowDao
+    + {abstract} dailyCellDao(): DailyCellDao
+    + {abstract} dailySetDao(): DailySetDao
+    + {abstract} dailyDurationDao(): DailyDurationDao
+    + {abstract} dailySetBindingDao(): DailySetBindingDao
+    + class DailySetDataBaseCallBack
+    + {static} INSTANCE: DailySetRoomDatabase?
+    + {static} TAG: String
+    + {static} currentVersion: Int
+    + {static} getDatabase(Context, CoroutineScope)
+}
+
+DailySetRoomDatabase --> RoomDatabase #Green
+
+interface UserDao {
+    + all(): Flow<List<User>>
+    + load(String): Flow<User?>
+    + insert(User)
+    + update(User)
+}
+
+interface DailyCellDao {
+    + update(DailyCell)
+    + delete(DailyCell)
+}
+
+interface DailyRowDao {
+    + update(DailyRow)
+    + delete(DailyRow)
+}
+
+interface DailyTableDao {
+    + update(DailyTable)
+    + load(String): Flow<DailyTRC?>
+    + loadSorted(String): Flow<DailyTRC?>
+    + all(): Flow<List<DailyTable>>
+    + delete(DailyTable)
+    + createFromTemplate(DailyTableCreateEventArgs)
+    + delete(DailyTableDeleteEventArgs)
+    + addRow(DailyTableAddRowEventArgs)
+    + clickWeekDay(DailyTableClickWeekDayEventArgs)
+    + rename(DailyTableRenameEventArgs)
+    + deleteRow(DailyTableRowDeleteEventArgs)
+    + modifySection(DailyTableModifySectionEventArgs)
+    + modifyCell(DailyTableModifyCellEventArgs)
+}
+
+
+
+DailySetRoomDatabase *--> UserDao #Black
+DailySetRoomDatabase *--> DailyCellDao #Black
+DailySetRoomDatabase *--> DailyRowDao #Black
+
+DailySetRoomDatabase *--> DailyTableDao #Black
+
+DailyTableDao --> DailyCellDao #Green
+DailyTableDao --> DailyRowDao #Green
+
+interface DailyDurationDao {
+    + update(DailyDuration)
+    + delete(DailyDuration)
+    + allDurations(): Flow<List<DailyDuration>>
+    + typedDurations(DailyDurationType): Flow<List<DailyDuration>>
+    + countOfType(DailyDurationType): Int
+}
+
+interface DailySetDao {
+    + update(DailySet)
+    + delete(DailySet)
+    + countOfType(DailyDurationType): Int
+    + allSets(): Flow<List<DailySet>>
+    + load(String): Flow<DailySet?>
+    + loadDetail(String): Flow<DailySetDurations?>
+    + create(DailySetCreateEventArgs)
+    + createDuration(DailySetCreateDurationAndBindingEventArgs)
+}
+
+interface DailySetBindingDao {
+    + update(DailySetBinding)
+    + delete(DailySetBinding)
+    + loadDailySetBinding(String): Flow<DailySetBinding?>
+}
+
+DailySetRoomDatabase *--> DailySetBindingDao #Black
+DailySetRoomDatabase *--> DailyDurationDao #Black
+DailySetRoomDatabase *--> DailySetDao #Black
+DailySetDao --> DailyDurationDao #Green
+DailySetDao --> DailySetBindingDao #Green
+
+interface PreferenceDao {
+    + get(String): Preference?
+    + load(String): Flow<Preferene?>
+    + insert(Preference)
+    + update(Preference)
+}
+
+DailySetRoomDatabase *--> PreferenceDao #Black
+
+@enduml
